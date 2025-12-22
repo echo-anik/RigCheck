@@ -1,0 +1,96 @@
+version: '3.8'
+
+services:
+  # Laravel Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rigcheck-app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+      - ../data:/var/www/data
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - rigcheck-network
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=pc_builder_rigcheck
+      - DB_USERNAME=rigcheck_user
+      - DB_PASSWORD=rigcheck_password
+
+  # Nginx Web Server
+  webserver:
+    image: nginx:alpine
+    container_name: rigcheck-webserver
+    restart: unless-stopped
+    ports:
+      - "8002:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - rigcheck-network
+    depends_on:
+      - app
+
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: rigcheck-db
+    restart: unless-stopped
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: pc_builder_rigcheck
+      MYSQL_USER: rigcheck_user
+      MYSQL_PASSWORD: rigcheck_password
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      # Import SQL files on first run
+      - ../DB_IMPROVED.sql:/docker-entrypoint-initdb.d/01-schema.sql
+    networks:
+      - rigcheck-network
+    command: --default-authentication-plugin=mysql_native_password
+
+  # Redis for Caching
+  redis:
+    image: redis:alpine
+    container_name: rigcheck-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    networks:
+      - rigcheck-network
+
+  # PHPMyAdmin (optional - for database management)
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: rigcheck-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: rigcheck_user
+      PMA_PASSWORD: rigcheck_password
+    networks:
+      - rigcheck-network
+    depends_on:
+      - db
+
+networks:
+  rigcheck-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
