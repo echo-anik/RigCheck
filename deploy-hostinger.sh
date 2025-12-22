@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # RigCheck Laravel - Hostinger Deployment Script
-# ONE-STEP DEPLOYMENT
+# PROPER STRUCTURE: Laravel app in rigcheck-app, public files in public_html
 
 set -e  # Exit on error
 
@@ -16,8 +16,38 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-# Check if we're in the right directory
-if [ ! -f "artisan" ]; then
+# Determine where we are and set up paths
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PARENT_DIR="$(dirname "$SCRIPT_DIR")"
+
+echo -e "${GREEN}Setting up proper directory structure...${NC}"
+
+# If we're in public_html, restructure
+if [[ "$SCRIPT_DIR" == *"public_html"* ]]; then
+    echo "Detected public_html location, restructuring..."
+    
+    # Move to parent
+    cd "$PARENT_DIR"
+    
+    # Rename public_html to rigcheck-app
+    if [ -d "public_html" ] && [ ! -d "rigcheck-app" ]; then
+        mv public_html rigcheck-app
+        echo "✓ Moved files to rigcheck-app/"
+    fi
+    
+    # Create new public_html with only public folder contents
+    mkdir -p public_html
+    cp -r rigcheck-app/public/* public_html/
+    echo "✓ Created public_html/ with public files"
+    
+    # Update index.php paths
+    sed -i "s|__DIR__.'/../vendor/autoload.php'|__DIR__.'/../rigcheck-app/vendor/autoload.php'|g" public_html/index.php
+    sed -i "s|__DIR__.'/../bootstrap/app.php'|__DIR__.'/../rigcheck-app/bootstrap/app.php'|g" public_html/index.php
+    echo "✓ Updated index.php paths"
+    
+    # Now work in rigcheck-app
+    cd rigcheck-app
+elif [ ! -f "artisan" ]; then
     echo -e "${RED}Error: artisan file not found. Are you in the Laravel root directory?${NC}"
     exit 1
 fi
