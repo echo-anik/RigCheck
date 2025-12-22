@@ -32,7 +32,7 @@ class ComponentSeeder extends Seeder
         $seenProductIdsGlobal = [];
 
         foreach ($categories as $key => $config) {
-            $csvFile = "/var/www/html/data/csv/{$config['csv']}";
+            $csvFile = base_path("data/csv/{$config['csv']}");
             
             if (!file_exists($csvFile)) {
                 $this->command->warn("⚠️  Skipping {$key}: File not found at {$csvFile}");
