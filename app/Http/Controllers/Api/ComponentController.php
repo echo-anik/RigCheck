@@ -37,8 +37,8 @@ class ComponentController extends Controller
                 'components.brand',
                 'components.name',
                 'components.specs',
-                DB::raw('MIN(component_prices.price_bdt) as lowest_price_bdt'),
-                DB::raw('MAX(component_prices.price_bdt) as highest_price_bdt'),
+                DB::raw('MIN(component_prices.price) as lowest_price_bdt'),
+                DB::raw('MAX(component_prices.price) as highest_price_bdt'),
                 'components.created_at',
                 'components.updated_at'
             )
@@ -68,10 +68,10 @@ class ComponentController extends Controller
 
         // Price range filter
         if ($request->has('min_price')) {
-            $query->havingRaw('MIN(component_prices.price_bdt) >= ?', [$request->min_price]);
+            $query->havingRaw('MIN(component_prices.price) >= ?', [$request->min_price]);
         }
         if ($request->has('max_price')) {
-            $query->havingRaw('MIN(component_prices.price_bdt) <= ?', [$request->max_price]);
+            $query->havingRaw('MIN(component_prices.price) <= ?', [$request->max_price]);
         }
 
         // Sorting
@@ -80,7 +80,7 @@ class ComponentController extends Controller
         
         // Handle sorting by price
         if ($sortBy === 'price' || $sortBy === 'lowest_price_bdt') {
-            $query->orderByRaw('MIN(component_prices.price_bdt) ' . $sortOrder);
+            $query->orderByRaw('MIN(component_prices.price) ' . $sortOrder);
         } else {
             $query->orderBy($sortBy, $sortOrder);
         }
@@ -199,11 +199,12 @@ class ComponentController extends Controller
         if (isset($validated['price_bdt']) && $validated['price_bdt'] > 0) {
             DB::table('component_prices')->insert([
                 'component_id' => $componentId,
-                'source' => 'manual',
-                'price_bdt' => $validated['price_bdt'],
+                'retailer' => 'manual',
+                'price' => $validated['price_bdt'],
                 'url' => '',
-                'availability' => 'in_stock',
-                'last_updated' => now()
+                'in_stock' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
             ]);
         }
 
@@ -230,8 +231,8 @@ class ComponentController extends Controller
                 'components.brand',
                 'components.model as name',
                 'components.specs',
-                DB::raw('MIN(component_prices.price_bdt) as lowest_price_bdt'),
-                DB::raw('MAX(component_prices.price_bdt) as highest_price_bdt')
+                DB::raw('MIN(component_prices.price) as lowest_price_bdt'),
+                DB::raw('MAX(component_prices.price) as highest_price_bdt')
             )
             ->groupBy('components.id', 'components.category', 'components.brand', 
                      'components.name', 'components.specs')
