@@ -191,6 +191,7 @@ class ComponentController extends Controller
             'brand' => $validated['brand'],
             'name' => $validated['model'],
             'specs' => json_encode($validated['specs']),
+            'image_url' => $validated['specs']['image_url'] ?? null,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -229,7 +230,7 @@ class ComponentController extends Controller
                 'components.id as product_id',
                 'components.category',
                 'components.brand',
-                'components.model as name',
+                'components.name',
                 'components.specs',
                 DB::raw('MIN(component_prices.price) as lowest_price_bdt'),
                 DB::raw('MAX(component_prices.price) as highest_price_bdt')
@@ -284,8 +285,7 @@ class ComponentController extends Controller
         $updateData = [];
         if (isset($validated['brand'])) $updateData['brand'] = $validated['brand'];
         if (isset($validated['model'])) {
-            $updateData['model'] = $validated['model'];
-            $updateData['raw_name'] = $validated['model'];
+            $updateData['name'] = $validated['model'];
         }
         if (isset($validated['specs'])) $updateData['specs'] = json_encode($validated['specs']);
         $updateData['updated_at'] = now();
