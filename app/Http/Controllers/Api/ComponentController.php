@@ -30,7 +30,7 @@ class ComponentController extends Controller
         $reverseCategoryMap = array_flip($categoryMap);
         
         $query = DB::table('components')
-            ->leftJoin('prices', 'components.id', '=', 'prices.component_id')
+            ->leftJoin('component_prices', 'components.id', '=', 'component_prices.component_id')
             ->select(
                 'components.id as product_id',
                 'components.category',
@@ -38,8 +38,8 @@ class ComponentController extends Controller
                 'components.model as name',
                 'components.specs',
                 'components.raw_name',
-                DB::raw('MIN(prices.price_bdt) as lowest_price_bdt'),
-                DB::raw('MAX(prices.price_bdt) as highest_price_bdt'),
+                DB::raw('MIN(component_prices.price_bdt) as lowest_price_bdt'),
+                DB::raw('MAX(component_prices.price_bdt) as highest_price_bdt'),
                 'components.created_at',
                 'components.updated_at'
             )
@@ -70,10 +70,10 @@ class ComponentController extends Controller
 
         // Price range filter
         if ($request->has('min_price')) {
-            $query->havingRaw('MIN(prices.price_bdt) >= ?', [$request->min_price]);
+            $query->havingRaw('MIN(component_prices.price_bdt) >= ?', [$request->min_price]);
         }
         if ($request->has('max_price')) {
-            $query->havingRaw('MIN(prices.price_bdt) <= ?', [$request->max_price]);
+            $query->havingRaw('MIN(component_prices.price_bdt) <= ?', [$request->max_price]);
         }
 
         // Sorting
@@ -82,7 +82,7 @@ class ComponentController extends Controller
         
         // Handle sorting by price
         if ($sortBy === 'price' || $sortBy === 'lowest_price_bdt') {
-            $query->orderByRaw('MIN(prices.price_bdt) ' . $sortOrder);
+            $query->orderByRaw('MIN(component_prices.price_bdt) ' . $sortOrder);
         } else {
             $query->orderBy($sortBy, $sortOrder);
         }
@@ -93,7 +93,7 @@ class ComponentController extends Controller
         
         // Get total count before pagination (using subquery to handle GROUP BY correctly)
         $countQuery = DB::table('components')
-            ->leftJoin('prices', 'components.id', '=', 'prices.component_id')
+            ->leftJoin('component_prices', 'components.id', '=', 'component_prices.component_id')
             ->select('components.id')
             ->groupBy('components.id', 'components.category', 'components.brand', 'components.model', 
                      'components.specs', 'components.raw_name', 'components.created_at', 'components.updated_at');
@@ -201,7 +201,7 @@ class ComponentController extends Controller
         
         // Add price if provided
         if (isset($validated['price_bdt']) && $validated['price_bdt'] > 0) {
-            DB::table('prices')->insert([
+            DB::table('component_prices')->insert([
                 'component_id' => $componentId,
                 'source' => 'manual',
                 'price_bdt' => $validated['price_bdt'],
@@ -226,7 +226,7 @@ class ComponentController extends Controller
     public function show(string $productId)
     {
         $component = DB::table('components')
-            ->leftJoin('prices', 'components.id', '=', 'prices.component_id')
+            ->leftJoin('component_prices', 'components.id', '=', 'component_prices.component_id')
             ->where('components.id', $productId)
             ->select(
                 'components.id as product_id',
@@ -235,8 +235,8 @@ class ComponentController extends Controller
                 'components.model as name',
                 'components.specs',
                 'components.raw_name',
-                DB::raw('MIN(prices.price_bdt) as lowest_price_bdt'),
-                DB::raw('MAX(prices.price_bdt) as highest_price_bdt')
+                DB::raw('MIN(component_prices.price_bdt) as lowest_price_bdt'),
+                DB::raw('MAX(component_prices.price_bdt) as highest_price_bdt')
             )
             ->groupBy('components.id', 'components.category', 'components.brand', 
                      'components.model', 'components.specs', 'components.raw_name')
@@ -253,7 +253,7 @@ class ComponentController extends Controller
         $component->image_urls = !empty($component->specs['image_url']) ? [$component->specs['image_url']] : [];
         
         // Get all prices
-        $prices = DB::table('prices')
+        $prices = DB::table('component_prices')
             ->where('component_id', $productId)
             ->get();
         
