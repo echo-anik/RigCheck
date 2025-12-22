@@ -35,16 +35,15 @@ class ComponentController extends Controller
                 'components.id as product_id',
                 'components.category',
                 'components.brand',
-                'components.model as name',
+                'components.name',
                 'components.specs',
-                'components.raw_name',
                 DB::raw('MIN(component_prices.price_bdt) as lowest_price_bdt'),
                 DB::raw('MAX(component_prices.price_bdt) as highest_price_bdt'),
                 'components.created_at',
                 'components.updated_at'
             )
-            ->groupBy('components.id', 'components.category', 'components.brand', 'components.model', 
-                     'components.specs', 'components.raw_name', 'components.created_at', 'components.updated_at');
+            ->groupBy('components.id', 'components.category', 'components.brand', 'components.name', 
+                     'components.specs', 'components.created_at', 'components.updated_at');
 
         // Filter by category (with mapping)
         if ($request->has('category') && $request->category !== 'all') {
@@ -62,9 +61,8 @@ class ComponentController extends Controller
         if ($request->has('search')) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
-                $q->where('components.model', 'like', '%' . $search . '%')
-                  ->orWhere('components.brand', 'like', '%' . $search . '%')
-                  ->orWhere('components.raw_name', 'like', '%' . $search . '%');
+                $q->where('components.name', 'like', '%' . $search . '%')
+                  ->orWhere('components.brand', 'like', '%' . $search . '%');
             });
         }
 
@@ -95,8 +93,8 @@ class ComponentController extends Controller
         $countQuery = DB::table('components')
             ->leftJoin('component_prices', 'components.id', '=', 'component_prices.component_id')
             ->select('components.id')
-            ->groupBy('components.id', 'components.category', 'components.brand', 'components.model', 
-                     'components.specs', 'components.raw_name', 'components.created_at', 'components.updated_at');
+            ->groupBy('components.id', 'components.category', 'components.brand', 'components.name', 
+                     'components.specs', 'components.created_at', 'components.updated_at');
         
         // Apply same filters to count query
         if ($request->has('category') && $request->category !== 'all') {
@@ -110,9 +108,8 @@ class ComponentController extends Controller
         if ($request->has('search')) {
             $search = $request->search;
             $countQuery->where(function($q) use ($search) {
-                $q->where('components.model', 'like', '%' . $search . '%')
-                  ->orWhere('components.brand', 'like', '%' . $search . '%')
-                  ->orWhere('components.raw_name', 'like', '%' . $search . '%');
+                $q->where('components.name', 'like', '%' . $search . '%')
+                  ->orWhere('components.brand', 'like', '%' . $search . '%');
             });
         }
         
@@ -192,9 +189,8 @@ class ComponentController extends Controller
             'id' => $componentId,
             'category' => $validated['category'],
             'brand' => $validated['brand'],
-            'model' => $validated['model'],
+            'name' => $validated['model'],
             'specs' => json_encode($validated['specs']),
-            'raw_name' => $validated['model'],
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -234,12 +230,11 @@ class ComponentController extends Controller
                 'components.brand',
                 'components.model as name',
                 'components.specs',
-                'components.raw_name',
                 DB::raw('MIN(component_prices.price_bdt) as lowest_price_bdt'),
                 DB::raw('MAX(component_prices.price_bdt) as highest_price_bdt')
             )
             ->groupBy('components.id', 'components.category', 'components.brand', 
-                     'components.model', 'components.specs', 'components.raw_name')
+                     'components.name', 'components.specs')
             ->first();
 
         if (!$component) {
