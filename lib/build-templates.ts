@@ -260,15 +260,15 @@ export function matchComponentToTemplate(
     
     // RAM capacity matching
     if (category === 'memory' && template.targetSpecs.ramCapacityGB) {
-      const capacity = specs.capacity_gb || 0;
+      const capacity = Number(specs.capacity_gb) || 0;
       if (capacity >= template.targetSpecs.ramCapacityGB) {
         score += 5;
       }
     }
-    
+
     // Storage capacity matching
     if (category === 'internal-hard-drive' && template.targetSpecs.storageGB) {
-      const capacity = specs.capacity || 0;
+      const capacity = Number(specs.capacity) || 0;
       if (capacity >= template.targetSpecs.storageGB) {
         score += 5;
       }
@@ -276,7 +276,7 @@ export function matchComponentToTemplate(
     
     // PSU wattage matching
     if (category === 'power-supply' && template.targetSpecs.psuWattage) {
-      const wattage = specs.wattage || parseInt(component.name.match(/(\d{3,4})\s*W/i)?.[1] || '0');
+      const wattage = Number(specs.wattage) || parseInt(component.name.match(/(\d{3,4})\s*W/i)?.[1] || '0');
       if (wattage >= template.targetSpecs.psuWattage) {
         score += 5;
       }
