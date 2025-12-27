@@ -377,17 +377,23 @@ export function BuildSummary({
           </div>
         </CardContent>
       </Card>
-          
+
+      {/* Build Progress */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Build Progress</CardTitle>
+        </CardHeader>
+        <CardContent>
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Required Completed</span>
             <span className={`font-medium ${
-              Object.values(selectedComponents).filter((c, i) => 
+              Object.values(selectedComponents).filter((c, i) =>
                 c !== null && buildSteps[i].required
               ).length === requiredCount
                 ? 'text-green-600'
                 : 'text-red-600'
             }`}>
-              {Object.values(selectedComponents).filter((c, i) => 
+              {Object.values(selectedComponents).filter((c, i) =>
                 c !== null && buildSteps[i].required
               ).length} / {requiredCount}
             </span>
