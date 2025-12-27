@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1';
 
 const DEMO_IMAGES = Array.from({ length: 26 }, (_, i) => `/demo-images/image (${i + 1}).jpg`);
 
@@ -88,7 +88,16 @@ export interface Component {
 export interface PaginatedResponse<T> {
   success: boolean;
   data: T[];
-  meta: {
+  pagination?: {
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    total: number;
+    from?: number;
+    to?: number;
+  };
+  // Legacy meta support for backward compatibility
+  meta?: {
     current_page: number;
     total_pages: number;
     total_count: number;
@@ -333,42 +342,46 @@ export class ApiClient {
   }
 
   async createBuild(data: {
-    name: string;
+    build_name: string;
     description?: string;
-    total_price: number;
-    is_public: boolean;
-    cpu_id?: string | null;
-    motherboard_id?: string | null;
-    gpu_id?: string | null;
-    ram_id?: string | null;
-    storage_id?: string | null;
-    psu_id?: string | null;
-    case_id?: string | null;
-    cooler_id?: string | null;
-  }): Promise<{ success: boolean; data: Build }> {
-    return this.request<{ success: boolean; data: Build }>('/builds', {
+    use_case?: 'gaming' | 'workstation' | 'content_creation' | 'budget' | 'other';
+    budget_max_bdt?: number;
+    visibility?: 'private' | 'public';
+    components: Array<{
+      component_id: string; // product_id string
+      category: string;
+      quantity?: number;
+      price_at_selection_bdt?: number;
+    }>;
+  }): Promise<{ success: boolean; data: Build; message?: string }> {
+    return this.request<{ success: boolean; data: Build; message?: string }>('/builds', {
       method: 'POST',
       body: JSON.stringify(data),
     });
   }
 
   async updateBuild(id: number, data: {
-    name?: string;
+    build_name?: string;
     description?: string;
-    total_price?: number;
-    is_public?: boolean;
-    cpu_id?: string | null;
-    motherboard_id?: string | null;
-    gpu_id?: string | null;
-    ram_id?: string | null;
-    storage_id?: string | null;
-    psu_id?: string | null;
-    case_id?: string | null;
-    cooler_id?: string | null;
-  }): Promise<{ success: boolean; data: Build }> {
-    return this.request<{ success: boolean; data: Build }>(`/builds/${id}`, {
+    use_case?: 'gaming' | 'workstation' | 'content_creation' | 'budget' | 'other';
+    budget_max_bdt?: number;
+    visibility?: 'private' | 'public';
+    components?: Array<{
+      component_id: string; // product_id string
+      category: string;
+      quantity?: number;
+      price_at_selection_bdt?: number;
+    }>;
+  }): Promise<{ success: boolean; data: Build; message?: string }> {
+    return this.request<{ success: boolean; data: Build; message?: string }>(`/builds/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data),
+    });
+  }
+
+  async deleteBuild(id: number): Promise<{ success: boolean; message: string }> {
+    return this.request<{ success: boolean; message: string }>(`/builds/${id}`, {
+      method: 'DELETE',
     });
   }
 

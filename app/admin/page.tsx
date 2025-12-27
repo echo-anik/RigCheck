@@ -9,11 +9,13 @@ interface Stats {
   total_users: number;
   total_components: number;
   total_builds: number;
-  total_posts: number;
-  components_by_category: { [key: string]: number };
+  public_builds: number;
+  featured_components: number;
+  banned_users: number;
+  new_users_this_month: number;
+  components_by_category: Array<{ category: string; count: number }>;
   recent_users: any[];
   recent_builds: any[];
-  recent_posts: any[];
 }
 
 export default function AdminDashboard() {
@@ -28,7 +30,7 @@ export default function AdminDashboard() {
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem('auth_token');
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1'}/admin/stats`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1'}/admin/stats`, {
         headers: {
           ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
           'Accept': 'application/json',
@@ -95,9 +97,9 @@ export default function AdminDashboard() {
       color: 'bg-purple-500',
     },
     {
-      title: 'Total Posts',
-      value: stats.total_posts,
-      icon: FileText,
+      title: 'Public Builds',
+      value: stats.public_builds || 0,
+      icon: Package,
       color: 'bg-orange-500',
     },
   ];
@@ -131,19 +133,19 @@ export default function AdminDashboard() {
       <div className="bg-white rounded-lg shadow p-6 mb-8">
         <h2 className="text-xl font-bold mb-4">Components by Category</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {Object.entries(stats.components_by_category).map(([category, count]) => (
-            <div key={category} className="border rounded p-4">
+          {stats.components_by_category.map((item) => (
+            <div key={item.category} className="border rounded p-4">
               <div className="text-sm text-gray-500 capitalize">
-                {category.replace('-', ' ')}
+                {item.category.replace('-', ' ')}
               </div>
-              <div className="text-xl font-bold">{count}</div>
+              <div className="text-xl font-bold">{item.count}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Recent Activity */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Recent Users */}
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-bold mb-4">Recent Users</h2>
@@ -162,23 +164,6 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Recent Posts */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-bold mb-4">Recent Posts</h2>
-          <div className="space-y-3">
-            {stats.recent_posts.map((post) => (
-              <div key={post.id} className="border-b pb-2">
-                <div className="font-medium line-clamp-2">{post.content}</div>
-                <div className="text-sm text-gray-500 flex items-center gap-2 mt-1">
-                  <span>{post.user.name}</span>
-                  <span>•</span>
-                  <span>{post.likes_count} likes</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Recent Builds */}
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-bold mb-4">Recent Builds</h2>
@@ -187,7 +172,7 @@ export default function AdminDashboard() {
               <div key={build.id} className="border-b pb-2">
                 <div className="font-medium">{build.name || 'Unnamed Build'}</div>
                 <div className="text-sm text-gray-500">
-                  {build.user?.name || 'Unknown'} • ${build.total_price}
+                  {build.user?.name || 'Unknown'} • ৳{build.total_price?.toLocaleString() || 'N/A'}
                 </div>
               </div>
             ))}

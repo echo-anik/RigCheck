@@ -4,7 +4,43 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Cpu, Wrench, Shield, TrendingUp, Search } from "lucide-react";
 
-export default function Home() {
+async function getComponentCounts() {
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1';
+    const response = await fetch(
+      `${apiUrl}/components/stats/counts`,
+      {
+        headers: {
+          'Accept': 'application/json',
+        },
+        next: { revalidate: 60 }, // Cache for 60 seconds
+      }
+    );
+    
+    if (response.ok) {
+      const data = await response.json();
+      return data.data;
+    }
+  } catch (error) {
+    console.error('Failed to fetch component counts:', error);
+  }
+  
+  // Fallback counts
+  return {
+    cpu: 0,
+    motherboard: 0,
+    gpu: 0,
+    ram: 0,
+    storage: 0,
+    psu: 0,
+    case: 0,
+    cooler: 0,
+    total: 0,
+  };
+}
+
+export default async function Home() {
+  const counts = await getComponentCounts();
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -17,7 +53,7 @@ export default function Home() {
                 <span className="block text-primary mt-2">with Confidence</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-                Browse 20,000+ components, check compatibility in real-time, 
+                Browse {counts.total.toLocaleString()}+ components, check compatibility in real-time, 
                 and compare prices from top retailers in Bangladesh.
               </p>
             </div>
@@ -73,7 +109,7 @@ export default function Home() {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <Cpu className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>20,000+ Components</CardTitle>
+                <CardTitle>{counts.total.toLocaleString()}+ Components</CardTitle>
                 <CardDescription>
                   Massive database of CPUs, GPUs, motherboards, and more
                 </CardDescription>
@@ -133,14 +169,14 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { name: "CPUs", count: "961", icon: "🔷", category: "cpu" },
-              { name: "Motherboards", count: "4,950", icon: "🔲", category: "motherboard" },
-              { name: "GPUs", count: "3,038", icon: "🎮", category: "gpu" },
-              { name: "RAM", count: "1,500", icon: "💾", category: "ram" },
-              { name: "Storage", count: "1,870", icon: "💿", category: "storage" },
-              { name: "Power Supplies", count: "2,123", icon: "⚡", category: "psu" },
-              { name: "Cases", count: "3,208", icon: "📦", category: "case" },
-              { name: "Coolers", count: "2,312", icon: "❄️", category: "cooler" },
+              { name: "CPUs", count: counts.cpu, icon: "🔷", category: "cpu" },
+              { name: "Motherboards", count: counts.motherboard, icon: "🔲", category: "motherboard" },
+              { name: "GPUs", count: counts.gpu, icon: "🎮", category: "gpu" },
+              { name: "RAM", count: counts.ram, icon: "💾", category: "ram" },
+              { name: "Storage", count: counts.storage, icon: "💿", category: "storage" },
+              { name: "Power Supplies", count: counts.psu, icon: "⚡", category: "psu" },
+              { name: "Cases", count: counts.case, icon: "📦", category: "case" },
+              { name: "Coolers", count: counts.cooler, icon: "❄️", category: "cooler" },
             ].map((category) => (
               <Link
                 key={category.category}
@@ -152,7 +188,7 @@ export default function Home() {
                     <div className="text-4xl mb-2">{category.icon}</div>
                     <CardTitle className="text-lg">{category.name}</CardTitle>
                     <CardDescription className="text-sm">
-                      {category.count} products
+                      {category.count.toLocaleString()} products
                     </CardDescription>
                   </CardHeader>
                 </Card>

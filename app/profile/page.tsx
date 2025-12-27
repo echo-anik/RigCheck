@@ -30,8 +30,7 @@ function ProfilePageContent() {
   const loadUserBuilds = async () => {
     setLoading(true);
     try {
-      const response = await api.getBuilds({ per_page: 50 });
-      // Filter user's builds (in real app, use user_id filter)
+      const response = await api.getBuilds({ is_public: false, per_page: 50 });
       setUserBuilds(response.data);
     } catch (error) {
       console.error('Failed to load builds:', error);
@@ -89,16 +88,36 @@ function ProfilePageContent() {
                 </span>
               </div>
               <div className="flex-1">
-                <h1 className="text-3xl font-bold mb-2">{user?.name}</h1>
+                <div className="flex items-center gap-2 mb-2">
+                  <h1 className="text-3xl font-bold">{user?.name}</h1>
+                  {user?.role === 'admin' && (
+                    <Badge className="bg-orange-600 hover:bg-orange-700">
+                      ⚡ Admin
+                    </Badge>
+                  )}
+                </div>
                 <p className="text-muted-foreground mb-3">{user?.email}</p>
                 <div className="flex gap-4 text-sm">
                   <span>Member since {new Date(user?.created_at || '').toLocaleDateString()}</span>
+                  {user?.role === 'admin' && (
+                    <span className="text-orange-600 font-semibold">• Administrator</span>
+                  )}
                 </div>
               </div>
-              <Button variant="outline">
-                <Settings className="h-4 w-4 mr-2" />
-                Edit Profile
-              </Button>
+              <div className="flex gap-2">
+                {user?.role === 'admin' && (
+                  <Button variant="default" className="bg-orange-600 hover:bg-orange-700" asChild>
+                    <Link href="/admin">
+                      <span className="mr-2">⚡</span>
+                      Admin Panel
+                    </Link>
+                  </Button>
+                )}
+                <Button variant="outline">
+                  <Settings className="h-4 w-4 mr-2" />
+                  Edit Profile
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -256,20 +275,7 @@ function ProfilePageContent() {
                           size="sm"
                           className="flex-1"
                           onClick={() => {
-                            // Load build into builder for editing
-                            const buildComponents = {
-                              cpu: build.cpu_id,
-                              motherboard: build.motherboard_id,
-                              'video-card': build.gpu_id,
-                              memory: build.ram_id,
-                              'internal-hard-drive': build.storage_id,
-                              'power-supply': build.psu_id,
-                              case: build.case_id,
-                              'cpu-cooler': build.cooler_id,
-                            };
                             sessionStorage.setItem('editingBuildId', build.id.toString());
-                            sessionStorage.setItem('editingBuildComponents', JSON.stringify(buildComponents));
-                            sessionStorage.setItem('editingBuildName', build.name);
                             router.push('/builder');
                           }}
                         >
@@ -282,7 +288,6 @@ function ProfilePageContent() {
                           className="flex-1"
                           onClick={async () => {
                             if (build.share_id) {
-                              // Already has share_id, copy link
                               const shareUrl = `${window.location.origin}/shared/${build.share_id}`;
                               await navigator.clipboard.writeText(shareUrl);
                               const { toast } = await import('sonner');
@@ -295,6 +300,27 @@ function ProfilePageContent() {
                         >
                           <Share2 className="h-3 w-3 mr-1" />
                           Share
+                        </Button>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={async () => {
+                            if (!confirm('Are you sure you want to delete this build?')) return;
+                            try {
+                              await api.deleteBuild(build.id);
+                              const { toast } = await import('sonner');
+                              toast.success('Build deleted successfully');
+                              // Refresh builds list
+                              const response = await api.getBuilds({ is_public: false, per_page: 50 });
+                              setUserBuilds(response.data);
+                            } catch (error) {
+                              const { toast } = await import('sonner');
+                              toast.error('Failed to delete build');
+                              console.error('Delete failed:', error);
+                            }
+                          }}
+                        >
+                          <Trash2 className="h-3 w-3" />
                         </Button>
                       </div>
                     </CardContent>
@@ -356,11 +382,11 @@ function ProfilePageContent() {
               <CardContent className="space-y-4">
                 <div>
                   <label className="text-sm font-medium text-muted-foreground">Display Name</label>
-                  <Input value={user?.name} className="mt-1" />
+                  <Input value={user?.name || ''} onChange={() => {}} className="mt-1" />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-muted-foreground">Bio</label>
-                  <Input placeholder="Tell us about yourself" className="mt-1" />
+                  <Input placeholder="Tell us about yourself" onChange={() => {}} className="mt-1" />
                 </div>
                 <Button>Save Changes</Button>
               </CardContent>

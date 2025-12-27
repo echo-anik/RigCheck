@@ -287,7 +287,7 @@ export default function ComponentDetailPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Popularity Score</span>
-                  <span className="font-semibold">{(component.popularity_score || 0).toFixed(1)}</span>
+                  <span className="font-semibold">{Number(component.popularity_score || 0).toFixed(1)}</span>
                 </div>
               </CardContent>
             </Card>

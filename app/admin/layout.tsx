@@ -10,7 +10,8 @@ import {
   Package, 
   LogOut,
   Menu,
-  X
+  X,
+  Cpu
 } from 'lucide-react';
 
 export default function AdminLayout({
@@ -28,14 +29,14 @@ export default function AdminLayout({
   }, []);
 
   const checkAuth = async () => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('auth_token');
     if (!token) {
-      router.push('/login');
+      router.push('/auth/signin');
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:8002/api/v1/user', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1'}/user`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Accept': 'application/json',
@@ -51,19 +52,19 @@ export default function AdminLayout({
         }
         setUser(data.data);
       } else {
-        router.push('/login');
+        router.push('/auth/signin');
       }
     } catch (error) {
       console.error('Auth check failed:', error);
-      router.push('/login');
+      router.push('/auth/signin');
     } finally {
       setLoading(false);
     }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    router.push('/login');
+    localStorage.removeItem('auth_token');
+    router.push('/auth/signin');
   };
 
   if (loading) {
@@ -76,6 +77,7 @@ export default function AdminLayout({
 
   const navigation = [
     { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+    { name: 'Components', href: '/admin/components', icon: Cpu },
     { name: 'Users', href: '/admin/users', icon: Users },
     { name: 'Posts', href: '/admin/posts', icon: FileText },
     { name: 'Builds', href: '/admin/builds', icon: Package },

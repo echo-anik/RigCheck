@@ -36,32 +36,32 @@ export const buildSteps: BuildStep[] = [
     icon: '🔌'
   },
   {
-    id: 'memory',
-    category: 'memory',
+    id: 'ram',
+    category: 'ram',
     label: 'RAM (Memory)',
     description: 'Choose capacity and speed compatible with your motherboard',
     required: true,
     icon: '💾'
   },
   {
-    id: 'video-card',
-    category: 'video-card',
+    id: 'gpu',
+    category: 'gpu',
     label: 'Graphics Card',
     description: 'Essential for gaming and content creation',
     required: false,
     icon: '🎮'
   },
   {
-    id: 'internal-hard-drive',
-    category: 'internal-hard-drive',
+    id: 'storage',
+    category: 'storage',
     label: 'Storage',
     description: 'SSD recommended for OS, add HDD for mass storage',
     required: true,
     icon: '💽'
   },
   {
-    id: 'power-supply',
-    category: 'power-supply',
+    id: 'psu',
+    category: 'psu',
     label: 'Power Supply',
     description: 'Ensure sufficient wattage for all components',
     required: true,
@@ -76,8 +76,8 @@ export const buildSteps: BuildStep[] = [
     icon: '📦'
   },
   {
-    id: 'cpu-cooler',
-    category: 'cpu-cooler',
+    id: 'cooler',
+    category: 'cooler',
     label: 'CPU Cooler',
     description: 'Better cooling for overclocking and quieter operation',
     required: false,

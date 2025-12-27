@@ -23,7 +23,7 @@ export default function ForgotPasswordPage() {
     setLoading(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1'}/password/send-reset-link`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1'}/password/send-reset-link`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

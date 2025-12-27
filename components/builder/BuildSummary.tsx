@@ -68,7 +68,7 @@ export function BuildSummary({
     }
     
     // GPU: ~150-350W
-    if (selectedComponents['video-card']) {
+    if (selectedComponents['gpu']) {
       wattage += 250;
     }
     
@@ -78,12 +78,12 @@ export function BuildSummary({
     }
     
     // RAM: ~3-5W per stick (assume 2 sticks)
-    if (selectedComponents['memory']) {
+    if (selectedComponents['ram']) {
       wattage += 8;
     }
     
     // Storage: ~2-5W per drive (assume 1 drive)
-    if (selectedComponents['internal-hard-drive']) {
+    if (selectedComponents['storage']) {
       wattage += 5;
     }
     
@@ -97,7 +97,7 @@ export function BuildSummary({
     const estimatedWattage = calculateEstimatedWattage();
     const recommendedWattage = Math.ceil(estimatedWattage * 1.3 / 50) * 50; // 30% headroom, round to nearest 50W
     
-    const psu = selectedComponents['power-supply'];
+    const psu = selectedComponents['psu'];
     if (!psu || !psu.specs) {
       return { wattage: recommendedWattage, status: 'adequate' };
     }
@@ -145,74 +145,98 @@ export function BuildSummary({
         </CardContent>
       </Card>
 
-      {/* Compatibility Status */}
-      <Card className={
-        compatibility?.errors && compatibility.errors.length > 0
-          ? 'border-red-500'
-          : compatibility?.warnings && compatibility.warnings.length > 0
-          ? 'border-yellow-500'
-          : compatibility?.is_compatible
-          ? 'border-green-500'
-          : ''
-      }>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            {compatibility?.is_compatible && compatibility.errors.length === 0 ? (
-              <>
-                <CheckCircle2 className="h-5 w-5 text-green-600" />
-                <span>Build Compatible</span>
-              </>
-            ) : compatibility?.errors && compatibility.errors.length > 0 ? (
-              <>
-                <AlertCircle className="h-5 w-5 text-red-600" />
-                <span>Compatibility Issues</span>
-              </>
-            ) : (
-              <>
-                <AlertTriangle className="h-5 w-5 text-yellow-600" />
-                <span>Check Compatibility</span>
-              </>
+      {/* Compatibility Status & System Info - Combined at Top */}
+      <div className="grid grid-cols-1 gap-4">
+        {/* Compatibility Status */}
+        <Card className={
+          compatibility?.errors && compatibility.errors.length > 0
+            ? 'border-red-500'
+            : compatibility?.warnings && compatibility.warnings.length > 0
+            ? 'border-yellow-500'
+            : compatibility?.is_compatible
+            ? 'border-green-500'
+            : ''
+        }>
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center gap-2 text-base">
+              {compatibility?.is_compatible && compatibility.errors.length === 0 ? (
+                <>
+                  <CheckCircle2 className="h-5 w-5 text-green-600" />
+                  <span>Compatible</span>
+                </>
+              ) : compatibility?.errors && compatibility.errors.length > 0 ? (
+                <>
+                  <AlertCircle className="h-5 w-5 text-red-600" />
+                  <span>Issues Found</span>
+                </>
+              ) : (
+                <>
+                  <AlertTriangle className="h-5 w-5 text-yellow-600" />
+                  <span>Checking...</span>
+                </>
+              )}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 pt-0">
+            {compatibility?.errors && compatibility.errors.length > 0 && (
+              <div className="space-y-2">
+                {compatibility.errors.map((error, index) => (
+                  <div key={index} className="flex items-start gap-2 text-red-600 text-sm">
+                    <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                    <span>{error}</span>
+                  </div>
+                ))}
+              </div>
             )}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2">
-          {compatibility?.errors && compatibility.errors.length > 0 && (
-            <div className="space-y-2">
-              {compatibility.errors.map((error, index) => (
-                <div key={index} className="flex items-start gap-2 text-red-600 text-sm">
-                  <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                  <span>{error}</span>
-                </div>
-              ))}
+            
+            {compatibility?.warnings && compatibility.warnings.length > 0 && (
+              <div className="space-y-2">
+                {compatibility.warnings.map((warning, index) => (
+                  <div key={index} className="flex items-start gap-2 text-yellow-600 text-sm">
+                    <AlertTriangle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                    <span>{warning}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {compatibility?.is_compatible && 
+             compatibility.errors.length === 0 && 
+             compatibility.warnings.length === 0 && (
+              <p className="text-sm text-green-600">
+                All components are compatible!
+              </p>
+            )}
+            
+            {!compatibility && (
+              <p className="text-sm text-muted-foreground">
+                Add required components to check
+              </p>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Power Draw - Now at Top */}
+        <Card className="border-blue-200 bg-blue-50/50">
+          <CardContent className="p-4">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm font-medium text-blue-900">Power Draw</span>
+              <span className="text-2xl font-bold text-blue-700">~{estimatedWattage}W</span>
             </div>
-          )}
-          
-          {compatibility?.warnings && compatibility.warnings.length > 0 && (
-            <div className="space-y-2">
-              {compatibility.warnings.map((warning, index) => (
-                <div key={index} className="flex items-start gap-2 text-yellow-600 text-sm">
-                  <AlertTriangle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                  <span>{warning}</span>
-                </div>
-              ))}
+            <div className="flex justify-between items-center text-xs">
+              <span className="text-blue-700">Recommended PSU</span>
+              <span className={`font-bold ${
+                psuRecommendation.status === 'good' ? 'text-green-600' :
+                psuRecommendation.status === 'adequate' ? 'text-yellow-600' :
+                'text-red-600'
+              }`}>
+                {psuRecommendation.wattage}W+
+                {psuRecommendation.status === 'insufficient' && ' ⚠️'}
+              </span>
             </div>
-          )}
-          
-          {compatibility?.is_compatible && 
-           compatibility.errors.length === 0 && 
-           compatibility.warnings.length === 0 && (
-            <p className="text-sm text-green-600">
-              All components are compatible with each other.
-            </p>
-          )}
-          
-          {!compatibility && (
-            <p className="text-sm text-muted-foreground">
-              Complete required components to check compatibility.
-            </p>
-          )}
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
 
       {/* Component List */}
       <Card>
@@ -322,35 +346,20 @@ export function BuildSummary({
           <div className="pt-4 border-t">
             <div className="flex justify-between items-center">
               <span className="text-lg font-bold">Total</span>
-              <span className="text-2xl font-bold text-primary">
-                {formatPrice(totalPrice)}
-              </span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* System Info */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Cost Summary</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex justify-between items-center">
-            <span className="text-lg font-medium">Total</span>
-            <div className="text-right">
-              <span className="text-2xl font-bold text-primary">
-                {formatPriceBDT(totalPrice)}
-              </span>
-              <p className="text-xs text-muted-foreground">
-                ~${(convertBDTtoUSD(totalPrice) || 0).toFixed(0)} USD
-              </p>
+              <div className="text-right">
+                <span className="text-2xl font-bold text-primary">
+                  {formatPriceBDT(totalPrice)}
+                </span>
+                <p className="text-xs text-muted-foreground">
+                  ~${(convertBDTtoUSD(totalPrice) || 0).toFixed(0)} USD
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Missing Price Warning */}
           {hasMissingPrices() && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-3 mt-3">
               <p className="text-sm text-red-600 font-medium">
                 ⚠️ Price Missing
               </p>
@@ -361,43 +370,13 @@ export function BuildSummary({
           )}
 
           {/* General Pricing Disclaimer */}
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-2">
             <p className="text-xs text-yellow-700">
-              <strong>Note:</strong> Prices shown may be outdated. Please verify current prices with retailers before purchasing.
+              <strong>Note:</strong> Prices shown may be outdated. Please verify current prices with retailers.
             </p>
           </div>
         </CardContent>
       </Card>
-
-      {/* System Info */}
-      <Card>
-        <CardHeader>
-          <CardTitle>System Information</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Estimated Wattage</span>
-            <span className="font-medium">~{estimatedWattage}W</span>
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Recommended PSU</span>
-            <span className={`font-medium ${
-              psuRecommendation.status === 'good' ? 'text-green-600' :
-              psuRecommendation.status === 'adequate' ? 'text-yellow-600' :
-              'text-red-600'
-            }`}>
-              {psuRecommendation.wattage}W+
-              {psuRecommendation.status === 'insufficient' && ' (Upgrade!)'}
-            </span>
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Components Selected</span>
-            <span className="font-medium">
-              {selectedCount} / {buildSteps.length}
-            </span>
-          </div>
           
           <div className="flex justify-between text-sm">
             <span className="text-muted-foreground">Required Completed</span>

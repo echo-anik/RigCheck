@@ -34,7 +34,7 @@ export default function AdminUsers() {
       if (banFilter !== 'all') params.append('banned', banFilter);
 
       const response = await fetch(
-        `http://localhost:8002/api/v1/admin/users?${params}`,
+        `http://localhost:8000/api/v1/admin/users?${params}`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -62,7 +62,7 @@ export default function AdminUsers() {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:8002/api/v1/admin/users/${userId}/toggle-ban`,
+        `http://localhost:8000/api/v1/admin/users/${userId}/toggle-ban`,
         {
           method: 'POST',
           headers: {
@@ -88,7 +88,7 @@ export default function AdminUsers() {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:8002/api/v1/admin/users/${userId}`,
+        `http://localhost:8000/api/v1/admin/users/${userId}`,
         {
           method: 'DELETE',
           headers: {

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import { ApiClient, Component } from '@/lib/api';
 import { useAuth } from '@/lib/auth-context';
 import { useRouter } from 'next/navigation';
@@ -9,7 +10,7 @@ import { BuildWizard, buildSteps } from '@/components/builder/BuildWizard';
 import { BuildSummary } from '@/components/builder/BuildSummary';
 import { toast } from 'sonner';
 
-const api = new ApiClient(process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1');
+const api = new ApiClient(process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1');
 
 export default function PCBuilderPage() {
   const { isAuthenticated } = useAuth();
@@ -38,7 +39,7 @@ export default function PCBuilderPage() {
     status: 'idle' | 'checking' | 'compatible' | 'warning' | 'error';
     message?: string;
   } | null>(null);
-
+  
   // Derive compatibility-aware component lists (e.g., motherboards filtered by CPU socket)
   const { filteredComponentsByCategory, compatibilityHints } = useMemo(() => {
     const filtered: Record<string, Component[]> = {};
@@ -90,9 +91,16 @@ export default function PCBuilderPage() {
     
     loadComponents();
 
+    // Load existing build for editing from session storage
+    const editingBuildId = sessionStorage.getItem('editingBuildId');
+    if (editingBuildId) {
+      loadExistingBuild(parseInt(editingBuildId));
+      sessionStorage.removeItem('editingBuildId');
+    }
+
     // Load pending build from session storage (from "Add to Build" button)
     const pendingBuildData = sessionStorage.getItem('pendingBuild');
-    if (pendingBuildData) {
+    if (pendingBuildData && !editingBuildId) {
       try {
         const pendingComponents = JSON.parse(pendingBuildData);
         setSelectedComponents(prev => ({
@@ -107,6 +115,49 @@ export default function PCBuilderPage() {
       }
     }
   }, []);
+
+  // Load existing build for editing
+  const loadExistingBuild = async (id: number) => {
+    try {
+      const response = await api.getBuild(id);
+      const build = response.data;
+      
+      setBuildId(id);
+      setBuildName(build.name || '');
+      
+      // Map components from build to selected components
+      const components: Record<string, Component | null> = {};
+      buildSteps.forEach(step => {
+        components[step.category] = null;
+      });
+      
+      if (build.components && Array.isArray(build.components)) {
+        build.components.forEach((comp: any) => {
+          const category = comp.category;
+          if (category) {
+            // Create a Component object from the build component data
+            components[category] = {
+              id: comp.product_id || comp.id,
+              product_id: comp.product_id,
+              name: comp.name,
+              brand: comp.brand,
+              category: category,
+              lowest_price_bdt: comp.price_at_selection_bdt || comp.lowest_price_bdt,
+              primary_image_url: comp.primary_image_url,
+              specs: comp.specs || {},
+            } as Component;
+          }
+        });
+      }
+      
+      setSelectedComponents(components);
+      toast.success('Build loaded for editing!');
+    } catch (error) {
+      console.error('Failed to load build for editing:', error);
+      toast.error('Failed to load build for editing');
+      sessionStorage.removeItem('editingBuildId');
+    }
+  };
 
   // Real-time compatibility checking when components change
   useEffect(() => {
@@ -123,16 +174,8 @@ export default function PCBuilderPage() {
         const components: Record<string, string> = {};
         Object.entries(selectedComponents).forEach(([category, component]) => {
           if (component) {
-            // Map frontend category names to backend expected names
-            const categoryMap: Record<string, string> = {
-              'video-card': 'gpu',
-              'memory': 'ram',
-              'internal-hard-drive': 'storage',
-              'cpu-cooler': 'cooler',
-              'power-supply': 'psu'
-            };
-            const backendCategory = categoryMap[category] || category;
-            components[backendCategory] = component.id || component.product_id || '';
+            // Use category as-is since BuildWizard uses correct categories
+            components[category] = component.id || component.product_id || '';
           }
         });
 
@@ -253,56 +296,39 @@ export default function PCBuilderPage() {
 
     setSaving(true);
     try {
-      // Calculate total cost
-      const totalCost = Object.values(selectedComponents).reduce((total, component) => {
-        if (component && component.lowest_price_bdt) {
-          const price = typeof component.lowest_price_bdt === 'string'
-            ? parseFloat(component.lowest_price_bdt)
-            : component.lowest_price_bdt;
-          return total + price;
-        }
-        return total;
-      }, 0);
+      // Build components array for API
+      const components = Object.entries(selectedComponents)
+        .filter(([_, component]) => component !== null)
+        .map(([category, component]) => {
+          const price = component!.lowest_price_bdt
+            ? (typeof component!.lowest_price_bdt === 'string'
+                ? parseFloat(component!.lowest_price_bdt)
+                : component!.lowest_price_bdt)
+            : 0;
 
-      // Map selected components to database column names
-      const buildComponentIds: Record<string, string | null> = {
-        cpu_id: null,
-        motherboard_id: null,
-        gpu_id: null,
-        ram_id: null,
-        storage_id: null,
-        psu_id: null,
-        case_id: null,
-        cooler_id: null,
-      };
+          // Get the component ID - API expects the numeric id field
+          const componentId = component!.product_id;
+          
+          console.log(`[Build Save] Adding component:`, {
+            category,
+            component_id: componentId,
+            name: component!.name,
+            price
+          });
 
-      // Map frontend categories to backend column names
-      const categoryColumnMap: Record<string, string> = {
-        'cpu': 'cpu_id',
-        'motherboard': 'motherboard_id',
-        'video-card': 'gpu_id',
-        'memory': 'ram_id',
-        'internal-hard-drive': 'storage_id',
-        'power-supply': 'psu_id',
-        'case': 'case_id',
-        'cpu-cooler': 'cooler_id'
-      };
-
-      Object.entries(selectedComponents).forEach(([category, component]) => {
-        if (component) {
-          const columnName = categoryColumnMap[category];
-          if (columnName) {
-            buildComponentIds[columnName] = component.id || component.product_id || null;
-          }
-        }
-      });
+          return {
+            component_id: componentId,
+            category: category,
+            quantity: 1,
+            price_at_selection_bdt: price
+          };
+        });
 
       const buildData = {
-        name: buildName.trim(),
+        build_name: buildName.trim(),
         description: '',
-        total_price: totalCost,
-        is_public: false,
-        ...buildComponentIds
+        visibility: 'private' as 'private' | 'public',
+        components: components
       };
 
       // Call API to save or update build
@@ -354,6 +380,8 @@ export default function PCBuilderPage() {
     toast.success('Build cleared');
   };
 
+
+
   const handleShareBuild = async (): Promise<{ buildId: string; buildUrl: string } | null> => {
     if (!buildName.trim()) {
       toast.error('Please enter a build name');
@@ -378,11 +406,11 @@ export default function PCBuilderPage() {
         return total;
       }, 0);
 
-      // Prepare components data
+      // Prepare components data - API expects component IDs
       const components = Object.entries(selectedComponents)
         .filter(([_category, component]) => component !== null)
         .map(([category, component]) => ({
-          id: component!.id,
+          id: component!.product_id,
           category,
           name: component!.name,
           brand: component!.brand,
@@ -390,8 +418,14 @@ export default function PCBuilderPage() {
           quantity: 1
         }));
 
+      console.log('[Share Build] Creating shared build:', {
+        name: buildName.trim(),
+        total_price: totalCost,
+        component_count: components.length
+      });
+
       // Call API to create shared build
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1'}/shared-builds`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1'}/shared-builds`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -439,10 +473,12 @@ export default function PCBuilderPage() {
 
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Build Your Dream PC</h1>
-          <p className="text-muted-foreground">
-            Step-by-step wizard to help you select compatible components
-          </p>
+          <div>
+            <h1 className="text-3xl font-bold mb-2">Build Your Dream PC</h1>
+            <p className="text-muted-foreground">
+              Step-by-step wizard to help you select compatible components
+            </p>
+          </div>
         </div>
 
         {/* Main Content */}

@@ -36,7 +36,7 @@ export default function AdminPosts() {
       if (featuredFilter !== 'all') params.append('featured', featuredFilter);
 
       const response = await fetch(
-        `http://localhost:8002/api/v1/admin/posts?${params}`,
+        `http://localhost:8000/api/v1/admin/posts?${params}`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -60,7 +60,7 @@ export default function AdminPosts() {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:8002/api/v1/admin/posts/${postId}/toggle-featured`,
+        `http://localhost:8000/api/v1/admin/posts/${postId}/toggle-featured`,
         {
           method: 'POST',
           headers: {
@@ -86,7 +86,7 @@ export default function AdminPosts() {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:8002/api/v1/admin/posts/${postId}`,
+        `http://localhost:8000/api/v1/admin/posts/${postId}`,
         {
           method: 'DELETE',
           headers: {

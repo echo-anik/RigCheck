@@ -33,7 +33,7 @@ export default function AdminBuilds() {
       if (searchTerm) params.append('search', searchTerm);
 
       const response = await fetch(
-        `http://localhost:8002/api/v1/builds?${params}`,
+        `http://localhost:8000/api/v1/builds?${params}`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -61,7 +61,7 @@ export default function AdminBuilds() {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `http://localhost:8002/api/v1/builds/${buildId}`,
+        `http://localhost:8000/api/v1/builds/${buildId}`,
         {
           method: 'DELETE',
           headers: {

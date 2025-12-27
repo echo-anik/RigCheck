@@ -32,7 +32,7 @@ function ResetPasswordForm() {
   const validateToken = async () => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1'}/password/validate-token`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1'}/password/validate-token`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -74,7 +74,7 @@ function ResetPasswordForm() {
     setLoading(true);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1'}/password/reset`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1'}/password/reset`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

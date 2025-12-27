@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { BuildCard } from '@/components/build-card';
 import { ApiClient, Build, PaginatedResponse } from '@/lib/api';
 
-const api = new ApiClient(process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1');
+const api = new ApiClient(process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1');
 
 const buildTypes = [
   { id: 'all', name: 'All Builds', icon: Users },
@@ -46,8 +46,16 @@ export default function BuildsPage() {
 
         const response: PaginatedResponse<Build> = await api.getBuilds(params);
         setBuilds(response.data);
-        setCurrentPage(response.meta.current_page);
-        setTotalPages(response.meta.total_pages);
+        // Use pagination if available, otherwise fall back to meta
+        const paginationData = response.pagination || response.meta;
+        if (paginationData) {
+          setCurrentPage(paginationData.current_page);
+          // Type guard to check which pagination format we have
+          const totalPages = 'last_page' in paginationData 
+            ? paginationData.last_page 
+            : ('total_pages' in paginationData ? paginationData.total_pages : 1);
+          setTotalPages(totalPages);
+        }
       } catch (error) {
         console.error('Failed to fetch builds:', error);
       } finally {

@@ -17,12 +17,12 @@ export interface BuildTemplate {
   recommendations: {
     cpu: string[];
     motherboard: string[];
-    memory: string[];
-    'video-card': string[];
-    'internal-hard-drive': string[];
-    'power-supply': string[];
+    ram: string[];
+    gpu: string[];
+    storage: string[];
+    psu: string[];
     case: string[];
-    'cpu-cooler': string[];
+    cooler: string[];
   };
 }
 
@@ -44,12 +44,12 @@ export const buildTemplates: BuildTemplate[] = [
     recommendations: {
       cpu: ['AMD Ryzen 9', 'Intel Core i9'],
       motherboard: ['X670', 'Z790'],
-      memory: ['DDR5', '32GB', '6000MHz'],
-      'video-card': ['RTX 4080', 'RTX 4090', 'RX 7900 XTX'],
-      'internal-hard-drive': ['2TB NVMe SSD', '1TB Gen4'],
-      'power-supply': ['850W', '1000W', '80+ Gold'],
+      ram: ['DDR5', '32GB', '6000MHz'],
+      gpu: ['RTX 4080', 'RTX 4090', 'RX 7900 XTX'],
+      storage: ['2TB NVMe SSD', '1TB Gen4'],
+      psu: ['850W', '1000W', '80+ Gold'],
       case: ['Full Tower', 'Mid Tower ATX'],
-      'cpu-cooler': ['AIO 360mm', 'Tower Cooler']
+      cooler: ['AIO 360mm', 'Tower Cooler']
     }
   },
   {
@@ -69,12 +69,12 @@ export const buildTemplates: BuildTemplate[] = [
     recommendations: {
       cpu: ['AMD Ryzen 7', 'Intel Core i7'],
       motherboard: ['B650', 'B760'],
-      memory: ['DDR5', '32GB', '5200MHz'],
-      'video-card': ['RTX 4070', 'RTX 4070 Ti', 'RX 7800 XT'],
-      'internal-hard-drive': ['1TB NVMe SSD', '500GB Gen4'],
-      'power-supply': ['750W', '80+ Gold'],
+      ram: ['DDR5', '32GB', '5200MHz'],
+      gpu: ['RTX 4070', 'RTX 4070 Ti', 'RX 7800 XT'],
+      storage: ['1TB NVMe SSD', '500GB Gen4'],
+      psu: ['750W', '80+ Gold'],
       case: ['Mid Tower ATX'],
-      'cpu-cooler': ['AIO 240mm', 'Tower Cooler']
+      cooler: ['AIO 240mm', 'Tower Cooler']
     }
   },
   {
@@ -94,12 +94,12 @@ export const buildTemplates: BuildTemplate[] = [
     recommendations: {
       cpu: ['AMD Ryzen 5', 'Intel Core i5'],
       motherboard: ['B550', 'B660'],
-      memory: ['DDR4', '16GB', '3200MHz'],
-      'video-card': ['RTX 4060', 'RTX 3060', 'RX 6700 XT'],
-      'internal-hard-drive': ['500GB NVMe SSD', '1TB HDD'],
-      'power-supply': ['650W', '80+ Bronze'],
+      ram: ['DDR4', '16GB', '3200MHz'],
+      gpu: ['RTX 4060', 'RTX 3060', 'RX 6700 XT'],
+      storage: ['500GB NVMe SSD', '1TB HDD'],
+      psu: ['650W', '80+ Bronze'],
       case: ['Mid Tower ATX', 'Micro ATX'],
-      'cpu-cooler': ['Stock Cooler', 'Tower Cooler']
+      cooler: ['Stock Cooler', 'Tower Cooler']
     }
   },
   {
@@ -119,12 +119,12 @@ export const buildTemplates: BuildTemplate[] = [
     recommendations: {
       cpu: ['AMD Ryzen 3', 'Intel Core i3'],
       motherboard: ['A520', 'H610'],
-      memory: ['DDR4', '16GB', '2666MHz'],
-      'video-card': ['GTX 1650', 'RX 6500 XT'],
-      'internal-hard-drive': ['256GB SSD', '500GB HDD'],
-      'power-supply': ['550W', '80+ Bronze'],
+      ram: ['DDR4', '16GB', '2666MHz'],
+      gpu: ['GTX 1650', 'RX 6500 XT'],
+      storage: ['256GB SSD', '500GB HDD'],
+      psu: ['550W', '80+ Bronze'],
       case: ['Micro ATX', 'Mini Tower'],
-      'cpu-cooler': ['Stock Cooler']
+      cooler: ['Stock Cooler']
     }
   },
   {
@@ -144,12 +144,12 @@ export const buildTemplates: BuildTemplate[] = [
     recommendations: {
       cpu: ['AMD Ryzen 9', 'Intel Core i9', 'Threadripper'],
       motherboard: ['X670', 'Z790', 'TRX40'],
-      memory: ['DDR5', '64GB', 'ECC'],
-      'video-card': ['RTX 4070', 'RTX 4080', 'Quadro'],
-      'internal-hard-drive': ['2TB NVMe SSD', '4TB HDD'],
-      'power-supply': ['850W', '1000W', '80+ Gold'],
+      ram: ['DDR5', '64GB', 'ECC'],
+      gpu: ['RTX 4070', 'RTX 4080', 'Quadro'],
+      storage: ['2TB NVMe SSD', '4TB HDD'],
+      psu: ['850W', '1000W', '80+ Gold'],
       case: ['Full Tower', 'Workstation Case'],
-      'cpu-cooler': ['AIO 360mm', 'Noctua NH-D15']
+      cooler: ['AIO 360mm', 'Noctua NH-D15']
     }
   },
   {
@@ -169,12 +169,12 @@ export const buildTemplates: BuildTemplate[] = [
     recommendations: {
       cpu: ['AMD Ryzen 7', 'Intel Core i7'],
       motherboard: ['B650', 'B760'],
-      memory: ['DDR5', '32GB'],
-      'video-card': ['RTX 4060', 'Quadro P2200'],
-      'internal-hard-drive': ['1TB NVMe SSD', '2TB HDD'],
-      'power-supply': ['650W', '80+ Gold'],
+      ram: ['DDR5', '32GB'],
+      gpu: ['RTX 4060', 'Quadro P2200'],
+      storage: ['1TB NVMe SSD', '2TB HDD'],
+      psu: ['650W', '80+ Gold'],
       case: ['Mid Tower ATX'],
-      'cpu-cooler': ['Tower Cooler', 'AIO 240mm']
+      cooler: ['Tower Cooler', 'AIO 240mm']
     }
   },
   {
@@ -193,12 +193,12 @@ export const buildTemplates: BuildTemplate[] = [
     recommendations: {
       cpu: ['AMD Ryzen 5', 'Intel Core i5'],
       motherboard: ['B550', 'B660'],
-      memory: ['DDR4', '16GB'],
-      'video-card': [], // Optional - integrated graphics
-      'internal-hard-drive': ['512GB SSD', '1TB HDD'],
-      'power-supply': ['450W', '80+ Bronze'],
+      ram: ['DDR4', '16GB'],
+      gpu: [], // Optional - integrated graphics
+      storage: ['512GB SSD', '1TB HDD'],
+      psu: ['450W', '80+ Bronze'],
       case: ['Micro ATX', 'SFF'],
-      'cpu-cooler': ['Stock Cooler']
+      cooler: ['Stock Cooler']
     }
   },
   {
@@ -217,12 +217,12 @@ export const buildTemplates: BuildTemplate[] = [
     recommendations: {
       cpu: ['AMD Ryzen 3', 'Intel Core i3', 'Pentium'],
       motherboard: ['A520', 'H610'],
-      memory: ['DDR4', '8GB'],
-      'video-card': [], // Integrated graphics only
-      'internal-hard-drive': ['256GB SSD', '500GB HDD'],
-      'power-supply': ['400W', '80+ Bronze'],
+      ram: ['DDR4', '8GB'],
+      gpu: [], // Integrated graphics only
+      storage: ['256GB SSD', '500GB HDD'],
+      psu: ['400W', '80+ Bronze'],
       case: ['Micro ATX', 'Mini ITX'],
-      'cpu-cooler': ['Stock Cooler']
+      cooler: ['Stock Cooler']
     }
   }
 ];
@@ -259,7 +259,7 @@ export function matchComponentToTemplate(
     const specs = component.specs as Record<string, unknown>;
     
     // RAM capacity matching
-    if (category === 'memory' && template.targetSpecs.ramCapacityGB) {
+    if (category === 'ram' && template.targetSpecs.ramCapacityGB) {
       const capacity = Number(specs.capacity_gb) || 0;
       if (capacity >= template.targetSpecs.ramCapacityGB) {
         score += 5;
@@ -267,15 +267,15 @@ export function matchComponentToTemplate(
     }
 
     // Storage capacity matching
-    if (category === 'internal-hard-drive' && template.targetSpecs.storageGB) {
+    if (category === 'storage' && template.targetSpecs.storageGB) {
       const capacity = Number(specs.capacity) || 0;
       if (capacity >= template.targetSpecs.storageGB) {
         score += 5;
       }
     }
-    
+
     // PSU wattage matching
-    if (category === 'power-supply' && template.targetSpecs.psuWattage) {
+    if (category === 'psu' && template.targetSpecs.psuWattage) {
       const wattage = Number(specs.wattage) || parseInt(component.name.match(/(\d{3,4})\s*W/i)?.[1] || '0');
       if (wattage >= template.targetSpecs.psuWattage) {
         score += 5;

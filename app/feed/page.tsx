@@ -33,19 +33,16 @@ export default function FeedPage() {
   const fetchSharedBuilds = async () => {
     setLoading(true);
     try {
-      // Fetch all builds and filter to show only publicly shared ones
+      // Fetch all public builds
       const response = await api.getBuilds({ 
         per_page: 50,
-      });
-      // Only show public/shared builds in the feed (builds with share_token)
-      const sharedBuilds = response.data.filter((build: Build) => {
-        return build.share_token && build.share_token.length > 0;
+        is_public: true,
       });
       // Sort by most recent
-      sharedBuilds.sort((a, b) => {
+      const sortedBuilds = response.data.sort((a, b) => {
         return new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime();
       });
-      setBuilds(sharedBuilds);
+      setBuilds(sortedBuilds);
     } catch (error) {
       console.error('Failed to fetch builds:', error);
     } finally {
@@ -145,6 +142,25 @@ export default function FeedPage() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Components Preview */}
+                  {build.components && build.components.length > 0 && (
+                    <div className="mb-4">
+                      <div className="text-xs text-muted-foreground mb-2">Components:</div>
+                      <div className="flex flex-wrap gap-1">
+                        {build.components.slice(0, 5).map((comp, idx) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {comp.category}
+                          </Badge>
+                        ))}
+                        {build.components.length > 5 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{build.components.length - 5} more
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Social Stats */}
                   <div className="flex items-center gap-4 text-sm text-muted-foreground border-t pt-4">

@@ -22,12 +22,12 @@ const categories = [
   { id: 'all', name: 'All Components', emoji: '🔧' },
   { id: 'cpu', name: 'Processors', emoji: '🖥️' },
   { id: 'motherboard', name: 'Motherboards', emoji: '🔲' },
-  { id: 'video-card', name: 'Graphics Cards', emoji: '🎮' },
-  { id: 'memory', name: 'Memory', emoji: '💾' },
-  { id: 'internal-hard-drive', name: 'Storage', emoji: '💿' },
-  { id: 'power-supply', name: 'Power Supply', emoji: '⚡' },
+  { id: 'gpu', name: 'Graphics Cards', emoji: '🎮' },
+  { id: 'ram', name: 'Memory', emoji: '💾' },
+  { id: 'storage', name: 'Storage', emoji: '💿' },
+  { id: 'psu', name: 'Power Supply', emoji: '⚡' },
   { id: 'case', name: 'Cases', emoji: '🖼️' },
-  { id: 'cpu-cooler', name: 'Cooling', emoji: '❄️' },
+  { id: 'cooler', name: 'Cooling', emoji: '❄️' },
 ];
 
 const sortOptions = [
@@ -64,7 +64,7 @@ export default function ComponentsPage() {
           search?: string;
           sort_by?: string;
           sort_order?: 'asc' | 'desc';
-          brand_id?: number;
+          brand?: string;
           min_price?: number;
           max_price?: number;
         } = {
@@ -95,9 +95,29 @@ export default function ComponentsPage() {
         }
 
         const response: PaginatedResponse<Component> = await api.getComponents(params);
-        setComponents(response.data);
-        setCurrentPage(response.meta.current_page);
-        setTotalPages(response.meta.total_pages);
+        
+        // Apply brand filtering on frontend if brands are selected
+        let filteredComponents = response.data;
+        if (selectedBrands.length > 0) {
+          filteredComponents = response.data.filter(component => {
+            const brandName = typeof component.brand === 'string' 
+              ? component.brand 
+              : component.brand_obj?.brand_name || '';
+            return selectedBrands.includes(brandName);
+          });
+        }
+        
+        setComponents(filteredComponents);
+        // Use pagination if available, otherwise fall back to meta
+        const paginationData = response.pagination || response.meta;
+        if (paginationData) {
+          setCurrentPage(paginationData.current_page);
+          // Type guard to check which pagination format we have
+          const totalPages = 'last_page' in paginationData 
+            ? paginationData.last_page 
+            : ('total_pages' in paginationData ? paginationData.total_pages : 1);
+          setTotalPages(totalPages);
+        }
 
         // Extract unique brands from results
         const uniqueBrands = Array.from(

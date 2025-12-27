@@ -129,6 +129,17 @@ export function Header() {
                       Wishlist {mounted && items.length > 0 && `(${items.length})`}
                     </Link>
                   </DropdownMenuItem>
+                  {user?.role === 'admin' && (
+                    <>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link href="/admin" className="text-orange-600 font-semibold">
+                          <span className="mr-2">⚡</span>
+                          Admin Panel
+                        </Link>
+                      </DropdownMenuItem>
+                    </>
+                  )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />

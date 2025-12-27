@@ -1,0 +1,33 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["sin1"],
+  "env": {
+    "NEXT_PUBLIC_API_BASE_URL": "https://yellow-dinosaur-111977.hostingersite.com/api/v1",
+    "NEXT_PUBLIC_API_URL": "https://yellow-dinosaur-111977.hostingersite.com/api/v1",
+    "NEXT_PUBLIC_SITE_NAME": "RigCheck PC Builder",
+    "NEXT_PUBLIC_DEFAULT_CURRENCY": "BDT",
+    "NEXT_PUBLIC_DEFAULT_LOCALE": "en-BD"
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}

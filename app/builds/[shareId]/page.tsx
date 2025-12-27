@@ -46,7 +46,7 @@ export default function SharedBuildPage() {
           throw new Error('Invalid share ID');
         }
 
-        const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8002/api/v1'}/shared-builds/${shareId}`;
+        const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000/api/v1'}/shared-builds/${shareId}`;
         console.log('Fetching shared build from:', apiUrl);
         
         const response = await fetch(apiUrl);
