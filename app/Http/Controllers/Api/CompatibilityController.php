@@ -80,11 +80,10 @@ class CompatibilityController extends Controller
             $totalTdp = 0;
             foreach ($components as $component) {
                 $totalCost += $component->lowest_price_bdt ?? 0;
-                if ($component->specs && count($component->specs) > 0) {
-                    $tdpSpec = $component->specs->firstWhere('spec_key', 'tdp');
-                    if ($tdpSpec) {
-                        $totalTdp += (int)$tdpSpec->spec_value;
-                    }
+                $specs = $component->specs_object;
+                $tdp = $specs['tdp'] ?? $specs['power_consumption'] ?? 0;
+                if ($tdp) {
+                    $totalTdp += (int)filter_var($tdp, FILTER_SANITIZE_NUMBER_INT);
                 }
             }
 
@@ -149,17 +148,20 @@ class CompatibilityController extends Controller
             return ['pass' => true, 'message' => 'Insufficient components to check socket'];
         }
 
-        $cpuSocket = $components['cpu']->specs->firstWhere('spec_key', 'socket');
-        $mbSocket = $components['motherboard']->specs->firstWhere('spec_key', 'socket');
+        $cpuSpecs = $components['cpu']->specs_object;
+        $mbSpecs = $components['motherboard']->specs_object;
+        
+        $cpuSocket = $cpuSpecs['socket'] ?? $cpuSpecs['socket_type'] ?? null;
+        $mbSocket = $mbSpecs['socket'] ?? $mbSpecs['socket_type'] ?? null;
 
         if (!$cpuSocket || !$mbSocket) {
             return ['pass' => false, 'message' => 'Socket information missing'];
         }
 
-        $pass = $cpuSocket->spec_value === $mbSocket->spec_value;
+        $pass = strtolower(trim($cpuSocket)) === strtolower(trim($mbSocket));
         return [
             'pass' => $pass,
-            'message' => $pass ? 'CPU socket matches motherboard' : 'CPU socket does not match motherboard'
+            'message' => $pass ? "CPU socket ($cpuSocket) matches motherboard" : "CPU socket ($cpuSocket) does not match motherboard ($mbSocket)"
         ];
     }
 
@@ -169,17 +171,61 @@ class CompatibilityController extends Controller
             return ['pass' => true, 'message' => 'Insufficient components to check RAM'];
         }
 
-        $ramType = $components['ram']->specs->firstWhere('spec_key', 'type');
-        $mbRamType = $components['motherboard']->specs->firstWhere('spec_key', 'memory_type');
-
-        if (!$ramType || !$mbRamType) {
-            return ['pass' => false, 'message' => 'RAM type information missing'];
+        $ramSpecs = $components['ram']->specs_object;
+        $mbSpecs = $components['motherboard']->specs_object;
+        
+        // Get RAM type - check both ddr_generation and type fields
+        $ramType = $ramSpecs['ddr_generation'] ?? $ramSpecs['type'] ?? $ramSpecs['memory_type'] ?? null;
+        
+        // Get motherboard memory type - check specs first, then extract from name
+        $mbRamType = $mbSpecs['memory_type'] ?? $mbSpecs['ram_type'] ?? null;
+        
+        // If motherboard memory_type is not in specs, try to extract from name
+        if (!$mbRamType) {
+            $mbName = $components['motherboard']->name;
+            if (preg_match('/(DDR[345])/i', $mbName, $matches)) {
+                $mbRamType = strtoupper($matches[1]);
+            }
+        }
+        
+        // If still no memory type, infer from socket type
+        if (!$mbRamType) {
+            $mbSocket = $mbSpecs['socket'] ?? $mbSpecs['socket_type'] ?? null;
+            if ($mbSocket) {
+                $socket = strtoupper(trim($mbSocket));
+                // AM5 and LGA1700 (12th gen+) platforms have both DDR4 and DDR5 variants
+                // Without explicit memory_type in the motherboard specs, we accept both
+                if ($socket === 'AM5' || $socket === 'LGA1700') {
+                    // Check if RAM is DDR4 or DDR5 - both are compatible with these platforms
+                    $ramTypeUpper = strtoupper(trim($ramType));
+                    if ($ramTypeUpper === 'DDR4' || $ramTypeUpper === 'DDR5') {
+                        return ['pass' => true, 'message' => "RAM type ($ramType) compatible - $socket motherboards support both DDR4 and DDR5"];
+                    }
+                } else if ($socket === 'AM4' || $socket === 'LGA1200' || $socket === 'LGA1151') {
+                    $mbRamType = 'DDR4';
+                }
+            }
         }
 
-        $pass = str_contains(strtolower($mbRamType->spec_value), strtolower($ramType->spec_value));
+        if (!$ramType) {
+            return ['pass' => false, 'message' => 'RAM type information missing'];
+        }
+        
+        if (!$mbRamType) {
+            return ['pass' => true, 'message' => 'Cannot determine motherboard memory type, assuming compatible'];
+        }
+
+        // Normalize to uppercase for comparison (DDR4, DDR5, etc.)
+        $ramType = strtoupper(trim($ramType));
+        $mbRamType = strtoupper(trim($mbRamType));
+        
+        $pass = $ramType === $mbRamType || str_contains($mbRamType, $ramType);
+        
         return [
             'pass' => $pass,
-            'message' => $pass ? 'RAM type compatible' : 'RAM type not compatible'
+            'message' => $pass 
+                ? "RAM type ($ramType) compatible with motherboard ($mbRamType)" 
+                : "RAM type ($ramType) NOT compatible with motherboard ($mbRamType)"
         ];
     }
 
@@ -207,26 +253,29 @@ class CompatibilityController extends Controller
             return ['pass' => true, 'message' => 'PSU not selected'];
         }
 
-        $psuWattage = $components['psu']->specs->firstWhere('spec_key', 'wattage');
+        $psuSpecs = $components['psu']->specs_object;
+        $psuWattage = $psuSpecs['wattage'] ?? $psuSpecs['power'] ?? null;
+        
         if (!$psuWattage) {
             return ['pass' => false, 'message' => 'PSU wattage information missing'];
         }
 
         $totalTdp = 0;
         foreach ($components as $component) {
-            $tdpSpec = $component->specs->firstWhere('spec_key', 'tdp');
-            if ($tdpSpec) {
-                $totalTdp += (int)$tdpSpec->spec_value;
+            $specs = $component->specs_object;
+            $tdp = $specs['tdp'] ?? $specs['power_consumption'] ?? 0;
+            if ($tdp) {
+                $totalTdp += (int)filter_var($tdp, FILTER_SANITIZE_NUMBER_INT);
             }
         }
 
         $recommended = ceil(($totalTdp + 150) * 1.2);
-        $psuValue = (int)$psuWattage->spec_value;
+        $psuValue = (int)filter_var($psuWattage, FILTER_SANITIZE_NUMBER_INT);
         $pass = $psuValue >= $recommended;
 
         return [
             'pass' => $pass,
-            'message' => $pass ? "PSU sufficient ($psuValue W > $recommended W required)" : "PSU insufficient ($psuValue W < $recommended W required)"
+            'message' => $pass ? "PSU sufficient ({$psuValue}W >= {$recommended}W required)" : "PSU insufficient ({$psuValue}W < {$recommended}W required)"
         ];
     }
 }

@@ -44,6 +44,8 @@ class Component extends Model
         'featured' => 'boolean',
         'stock_count' => 'integer'
     ];
+    
+    protected $appends = ['specs_object'];
 
     public function brand()
     {
@@ -64,5 +66,21 @@ class Component extends Model
     {
         return $this->belongsToMany(Build::class, 'build_components')
             ->withPivot('category', 'quantity', 'price_at_selection_bdt');
+    }
+    
+    /**
+     * Get specs as a key-value object
+     */
+    public function getSpecsObjectAttribute()
+    {
+        if (!$this->relationLoaded('specs')) {
+            return [];
+        }
+        
+        $specsObject = [];
+        foreach ($this->specs as $spec) {
+            $specsObject[$spec->spec_key] = $spec->spec_value;
+        }
+        return $specsObject;
     }
 }

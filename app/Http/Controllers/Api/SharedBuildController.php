@@ -42,15 +42,19 @@ class SharedBuildController extends Controller
             'is_complete' => true,
         ]);
 
-        // Store components to build_components table
+        // Store components to build_components table (convert product_id to actual id)
         $components = $request->components ?? [];
         foreach ($components as $component) {
             if (isset($component['id']) && isset($component['category'])) {
-                $build->components()->attach($component['id'], [
-                    'category' => $component['category'],
-                    'quantity' => $component['quantity'] ?? 1,
-                    'price_at_selection_bdt' => $component['price'] ?? null,
-                ]);
+                // Find component by product_id
+                $comp = \App\Models\Component::where('product_id', $component['id'])->first();
+                if ($comp) {
+                    $build->components()->attach($comp->id, [
+                        'category' => $component['category'],
+                        'quantity' => $component['quantity'] ?? 1,
+                        'price_at_selection_bdt' => $component['price'] ?? null,
+                    ]);
+                }
             }
         }
 

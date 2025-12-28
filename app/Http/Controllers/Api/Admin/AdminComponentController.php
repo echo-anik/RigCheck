@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Component;
 use App\Models\Brand;
-use App\Models\ComponentPrice;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
-class ComponentController extends Controller
+class AdminComponentController extends Controller
 {
     /**
-     * Display a listing of components with filtering and pagination.
+     * Display a listing of all components (admin view with more details)
      */
     public function index(Request $request)
     {
@@ -25,18 +24,7 @@ class ComponentController extends Controller
             $query->where('category', $request->category);
         }
 
-        // Filter by brand (search by brand name or brand_id)
-        if ($request->has('brand')) {
-            $query->whereHas('brand', function($q) use ($request) {
-                $q->where('brand_name', 'like', '%' . $request->brand . '%');
-            });
-        }
-
-        if ($request->has('brand_id')) {
-            $query->where('brand_id', $request->brand_id);
-        }
-
-        // Search by name
+        // Search by name or brand
         if ($request->has('search')) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
@@ -47,79 +35,32 @@ class ComponentController extends Controller
             });
         }
 
-        // Price range filter
-        if ($request->has('min_price')) {
-            $query->where('lowest_price_bdt', '>=', $request->min_price);
-        }
-        if ($request->has('max_price')) {
-            $query->where('lowest_price_bdt', '<=', $request->max_price);
-        }
-
-        // Featured filter
-        if ($request->has('featured')) {
-            $query->where('featured', $request->featured);
-        }
-
-        // Availability filter
-        if ($request->has('availability')) {
-            $query->where('availability_status', $request->availability);
-        }
-
         // Sorting
         $sortBy = $request->get('sort_by', 'created_at');
         $sortOrder = $request->get('sort_order', 'desc');
-
-        // Map common sort fields
-        $sortFieldMap = [
-            'price' => 'lowest_price_bdt',
-            'name' => 'name',
-            'popularity' => 'popularity_score',
-            'created_at' => 'created_at'
-        ];
-
-        $sortField = $sortFieldMap[$sortBy] ?? $sortBy;
-        $query->orderBy($sortField, $sortOrder);
+        $query->orderBy($sortBy, $sortOrder);
 
         // Pagination
-        $perPage = $request->get('per_page', 20);
-        $perPage = min($perPage, 100); // Max 100 items per page
-
+        $perPage = min($request->get('per_page', 50), 100);
         $paginatedComponents = $query->paginate($perPage);
 
-        // Transform the data for response
+        // Transform the data
         $transformedData = [];
         foreach ($paginatedComponents->items() as $component) {
-            // Load specs if not loaded
-            if (!$component->relationLoaded('specs')) {
-                $component->load('specs');
-            }
-            
             $transformedData[] = [
                 'id' => $component->id,
                 'product_id' => $component->product_id,
-                'sku' => $component->sku,
                 'category' => $component->category,
                 'name' => $component->name,
                 'brand' => $component->brand ? $component->brand->brand_name : null,
                 'brand_id' => $component->brand_id,
-                'brand_slug' => $component->brand ? $component->brand->brand_slug : null,
-                'series' => $component->series,
-                'model' => $component->model,
-                'slug' => $component->slug,
-                'primary_image_url' => $component->primary_image_url,
-                'image_urls' => $component->image_urls ?? [],
-                'lowest_price_usd' => $component->lowest_price_usd,
                 'lowest_price_bdt' => $component->lowest_price_bdt,
-                'price_last_updated' => $component->price_last_updated,
-                'availability_status' => $component->availability_status,
                 'stock_count' => $component->stock_count,
                 'featured' => $component->featured,
-                'popularity_score' => $component->popularity_score,
+                'is_verified' => $component->is_verified,
+                'availability_status' => $component->availability_status,
                 'view_count' => $component->view_count,
                 'build_count' => $component->build_count,
-                'is_verified' => $component->is_verified,
-                'release_date' => $component->release_date,
-                'specs' => $component->specs_object,
                 'created_at' => $component->created_at,
                 'updated_at' => $component->updated_at,
             ];
@@ -133,14 +74,12 @@ class ComponentController extends Controller
                 'last_page' => $paginatedComponents->lastPage(),
                 'per_page' => $paginatedComponents->perPage(),
                 'total' => $paginatedComponents->total(),
-                'from' => $paginatedComponents->firstItem(),
-                'to' => $paginatedComponents->lastItem(),
             ]
         ]);
     }
 
     /**
-     * Store a newly created component.
+     * Store a newly created component (admin only)
      */
     public function store(Request $request)
     {
@@ -157,6 +96,7 @@ class ComponentController extends Controller
             'availability_status' => 'nullable|in:in_stock,out_of_stock,pre_order,discontinued',
             'stock_count' => 'nullable|integer|min:0',
             'featured' => 'nullable|boolean',
+            'is_verified' => 'nullable|boolean',
         ]);
 
         // Get or create brand
@@ -196,6 +136,7 @@ class ComponentController extends Controller
             'availability_status' => $validated['availability_status'] ?? 'in_stock',
             'stock_count' => $validated['stock_count'] ?? 0,
             'featured' => $validated['featured'] ?? false,
+            'is_verified' => $validated['is_verified'] ?? false,
         ]);
 
         return response()->json([
@@ -206,14 +147,12 @@ class ComponentController extends Controller
     }
 
     /**
-     * Display the specified component.
+     * Display the specified component (admin view)
      */
-    public function show(string $productId)
+    public function show(string $id)
     {
         $component = Component::with(['brand', 'specs', 'prices'])
-            ->where('product_id', $productId)
-            ->orWhere('slug', $productId)
-            ->first();
+            ->find($id);
 
         if (!$component) {
             return response()->json([
@@ -221,9 +160,6 @@ class ComponentController extends Controller
                 'message' => 'Component not found'
             ], 404);
         }
-
-        // Increment view count
-        $component->increment('view_count');
 
         return response()->json([
             'success' => true,
@@ -235,7 +171,6 @@ class ComponentController extends Controller
                 'name' => $component->name,
                 'brand' => $component->brand ? $component->brand->brand_name : null,
                 'brand_id' => $component->brand_id,
-                'brand_slug' => $component->brand ? $component->brand->brand_slug : null,
                 'series' => $component->series,
                 'model' => $component->model,
                 'slug' => $component->slug,
@@ -247,11 +182,9 @@ class ComponentController extends Controller
                 'availability_status' => $component->availability_status,
                 'stock_count' => $component->stock_count,
                 'featured' => $component->featured,
-                'popularity_score' => $component->popularity_score,
+                'is_verified' => $component->is_verified,
                 'view_count' => $component->view_count,
                 'build_count' => $component->build_count,
-                'is_verified' => $component->is_verified,
-                'release_date' => $component->release_date,
                 'specs' => $component->specs_object,
                 'prices' => $component->prices,
                 'created_at' => $component->created_at,
@@ -261,7 +194,7 @@ class ComponentController extends Controller
     }
 
     /**
-     * Update the specified component.
+     * Update the specified component (admin only)
      */
     public function update(Request $request, string $id)
     {
@@ -286,6 +219,7 @@ class ComponentController extends Controller
             'availability_status' => 'nullable|in:in_stock,out_of_stock,pre_order,discontinued',
             'stock_count' => 'nullable|integer|min:0',
             'featured' => 'nullable|boolean',
+            'is_verified' => 'nullable|boolean',
         ]);
 
         // Update brand if provided
@@ -300,38 +234,28 @@ class ComponentController extends Controller
             $component->brand_id = $brand->id;
         }
 
-        // Update other fields
-        if (isset($validated['name'])) {
-            $component->name = $validated['name'];
-        }
-        if (isset($validated['series'])) {
-            $component->series = $validated['series'];
-        }
-        if (isset($validated['model'])) {
-            $component->model = $validated['model'];
-        }
-        if (isset($validated['primary_image_url'])) {
-            $component->primary_image_url = $validated['primary_image_url'];
-        }
+        // Update fields
+        $component->fill(array_filter([
+            'name' => $validated['name'] ?? null,
+            'series' => $validated['series'] ?? null,
+            'model' => $validated['model'] ?? null,
+            'primary_image_url' => $validated['primary_image_url'] ?? null,
+            'lowest_price_usd' => $validated['lowest_price_usd'] ?? null,
+            'lowest_price_bdt' => $validated['lowest_price_bdt'] ?? null,
+            'availability_status' => $validated['availability_status'] ?? null,
+            'stock_count' => $validated['stock_count'] ?? null,
+            'featured' => $validated['featured'] ?? null,
+            'is_verified' => $validated['is_verified'] ?? null,
+        ], function($value) {
+            return $value !== null;
+        }));
+
         if (isset($validated['image_urls'])) {
             $component->image_urls = $validated['image_urls'];
         }
-        if (isset($validated['lowest_price_usd'])) {
-            $component->lowest_price_usd = $validated['lowest_price_usd'];
+
+        if (isset($validated['lowest_price_bdt']) || isset($validated['lowest_price_usd'])) {
             $component->price_last_updated = now();
-        }
-        if (isset($validated['lowest_price_bdt'])) {
-            $component->lowest_price_bdt = $validated['lowest_price_bdt'];
-            $component->price_last_updated = now();
-        }
-        if (isset($validated['availability_status'])) {
-            $component->availability_status = $validated['availability_status'];
-        }
-        if (isset($validated['stock_count'])) {
-            $component->stock_count = $validated['stock_count'];
-        }
-        if (isset($validated['featured'])) {
-            $component->featured = $validated['featured'];
         }
 
         $component->save();
@@ -344,7 +268,7 @@ class ComponentController extends Controller
     }
 
     /**
-     * Remove the specified component.
+     * Remove the specified component (admin only)
      */
     public function destroy(string $id)
     {
@@ -357,6 +281,18 @@ class ComponentController extends Controller
             ], 404);
         }
 
+        // Check if component is used in any builds
+        $buildCount = DB::table('build_components')
+            ->where('component_id', $id)
+            ->count();
+
+        if ($buildCount > 0) {
+            return response()->json([
+                'success' => false,
+                'message' => "Cannot delete component. It is used in {$buildCount} build(s)."
+            ], 400);
+        }
+
         $component->delete();
 
         return response()->json([
@@ -366,28 +302,23 @@ class ComponentController extends Controller
     }
 
     /**
-     * Get component counts by category.
+     * Get statistics for admin dashboard
      */
-    public function getCategoryCounts()
+    public function stats()
     {
-        $counts = Component::select('category', DB::raw('count(*) as count'))
-            ->groupBy('category')
-            ->get()
-            ->pluck('count', 'category');
+        $stats = [
+            'total_components' => Component::count(),
+            'by_category' => Component::select('category', DB::raw('count(*) as count'))
+                ->groupBy('category')
+                ->pluck('count', 'category'),
+            'featured_count' => Component::where('featured', true)->count(),
+            'verified_count' => Component::where('is_verified', true)->count(),
+            'out_of_stock' => Component::where('availability_status', 'out_of_stock')->count(),
+        ];
 
         return response()->json([
             'success' => true,
-            'data' => [
-                'cpu' => $counts['cpu'] ?? 0,
-                'motherboard' => $counts['motherboard'] ?? 0,
-                'gpu' => $counts['gpu'] ?? 0,
-                'ram' => $counts['ram'] ?? 0,
-                'storage' => $counts['storage'] ?? 0,
-                'psu' => $counts['psu'] ?? 0,
-                'case' => $counts['case'] ?? 0,
-                'cooler' => $counts['cooler'] ?? 0,
-                'total' => array_sum($counts->toArray())
-            ]
+            'data' => $stats
         ]);
     }
 }

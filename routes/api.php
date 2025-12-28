@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\SharedBuildController;
 use App\Http\Controllers\Api\Admin\AdminDashboardController;
 use App\Http\Controllers\Api\Admin\AdminUserController;
 use App\Http\Controllers\Api\Admin\AdminPostController;
+use App\Http\Controllers\Api\Admin\AdminComponentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,10 +41,11 @@ Route::prefix('v1')->group(function () {
 
     // Components - Public endpoints
     Route::get('/components', [ComponentController::class, 'index']);
+    Route::get('/components/stats/counts', [ComponentController::class, 'getCategoryCounts']);
     Route::get('/components/{productId}', [ComponentController::class, 'show']);
 
     // Components - Admin endpoints (protected)
-    Route::middleware('auth:sanctum')->group(function () {
+    Route::middleware(['auth:sanctum', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
         Route::post('/components', [ComponentController::class, 'store']);
         Route::put('/components/{id}', [ComponentController::class, 'update']);
         Route::delete('/components/{id}', [ComponentController::class, 'destroy']);
@@ -109,5 +111,13 @@ Route::prefix('v1')->group(function () {
         Route::get('/users/{id}', [AdminUserController::class, 'show']);
         Route::put('/users/{id}', [AdminUserController::class, 'update']);
         Route::delete('/users/{id}', [AdminUserController::class, 'destroy']);
+        
+        // Components Management (Admin CRUD)
+        Route::get('/components', [AdminComponentController::class, 'index']);
+        Route::post('/components', [AdminComponentController::class, 'store']);
+        Route::get('/components/{id}', [AdminComponentController::class, 'show']);
+        Route::put('/components/{id}', [AdminComponentController::class, 'update']);
+        Route::delete('/components/{id}', [AdminComponentController::class, 'destroy']);
+        Route::get('/components/stats', [AdminComponentController::class, 'stats']);
     });
 });
