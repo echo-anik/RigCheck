@@ -18,16 +18,16 @@ This repository contains the Next.js web application for the RigCheck PC buildin
 
 ## Features
 
-✅ **PC Builder** - Interactive build creation with real-time compatibility checks
-✅ **Component Database** - Extensive catalog of PC parts with specifications
-✅ **Price Comparison** - Track prices from multiple retailers
-✅ **Build Templates** - Pre-configured builds for different budgets
-✅ **Social Features** - Share builds, comment, like, and follow users
-✅ **Wishlist** - Save favorite components and builds
-✅ **Comparison Tool** - Side-by-side component comparison
-✅ **User Profiles** - Personal build galleries and social profiles
-✅ **Admin Dashboard** - Manage users, builds, and content
-✅ **Responsive Design** - Works on desktop, tablet, and mobile
+- **PC Builder** - Interactive build creation with real-time compatibility checks
+- **Component Database** - Extensive catalog of PC parts with specifications
+- **Price Comparison** - Track prices from multiple retailers
+- **Build Templates** - Pre-configured builds for different budgets
+- **Social Features** - Share builds, comment, like, and follow users
+- **Wishlist** - Save favorite components and builds
+- **Comparison Tool** - Side-by-side component comparison
+- **User Profiles** - Personal build galleries and social profiles
+- **Admin Dashboard** - Manage users, builds, and content
+- **Responsive Design** - Works on desktop, tablet, and mobile
 
 ## Tech Stack
 
@@ -296,4 +296,4 @@ This project is for educational purposes.
 
 ---
 
-**Built with ❤️ for the PC building community**
+**Built for the PC building community**
