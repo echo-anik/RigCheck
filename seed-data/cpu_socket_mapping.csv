@@ -1,0 +1,1414 @@
+cpu_name,microarchitecture,socket,tdp,core_count
+AMD Ryzen 7 9800X3D,Zen 5,AM5,120,8
+AMD Ryzen 7 7800X3D,Zen 4,AM5,120,8
+AMD Ryzen 5 7600X,Zen 4,AM5,105,6
+AMD Ryzen 5 9600X,Zen 5,AM5,65,6
+AMD Ryzen 7 7700X,Zen 4,AM5,105,8
+AMD Ryzen 9 9950X3D,Zen 5,AM5,170,16
+AMD Ryzen 5 5500,Zen 3,AM4,65,6
+AMD Ryzen 7 9700X,Zen 5,AM5,65,8
+AMD Ryzen 5 5600X,Zen 3,AM4,65,6
+AMD Ryzen 5 5600,Zen 3,AM4,65,6
+AMD Ryzen 7 5800X,Zen 3,AM4,105,8
+Intel Core i7-14700K,Raptor Lake Refresh,LGA1700,125,20
+Intel Core i9-14900K,Raptor Lake Refresh,LGA1700,125,24
+Intel Core i5-12400F,Alder Lake,LGA1700,65,6
+AMD Ryzen 5 3600,Zen 2,AM4,65,6
+AMD Ryzen 5 7600,Zen 4,AM5,65,6
+AMD Ryzen 7 5700X,Zen 3,AM4,65,8
+AMD Ryzen 9 7900X,Zen 4,AM5,170,12
+AMD Ryzen 9 9900X,Zen 5,AM5,120,12
+Intel Core i5-14600K,Raptor Lake Refresh,LGA1700,125,14
+Intel Core Ultra 7 265K,Arrow Lake,LGA1851,125,20
+AMD Ryzen 7 5700X3D,Zen 3,AM4,105,8
+Intel Core i5-14400F,Raptor Lake Refresh,LGA1700,65,10
+AMD Ryzen 9 9950X,Zen 5,AM5,170,16
+AMD Ryzen 5 7500F,Zen 4,AM5,65,6
+AMD Ryzen 7 5800XT,Zen 3,AM4,105,8
+Intel Core Ultra 9 285K,Arrow Lake,LGA1851,125,24
+Intel Core i7-12700K,Alder Lake,LGA1700,125,12
+AMD Ryzen 5 7600X3D,Zen 4,AM5,65,6
+AMD Ryzen 5 5600G,Zen 3,AM4,65,6
+AMD Ryzen 7 7700,Zen 4,AM5,65,8
+Intel Core i5-13400F,Raptor Lake,LGA1700,65,10
+AMD Ryzen 5 7500F,Zen 4,AM5,65,6
+Intel Core i7-12700KF,Alder Lake,LGA1700,125,12
+AMD Ryzen 9 5900X,Zen 3,AM4,105,12
+AMD Ryzen 7 3700X,Zen 2,AM4,65,8
+Intel Core i5-12600KF,Alder Lake,LGA1700,125,10
+AMD Ryzen 5 8400F,Zen 4,AM5,65,6
+AMD Ryzen 5 8500G,Zen 4,AM5,65,6
+AMD Threadripper 3990X,Zen 2,AM4,280,64
+Intel Core i5-12600K,Alder Lake,LGA1700,125,10
+AMD Ryzen 7 5700G,Zen 3,AM4,65,8
+AMD Ryzen 9 5950X,Zen 3,AM4,105,16
+AMD Ryzen 7 5800X3D,Zen 3,AM4,105,8
+Intel Core i3-12100F,Alder Lake,LGA1700,58,4
+AMD Ryzen 9 7950X,Zen 4,AM5,170,16
+Intel Core i5-14600KF,Raptor Lake Refresh,LGA1700,125,14
+AMD Ryzen 5 4500,Zen 2,AM4,65,6
+AMD Ryzen 5 8600G,Zen 4,AM5,65,6
+AMD Ryzen 7 5700,Zen 3,AM4,65,8
+Intel Core i7-14700KF,Raptor Lake Refresh,LGA1700,125,20
+Intel Core i9-12900K,Alder Lake,LGA1700,125,16
+Intel Core Ultra 7 265KF,Arrow Lake,LGA1851,125,20
+AMD Ryzen 9 9900X3D,Zen 5,AM5,120,12
+AMD Ryzen 9 7950X3D,Zen 4,AM5,120,16
+AMD Ryzen 7 8700G,Zen 4,AM5,65,8
+Intel Core i9-14900KF,Raptor Lake Refresh,LGA1700,125,24
+Intel Core i7-13700K,Raptor Lake,LGA1700,125,16
+Intel Core i5-10400F,Comet Lake,LGA1200,65,6
+AMD Ryzen 7 8700F,Zen 4,AM5,65,8
+AMD Ryzen 5 2600,Zen+,AM4,65,6
+Intel Core i9-14900KS,Raptor Lake Refresh,LGA1700,150,24
+AMD Ryzen 5 5600GT,Zen 3,AM4,65,6
+Intel Core i5-13600KF,Raptor Lake,LGA1700,125,14
+AMD Ryzen 9 5900XT,Zen 3,AM4,105,16
+Intel Core i7-14700F,Raptor Lake Refresh,LGA1700,65,20
+AMD Ryzen 9 7900,Zen 4,AM5,65,12
+Intel Core i7-9700K,Coffee Lake Refresh,LGA1151,95,8
+Intel Core i7-8700K,Coffee Lake,LGA1151,95,6
+AMD Ryzen 3 3200G,Zen+,AM4,65,4
+AMD Ryzen 5 3400G,Zen+,AM4,65,4
+Intel Core i9-13900K,Raptor Lake,LGA1700,125,24
+Intel Core i5-12400,Alder Lake,LGA1700,65,6
+AMD Ryzen 5 3600X,Zen 2,AM4,95,6
+Intel Core i9-9900K,Coffee Lake Refresh,LGA1151,95,8
+AMD Ryzen 7 2700X,Zen+,AM4,105,8
+Intel Core i3-14100F,Raptor Lake Refresh,LGA1700,58,4
+Intel Core i9-12900KF,Alder Lake,LGA1700,125,16
+AMD Ryzen 5 5600XT,Zen 3,AM4,65,6
+Intel Core i5-13600K,Raptor Lake,LGA1700,125,14
+Intel Core i7-7700K,Kaby Lake,LGA1151,91,4
+AMD Ryzen 3 4100,Zen 2,AM4,65,4
+Intel Core Ultra 5 245K,Arrow Lake,LGA1851,125,14
+AMD Ryzen 3 3100,Zen 2,AM4,65,4
+Intel Core i5-9400F,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i7-13700KF,Raptor Lake,LGA1700,125,16
+Intel Core i7-10700K,Comet Lake,LGA1200,125,8
+Intel Core i5-14400,Raptor Lake Refresh,LGA1700,65,10
+AMD Ryzen 9 3900X,Zen 2,AM4,105,12
+AMD Ryzen 7 7700,Zen 4,AM5,65,8
+Intel Core i7-6700K,Skylake,LGA1151,91,4
+AMD Ryzen 7 7800X3D,Zen 4,AM5,120,8
+AMD Ryzen 9 7900X3D,Zen 4,AM5,120,12
+Intel Core i5-11400F,Rocket Lake,LGA1200,65,6
+AMD Threadripper 3970X,Zen 2,AM4,280,32
+AMD Ryzen 7 3800X,Zen 2,AM4,105,8
+AMD Ryzen 5 2600X,Zen+,AM4,95,6
+Intel Core i7-12700F,Alder Lake,LGA1700,65,12
+Intel Core i5-9600K,Coffee Lake Refresh,LGA1151,95,6
+Intel Core Ultra 5 225F,Arrow Lake,LGA1851,65,10
+Intel Core i7-11700K,Rocket Lake,LGA1200,125,8
+Intel Core i3-12100,Alder Lake,LGA1700,60,4
+Intel Core i5-10400,Comet Lake,LGA1200,65,6
+Intel Core i7-8700,Coffee Lake,LGA1151,65,6
+Intel Core i3-14100,Raptor Lake Refresh,LGA1700,60,4
+Intel Core i3-13100F,Raptor Lake,LGA1700,58,4
+Intel Pentium E5700,Wolfdale,Unknown,65,2
+Intel Core i9-10900K,Comet Lake,LGA1200,125,10
+Intel Core i5-13400,Raptor Lake,LGA1700,65,10
+Intel Core i7-7700,Kaby Lake,LGA1151,65,4
+Intel Core i7-13700F,Raptor Lake,LGA1700,65,16
+Intel Core i5-6500,Skylake,LGA1151,65,4
+AMD Ryzen 5 5500GT,Zen 3,AM4,65,6
+Intel Core i9-13900KF,Raptor Lake,LGA1700,125,24
+AMD Ryzen 5 4600G,Zen 2,AM4,65,6
+AMD Ryzen 5 9600,Zen 5,AM5,65,6
+Intel Core Ultra 5 235,Arrow Lake,LGA1851,65,14
+Intel Core i7-4790K,Haswell Refresh,LGA1150,88,4
+Intel Core i5-8400,Coffee Lake,LGA1151,65,6
+Intel Core i7-6700,Skylake,LGA1151,65,4
+Intel Core Ultra 5 225,Arrow Lake,LGA1851,65,10
+AMD Ryzen 5 3500X,Zen 2,AM4,65,6
+Intel Core i7-14700,Raptor Lake Refresh,LGA1700,65,20
+AMD Ryzen 5 1600 (14nm),Zen,AM4,65,6
+Intel Core i9-11900K,Rocket Lake,LGA1200,125,8
+Intel Core i7-10700F,Comet Lake,LGA1200,65,8
+Intel Core i3-10100F,Comet Lake,LGA1200,65,4
+Intel Core i7-11700F,Rocket Lake,LGA1200,65,8
+Intel Core i5-13500,Raptor Lake,LGA1700,65,14
+Intel Pentium E2220,Core,Unknown,65,2
+Intel Core i7-12700,Alder Lake,LGA1700,65,12
+AMD Ryzen 5 3600,Zen 2,AM4,65,6
+Intel Core i5-10600K,Comet Lake,LGA1200,125,6
+Intel Core i5-6600K,Skylake,LGA1151,91,4
+Intel Core Ultra 9 285,Arrow Lake,LGA1851,65,24
+Intel Core i7-4770K,Haswell,LGA1150,84,4
+Intel Core i7-3770,Ivy Bridge,LGA1155,77,4
+Intel Core i7-10700,Comet Lake,LGA1200,65,8
+AMD Ryzen 9 3950X,Zen 2,AM4,105,16
+Intel Core i3-6100,Skylake,LGA1151,51,2
+AMD Threadripper 3960X,Zen 2,AM4,280,24
+AMD Ryzen 7 2700,Zen+,AM4,65,8
+Intel Core i5-7500,Kaby Lake,LGA1151,65,4
+Intel Core i5-14500,Raptor Lake Refresh,LGA1700,65,14
+Intel Core i7-9700,Coffee Lake Refresh,LGA1151,65,8
+Intel Core Ultra 7 265,Arrow Lake,LGA1851,65,20
+Intel Core i5-11400,Rocket Lake,LGA1200,65,6
+Intel Core i9-10850K,Comet Lake,LGA1200,125,10
+Intel Core i5-7400,Kaby Lake,LGA1151,65,4
+Intel Core i9-13900KS,Raptor Lake,LGA1700,150,24
+Intel Core Ultra 7 265F,Arrow Lake,LGA1851,65,20
+Intel Core i3-8100,Coffee Lake,LGA1151,65,4
+Intel Core i7-4790,Haswell Refresh,LGA1150,84,4
+Intel Xeon E5-2699 V4,Broadwell,LGA1150,145,22
+Intel Core i5-4690K,Haswell Refresh,LGA1150,88,4
+Intel Xeon E5-2680 V4,Broadwell,LGA1150,120,14
+Intel Core i9-12900KS,Alder Lake,LGA1700,150,16
+AMD Ryzen 7 1700,Zen,AM4,65,8
+Intel Core i5-8600K,Coffee Lake,LGA1151,95,6
+Intel Core i3-10100,Comet Lake,LGA1200,65,4
+Intel Pentium G640,Sandy Bridge,LGA1155,65,2
+Intel Core i9-9900KF,Coffee Lake Refresh,LGA1151,95,8
+Intel Core i7-9700F,Coffee Lake Refresh,LGA1151,65,8
+AMD EPYC 4564P,Zen 4,AM5,170,16
+AMD Ryzen 3 2200G,Zen,AM4,65,4
+AMD Ryzen 5 2400G,Zen,AM4,65,4
+Intel Core i5-12500,Alder Lake,LGA1700,65,6
+AMD Ryzen 5 5600X3D,Zen 3,AM4,105,6
+Intel Core i3-9100F,Coffee Lake Refresh,LGA1151,65,4
+Intel Core i5-8500,Coffee Lake,LGA1151,65,6
+Intel Core i5-11600K,Rocket Lake,LGA1200,125,6
+Intel Core i5-7500T,Kaby Lake,LGA1151,35,4
+Intel Core i5-4590,Haswell Refresh,LGA1150,84,4
+AMD Ryzen 5 1600 (12nm),Zen+,AM4,65,6
+AMD Athlon 3000G (14nm),Zen,AM4,35,2
+Intel Core i7-10700KF,Comet Lake,LGA1200,125,8
+Intel Core i7-3770K,Ivy Bridge,LGA1155,77,4
+AMD Ryzen 9 3900XT,Zen 2,AM4,105,12
+Intel Core i3-10105F,Comet Lake,LGA1200,65,4
+Intel Core i5-7600,Kaby Lake,LGA1151,65,4
+Intel Core i7-9700KF,Coffee Lake Refresh,LGA1151,95,8
+Intel Core i7-4770,Haswell,LGA1150,84,4
+Intel Core i5-3470,Ivy Bridge,LGA1155,77,4
+AMD FX-8350,Piledriver,AM3+,125,8
+AMD Ryzen 7 3700X,Zen 2,AM4,65,8
+AMD Ryzen 5 1600X,Zen,AM4,95,6
+AMD 2650,Jaguar,AM1,25,2
+Intel Core i7-11700KF,Rocket Lake,LGA1200,125,8
+Intel Core i3-4150,Haswell Refresh,LGA1150,54,2
+Intel Core i7-11700,Rocket Lake,LGA1200,65,8
+Intel Core Ultra 5 245KF,Arrow Lake,LGA1851,125,14
+Intel Core i7-6950X,Broadwell,LGA1150,140,10
+Intel Core i5-7600K,Kaby Lake,LGA1151,91,4
+AMD Ryzen 5 3500,Zen 2,AM4,65,6
+Intel Core i3-13100,Raptor Lake,LGA1700,60,4
+Intel Core i9-11900KF,Rocket Lake,LGA1200,125,8
+AMD Ryzen 7 1700X,Zen,AM4,95,8
+AMD Ryzen 7 3800XT,Zen 2,AM4,105,8
+Intel Core i5-9400F,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i7-13700,Raptor Lake,LGA1700,65,16
+AMD Ryzen 3 3300X,Zen 2,AM4,65,4
+Intel Core i9-14900F,Raptor Lake Refresh,LGA1700,65,24
+AMD Ryzen 7 1800X,Zen,AM4,95,8
+AMD Ryzen 5 3600XT,Zen 2,AM4,95,6
+Intel Core i5-4570,Haswell,LGA1150,84,4
+AMD Ryzen 5 7600X3D,Zen 4,AM5,65,6
+Intel Core i5-11600KF,Rocket Lake,LGA1200,125,6
+Intel Core i5-2400,Sandy Bridge,LGA1155,95,4
+Intel Core i5-9600KF,Coffee Lake Refresh,LGA1151,95,6
+Intel Core i5-9400,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i3-10105,Comet Lake,LGA1200,65,4
+Intel Core i5-4460,Haswell Refresh,LGA1150,84,4
+AMD Ryzen 3 1200 (14nm),Zen,AM4,65,4
+AMD Ryzen 5 3600,Zen 2,AM4,65,6
+Intel Core i5-10600KF,Comet Lake,LGA1200,125,6
+AMD Ryzen 5 1400,Zen,AM4,65,4
+Intel Core i5-6400,Skylake,LGA1151,65,4
+Intel Core i7-6800K,Broadwell,LGA1150,140,6
+Intel Core i5-4570T,Haswell,LGA1150,35,2
+AMD Ryzen 5 5600T,Zen 3,AM4,65,6
+Intel Core i7-8700K,Coffee Lake,LGA1151,95,6
+AMD Threadripper 2920X,Zen+,AM4,180,12
+Intel Core i3-9100,Coffee Lake Refresh,LGA1151,65,4
+Intel Core i3-7100,Kaby Lake,LGA1151,51,2
+Intel Core i9-10900KF,Comet Lake,LGA1200,125,10
+Intel Xeon E5-2687W V4,Broadwell,LGA1150,160,12
+AMD FX-6300,Piledriver,AM3+,95,6
+Intel Core i9-14900,Raptor Lake Refresh,LGA1700,65,24
+Intel Core i9-9900KS,Coffee Lake Refresh,LGA1151,127,8
+Intel Core i5-9500,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i7-2600,Sandy Bridge,LGA1155,95,4
+AMD Ryzen 5 1500X,Zen,AM4,65,4
+Intel Core i5-10500,Comet Lake,LGA1200,65,6
+Intel Core i9-10980XE,Cascade Lake,LGA1200,165,18
+Intel Core i9-7900X,Skylake,LGA1151,140,10
+Intel Core i5-3570K,Ivy Bridge,LGA1155,77,4
+AMD Ryzen 9 PRO 7945,Zen 4,AM5,65,12
+Intel Core i7-4790K,Haswell Refresh,LGA1150,88,4
+Intel Core i3-4130,Haswell,LGA1150,54,2
+Intel Core i5-4690,Haswell Refresh,LGA1150,84,4
+Intel Core i5-8400,Coffee Lake,LGA1151,65,6
+AMD Threadripper 1950X,Zen,AM4,180,16
+Intel Core i7-5820K,Haswell,LGA1150,140,6
+Intel Core i5-6600,Skylake,LGA1151,65,4
+Intel Core i7-8700,Coffee Lake,LGA1151,65,6
+Intel Celeron G6900,Alder Lake,LGA1700,46,2
+AMD EPYC 4244P,Zen 4,AM5,65,6
+Intel Core i9-13900,Raptor Lake,LGA1700,65,24
+Intel Pentium Gold G7400,Alder Lake,LGA1700,46,2
+Intel Core i9-9940X,Skylake,LGA1151,165,14
+AMD Athlon 200GE,Zen,AM4,35,2
+Intel Core i7-4790,Haswell Refresh,LGA1150,84,4
+Intel Core i5-2500K,Sandy Bridge,LGA1155,95,4
+AMD Threadripper 1920X,Zen,AM4,180,12
+Intel Core i5-8500T,Coffee Lake,LGA1151,35,6
+Intel Core 2 Duo E8400,Wolfdale,Unknown,65,2
+Intel Xeon E3-1220 V6,Kaby Lake,LGA1151,72,4
+Intel Core i5-3570,Ivy Bridge,LGA1155,77,4
+Intel Pentium Gold G5420,Coffee Lake,LGA1151,54,2
+Intel Pentium G4400,Skylake,LGA1151,54,2
+Intel Core i5-12600,Alder Lake,LGA1700,65,6
+Intel Celeron 420,Core,Unknown,35,1
+Intel Core i9-10900F,Comet Lake,LGA1200,65,10
+AMD A6-6400K,Piledriver,AM3+,65,2
+Intel Core i9-10900,Comet Lake,LGA1200,65,10
+Intel Celeron G5900,Comet Lake,LGA1200,58,2
+Intel Core i9-10900X,Cascade Lake,LGA1200,165,10
+Intel Core i5-4670K,Haswell,LGA1150,84,4
+Intel Core i5-6500,Skylake,LGA1151,65,4
+Intel Core i9-9900K,Coffee Lake Refresh,LGA1151,95,8
+AMD Threadripper 2970WX,Zen+,AM4,250,24
+Intel Core i9-9820X,Skylake,LGA1151,165,10
+AMD Ryzen 9 3900X,Zen 2,AM4,105,12
+Intel Core i5-13500T,Raptor Lake,LGA1700,35,14
+Intel Core i9-13900F,Raptor Lake,LGA1700,65,24
+Intel Xeon E5-1650 V4,Broadwell,LGA1150,140,6
+Intel Core i5-11600,Rocket Lake,LGA1200,65,6
+Intel Core i7-8086K,Coffee Lake,LGA1151,95,6
+AMD EPYC 4464P,Zen 4,AM5,65,12
+Intel Xeon E5-2690 V2,Ivy Bridge,LGA1155,130,10
+Intel Core i7-2600K,Sandy Bridge,LGA1155,95,4
+Intel Core i7-9700K,Coffee Lake Refresh,LGA1151,95,8
+Intel Core i5-11500,Rocket Lake,LGA1200,65,6
+AMD Ryzen 5 2600,Zen+,AM4,65,6
+Intel Core i7-7700K,Kaby Lake,LGA1151,91,4
+AMD FX-6350,Piledriver,AM3+,125,6
+Intel Core i9-9900,Coffee Lake Refresh,LGA1151,65,8
+AMD Ryzen 5 5600XT,Zen 3,AM4,65,6
+Intel Core i9-11900F,Rocket Lake,LGA1200,65,8
+Intel Core i7-6850K,Broadwell,LGA1150,140,6
+AMD FX-9590,Piledriver,AM3+,220,8
+Intel Core i9-12900F,Alder Lake,LGA1700,65,16
+Intel Celeron G5905,Comet Lake,LGA1200,58,2
+Intel Core i9-12900,Alder Lake,LGA1700,65,16
+Intel Core i5-14500T,Raptor Lake Refresh,LGA1700,35,14
+Intel Core i7-4770S,Haswell,LGA1150,65,4
+Intel Core i7-4930K,Ivy Bridge,LGA1155,130,6
+Intel Core i5-8600,Coffee Lake,LGA1151,65,6
+Intel Core i5-4440,Haswell,LGA1150,84,4
+Intel Core i7-6700K,Skylake,LGA1151,91,4
+AMD Athlon X2 340,Piledriver,AM3+,65,2
+Intel Celeron G3930,Kaby Lake,LGA1151,51,2
+Intel Pentium G4560,Kaby Lake,LGA1151,54,2
+AMD Ryzen 3 3200G,Zen+,AM4,65,4
+AMD FX-8320,Piledriver,AM3+,125,8
+AMD Ryzen 5 3400G,Zen+,AM4,65,4
+Intel Core i3-530,Westmere,Unknown,73,2
+Intel Core i3-12100T,Alder Lake,LGA1700,35,4
+Intel Xeon E5-2650 V4,Broadwell,LGA1150,105,12
+AMD Ryzen 3 1300X,Zen,AM4,65,4
+Intel Core i5-9600,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i7-7700,Kaby Lake,LGA1151,65,4
+Intel Core i3-3220,Ivy Bridge,LGA1155,55,2
+Intel Core i5-10600,Comet Lake,LGA1200,65,6
+Intel Pentium Gold G6600,Comet Lake,LGA1200,58,2
+Intel Xeon E5-2698 V4,Broadwell,LGA1150,135,20
+AMD Athlon II X2 240,K10,Unknown,65,2
+Intel Core i9-10920X,Cascade Lake,LGA1200,165,12
+Intel Core i7-2700K,Sandy Bridge,LGA1155,95,4
+Intel Core i3-7100T,Kaby Lake,LGA1151,35,2
+Intel Core i9-9900K (Standard Folding Box),Coffee Lake Refresh,LGA1151,95,8
+Intel Core i7-7820X,Skylake,LGA1151,140,8
+Intel Xeon E5-2630 V4,Broadwell,LGA1150,85,10
+Intel Core i9-13900T,Raptor Lake,LGA1700,35,24
+AMD FX-8300,Piledriver,AM3+,95,8
+AMD A4-6300,Piledriver,AM3+,65,2
+AMD Ryzen 7 3800X,Zen 2,AM4,105,8
+Intel Core i7-7800X,Skylake,LGA1151,140,6
+Intel Core i9-11900,Rocket Lake,LGA1200,65,8
+Intel Pentium Gold G6400,Comet Lake,LGA1200,58,2
+Intel Xeon E5-2667 V3,Haswell,LGA1150,135,8
+Intel 300,Raptor Lake Refresh,LGA1700,46,2
+Intel Xeon E5-4620,Sandy Bridge,LGA1155,95,8
+AMD Ryzen 5 2600X,Zen+,AM4,95,6
+Intel Core i7-5960X,Haswell,LGA1150,140,8
+AMD Threadripper 2990WX,Zen+,AM4,250,32
+Intel Core i3-2100,Sandy Bridge,LGA1155,65,2
+AMD Threadripper 2950X,Zen+,AM4,180,16
+AMD Ryzen 5 3600X,Zen 2,AM4,95,6
+Intel Core i5-2500,Sandy Bridge,LGA1155,95,4
+Intel Celeron E3400,Wolfdale,Unknown,65,2
+AMD Ryzen 5 3600,Zen 2,AM4,65,6
+Intel Core i7-6700,Skylake,LGA1151,65,4
+Intel Core i3-2120,Sandy Bridge,LGA1155,65,2
+Intel Core i3-4170,Haswell Refresh,LGA1150,54,2
+AMD EPYC 4344P,Zen 4,AM5,65,8
+Intel Core i9-7920X,Skylake,LGA1151,140,12
+Intel Xeon E5-2620,Sandy Bridge,LGA1155,95,6
+Intel Core i9-9980XE,Skylake,LGA1151,165,18
+AMD Ryzen 3 1200 (12nm),Zen+,AM4,65,4
+AMD Ryzen 5 5600T,Zen 3,AM4,65,6
+Intel Core i5-4430,Haswell,LGA1150,84,4
+Intel Core i7-920,Nehalem,LGA1151,130,4
+Intel Core i7-4960X Extreme Edition,Ivy Bridge,LGA1155,130,6
+Intel Core i5-4670,Haswell,LGA1150,84,4
+AMD Threadripper 1900X,Zen,AM4,180,8
+Intel Xeon E5-2630 V3,Haswell,LGA1150,85,8
+Intel Core i5-9600K,Coffee Lake Refresh,LGA1151,95,6
+Intel Core i7-6950X,Broadwell,LGA1150,140,10
+AMD A8-9600,Excavator,Unknown,65,4
+Intel Core i7-5930K,Haswell,LGA1150,140,6
+AMD Ryzen 5 2400G,Zen,AM4,65,4
+AMD FX-6100,Bulldozer,AM3+,95,6
+Intel Core i7-13700T,Raptor Lake,LGA1700,35,16
+Intel Core i5-750,Nehalem,LGA1151,95,4
+Intel Xeon E5-2697 V4,Broadwell,LGA1150,145,18
+AMD Athlon II X4 640,K10,Unknown,95,4
+AMD Ryzen 9 3900,Zen 2,AM4,65,12
+Intel Core i3-8350K,Coffee Lake,LGA1151,91,4
+Intel Core i5-3330,Ivy Bridge,LGA1155,77,4
+Intel Core i7-3930K,Sandy Bridge,LGA1155,130,6
+AMD FX-4350,Piledriver,AM3+,125,4
+Intel Xeon E5-2697 V2,Ivy Bridge,LGA1155,130,12
+Intel Core i7-6900K,Broadwell,LGA1150,140,8
+Intel Xeon E5-2683 V4,Broadwell,LGA1150,120,16
+AMD EPYC 4364P,Zen 4,AM5,105,8
+Intel Xeon E5-1620 V2,Ivy Bridge,LGA1155,130,4
+AMD Ryzen 5 PRO 7645,Zen 4,AM5,65,6
+Intel Core i9-10940X,Cascade Lake,LGA1200,165,14
+AMD FX-8370,Piledriver,AM3+,125,8
+Intel Core i7-8700T,Coffee Lake,LGA1151,35,6
+AMD A8-7600,Steamroller,Unknown,65,4
+Intel Xeon E5-2690 V4,Broadwell,LGA1150,135,14
+Intel Core i5-8600K,Coffee Lake,LGA1151,95,6
+Intel Core i5-13600,Raptor Lake,LGA1700,65,14
+Intel Celeron G5925,Comet Lake,LGA1200,58,2
+AMD EPYC 4584PX,Zen 4,AM5,120,16
+Intel Core i7-860,Nehalem,LGA1151,95,4
+Intel Core i7-6700T,Skylake,LGA1151,35,4
+Intel Xeon E5-2670 V3,Haswell,LGA1150,120,12
+Intel Core i3-4160,Haswell Refresh,LGA1150,54,2
+Intel Xeon E5-2699 V3,Haswell,LGA1150,145,18
+Intel Core i7-9700,Coffee Lake Refresh,LGA1151,65,8
+Intel Pentium Gold G5400,Coffee Lake,LGA1151,58,2
+Intel Xeon E5-2680 V3,Haswell,LGA1150,120,12
+Intel Core i9-9980XE,Skylake,LGA1151,165,18
+Intel Core i5-7400T,Kaby Lake,LGA1151,35,4
+Intel Core i7-7740X,Kaby Lake,LGA1151,112,4
+Intel Core i7-9700F,Coffee Lake Refresh,LGA1151,65,8
+AMD Ryzen 7 PRO 7745,Zen 4,AM5,65,8
+Intel Core i9-7980XE,Skylake,LGA1151,165,18
+Intel Core i7-990X Extreme Edition,Westmere,LGA1151,130,6
+Intel Core i7-3820,Sandy Bridge,LGA1155,130,4
+Intel Core i5-3450,Ivy Bridge,LGA1155,77,4
+Intel Xeon E5-2650,Sandy Bridge,LGA1155,95,8
+AMD FX-4300,Piledriver,AM3+,95,4
+AMD Ryzen 7 1700X,Zen,AM4,95,8
+Intel Core i5-9400,Coffee Lake Refresh,LGA1151,65,6
+AMD FX-4350,Piledriver,AM3+,125,4
+Intel Xeon E5-1630 V4,Broadwell,LGA1150,140,4
+Intel Core 2 Quad Q9300,Yorkfield,Unknown,95,4
+Intel Xeon E5-2683 V4,Broadwell,LGA1150,120,16
+Intel Core i3-3240,Ivy Bridge,LGA1155,55,2
+AMD A10-7700K,Steamroller,Unknown,95,4
+Intel Core i5-9600KF,Coffee Lake Refresh,LGA1151,95,6
+AMD Phenom II X6 1090T Black,K10,Unknown,125,6
+Intel Core i7-980X Extreme Edition,Westmere,LGA1151,130,6
+Intel Core 2 Quad Q6600,Core,Unknown,100,4
+Intel Xeon E5-1620 V3,Haswell,LGA1150,140,4
+Intel Core i7-4820K,Ivy Bridge,LGA1155,130,4
+Intel Xeon E5-2660 V3,Haswell,LGA1150,105,10
+Intel Core i9-7960X,Skylake,LGA1151,165,16
+AMD FX-6120,Bulldozer,AM3+,95,6
+Intel Xeon E3-1230 V2,Ivy Bridge,LGA1155,69,4
+Intel Core i7-9800X,Skylake,LGA1151,165,8
+Intel Core i5-9500F,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i5-8400T,Coffee Lake,LGA1151,35,6
+Intel Xeon E3-1231 V3,Haswell Refresh,LGA1150,80,4
+Intel Core i5-6400,Skylake,LGA1151,65,4
+Intel Core i7-3770S,Ivy Bridge,LGA1155,65,4
+Intel Xeon E5-2680,Sandy Bridge,LGA1155,130,8
+Intel Core i5-9500T,Coffee Lake Refresh,LGA1151,35,6
+Intel Core i3-10100T,Comet Lake,LGA1200,35,4
+Intel Core i7-7700T,Kaby Lake,LGA1151,35,4
+Intel Core i3-13100T,Raptor Lake,LGA1700,35,4
+AMD Ryzen 7 PRO 7745,Zen 4,AM5,65,8
+AMD FX-8350,Piledriver,AM3+,125,8
+AMD A8-6600K,Piledriver,AM3+,100,4
+Intel Pentium G3258,Haswell Refresh,LGA1150,53,2
+Intel Core i5-650,Westmere,LGA1151,73,2
+Intel Core i7-5775C,Broadwell,LGA1150,65,4
+AMD 5350,Jaguar,AM1,25,4
+AMD Ryzen 9 3950X,Zen 2,AM4,105,16
+Intel Core 2 Quad Q9650,Yorkfield,Unknown,95,4
+AMD Phenom II X6 1100T Black,K10,Unknown,125,6
+Intel Core i7-4790S,Haswell Refresh,LGA1150,65,4
+Intel Core i5-7500,Kaby Lake,LGA1151,65,4
+AMD A10-7850K,Steamroller,Unknown,95,4
+Intel Celeron G3900,Skylake,LGA1151,51,2
+AMD Athlon II 160u,K10,Unknown,20,1
+Intel Xeon E5-2697 V3,Haswell,LGA1150,145,14
+AMD FX-8320,Piledriver,AM3+,125,8
+Intel Core i7-4770K,Haswell,LGA1150,84,4
+AMD FX-6350,Piledriver,AM3+,125,6
+Intel Xeon E3-1270 V3,Haswell,LGA1150,80,4
+Intel Core i5-6402P,Skylake,LGA1151,65,4
+Intel Core i9-10850K,Comet Lake,LGA1200,125,10
+Intel Core 2 Quad Q9550,Yorkfield,Unknown,95,4
+Intel Core 2 Duo E7500,Wolfdale,Unknown,65,2
+AMD FX-6300,Piledriver,AM3+,95,6
+Intel Core i7-950,Nehalem,LGA1151,130,4
+AMD A10-6800K,Piledriver,AM3+,100,4
+Intel Xeon E5-2695 V4,Broadwell,LGA1150,120,18
+Intel Core i7-3970X Extreme Edition,Sandy Bridge,LGA1155,150,6
+Intel Core i3-8100,Coffee Lake,LGA1151,65,4
+AMD A10-9700,Excavator,Unknown,65,4
+Intel Core i5-4570S,Haswell,LGA1150,65,4
+AMD A8-7680,Puma+,Unknown,65,4
+Intel Core i3-10300,Comet Lake,LGA1200,65,4
+Intel Core i9-9900X,Skylake,LGA1151,165,10
+Intel Core i5-10600K,Comet Lake,LGA1200,125,6
+Intel Core i5-4690,Haswell Refresh,LGA1150,84,4
+AMD Phenom II X4 820,K10,Unknown,95,4
+Intel Core i7-5820K,Haswell,LGA1150,140,6
+Intel Core i5-7400,Kaby Lake,LGA1151,65,4
+AMD Phenom II X4 965 Black,K10,Unknown,125,4
+Intel Core 2 Extreme QX9770,Yorkfield,Unknown,136,4
+Intel Core i5-6500T,Skylake,LGA1151,35,4
+Intel Core i7-870,Nehalem,LGA1151,95,4
+Intel Core i5-6500T,Skylake,LGA1151,35,4
+Intel Core i3-6300,Skylake,LGA1151,51,2
+Intel Xeon E5-2640 V4,Broadwell,LGA1150,90,10
+Intel Core i7-3960X Extreme Edition,Sandy Bridge,LGA1155,130,6
+Intel Xeon E5-2680 V2,Ivy Bridge,LGA1155,115,10
+AMD A10-7800,Steamroller,Unknown,65,4
+Intel Core i7-10700K Avengers Collector's Edition,Comet Lake,LGA1200,125,8
+Intel Core i5-3550,Ivy Bridge,LGA1155,77,4
+Intel Core i3-7350K,Kaby Lake,LGA1151,60,2
+Intel Xeon E5-2630,Sandy Bridge,LGA1155,95,6
+AMD Athlon X4 860K,Steamroller,Unknown,95,4
+Intel Pentium G4600,Kaby Lake,LGA1151,51,2
+Intel Xeon E-2288G,Coffee Lake Refresh,LGA1151,95,8
+Intel Xeon E5-2695 V3,Haswell,LGA1150,120,14
+Intel Core i7-4770K,Haswell,LGA1150,84,4
+Intel Core i7-7740X,Kaby Lake,LGA1151,112,4
+Intel Pentium Gold G6405,Comet Lake,LGA1200,58,2
+Intel Core i5-2320,Sandy Bridge,LGA1155,95,4
+Intel Core i5-4590S,Haswell Refresh,LGA1150,65,4
+Intel Core i3-7100,Kaby Lake,LGA1151,51,2
+Intel Core i3-9100T,Coffee Lake Refresh,LGA1151,35,4
+Intel Core i5-760,Nehalem,LGA1151,95,4
+Intel Pentium G645,Sandy Bridge,LGA1155,65,2
+Intel Xeon E3-1240 V2,Ivy Bridge,LGA1155,69,4
+Intel Core i3-7320,Kaby Lake,LGA1151,51,2
+Intel Xeon E5-1620 V4,Broadwell,LGA1150,140,4
+Intel Core i3-10320,Comet Lake,LGA1200,65,4
+AMD FX-4100,Bulldozer,AM3+,95,4
+Intel Xeon E3-1240L V5,Skylake,LGA1151,25,4
+Intel Xeon E3-1245 V6,Kaby Lake,LGA1151,73,4
+Intel Xeon E5-1660 V3,Haswell,LGA1150,140,8
+Intel Celeron G3930,Kaby Lake,LGA1151,51,2
+Intel Core i3-2120T,Sandy Bridge,LGA1155,35,2
+Intel Core i7-4771,Haswell,LGA1150,84,4
+AMD A8-7650K,Steamroller,Unknown,95,4
+Intel Core i5-7600K,Kaby Lake,LGA1151,91,4
+Intel Core i9-9900T,Coffee Lake Refresh,LGA1151,35,8
+Intel Core i5-8500,Coffee Lake,LGA1151,65,6
+Intel Core i5-3470S,Ivy Bridge,LGA1155,65,4
+Intel Core i9-10850KA Avengers Limited Edition,Comet Lake,LGA1200,125,10
+AMD FX-8320E,Piledriver,AM3+,95,8
+Intel Xeon E5-1650 V3,Haswell,LGA1150,140,6
+Intel Celeron G4900,Coffee Lake,LGA1151,65,2
+Intel Xeon E-2286G,Coffee Lake Refresh,LGA1151,95,6
+Intel Core i7-960,Nehalem,LGA1151,130,4
+Intel Xeon E3-1230 V3,Haswell,LGA1150,80,4
+Intel Xeon E3-1241 V3,Haswell Refresh,LGA1150,80,4
+Intel Core i9-9960X,Skylake,LGA1151,165,16
+AMD Phenom II X6 1055T,K10,Unknown,125,6
+Intel Pentium G3220,Haswell,LGA1150,54,2
+AMD A6-7400K,Steamroller,Unknown,65,2
+Intel Core i5-6600,Skylake,LGA1151,65,4
+AMD Threadripper 2990WX,Zen+,AM4,250,32
+Intel Core i7-2600S,Sandy Bridge,LGA1155,65,4
+Intel Celeron 440,Core,Unknown,35,1
+Intel Core i3-3250,Ivy Bridge,LGA1155,55,2
+Intel Core i9-9900,Coffee Lake Refresh,LGA1151,65,8
+Intel Xeon E5-2620 V3,Haswell,LGA1150,85,6
+Intel Xeon E5-2630 V2,Ivy Bridge,LGA1155,80,6
+Intel Xeon E5-2660 V4,Broadwell,LGA1150,105,14
+Intel Core i5-8500,Coffee Lake,LGA1151,65,6
+Intel Pentium G2020,Ivy Bridge,LGA1155,55,2
+Intel Core i5-3350P,Ivy Bridge,LGA1155,69,4
+Intel Xeon E5-2667 V2,Ivy Bridge,LGA1155,130,8
+Intel Core i5-9500,Coffee Lake Refresh,LGA1151,65,6
+Intel Core 2 Extreme QX9775,Yorkfield,Unknown,150,4
+AMD A10-6700,Piledriver,AM3+,65,4
+AMD Athlon 220GE,Zen,AM4,35,2
+Intel Core i3-9350KF,Coffee Lake Refresh,LGA1151,91,4
+Intel Core i7-7800X,Skylake,LGA1151,140,6
+Intel Core i9-7900X,Skylake,LGA1151,140,10
+Intel Core i5-2400S,Sandy Bridge,LGA1155,65,4
+Intel Xeon E3-1275 V2,Ivy Bridge,LGA1155,77,4
+Intel Pentium G2030,Ivy Bridge,LGA1155,55,2
+Intel Xeon E5-2670,Sandy Bridge,LGA1155,115,8
+Intel Xeon E5-2650 V3,Haswell,LGA1150,105,10
+Intel Core i9-7980XE,Skylake,LGA1151,165,18
+AMD Phenom II X4 955 Black,K10,Unknown,125,4
+AMD A10-5800K,Piledriver,AM3+,100,4
+AMD FX-9590,Piledriver,AM3+,220,8
+Intel Xeon E5-2650L V2,Ivy Bridge,LGA1155,70,10
+Intel Xeon E5-2640 V3,Haswell,LGA1150,90,8
+Intel Core i5-7640X,Kaby Lake,LGA1151,112,4
+AMD A6-9500,Excavator,Unknown,65,2
+Intel Core 2 Quad Q9550,Yorkfield,Unknown,95,4
+Intel Xeon E5-1680 V3,Haswell,LGA1150,140,8
+AMD A12-9800E,Excavator,Unknown,35,4
+Intel Core i3-9300,Coffee Lake Refresh,LGA1151,62,4
+Intel Core i3-540,Westmere,Unknown,73,2
+AMD Athlon II X2 250,K10,Unknown,65,2
+Intel Core i5-2300,Sandy Bridge,LGA1155,95,4
+AMD A6-3670K,Lynx,Unknown,100,4
+Intel Xeon E3-1240 V3,Haswell,LGA1150,80,4
+Intel Xeon E5-2695 V2,Ivy Bridge,LGA1155,115,12
+Intel Xeon E3-1270 V5,Skylake,LGA1151,80,4
+AMD A10-7890K,Steamroller,Unknown,95,4
+Intel Core i5-4460S,Haswell Refresh,LGA1150,65,4
+AMD Ryzen 3 2200G,Zen,AM4,65,4
+Intel Core i3-8300,Coffee Lake,LGA1151,62,4
+Intel Core i3-8100T,Coffee Lake,LGA1151,35,4
+Intel Core i7-9700T,Coffee Lake Refresh,LGA1151,35,8
+Intel Pentium G630,Sandy Bridge,LGA1155,65,2
+Intel Xeon E5-2650L,Sandy Bridge,LGA1155,70,8
+Intel Core i7-5930K,Haswell,LGA1150,140,6
+AMD Athlon II X4 640,K10,Unknown,95,4
+Intel Core i5-2310,Sandy Bridge,LGA1155,95,4
+AMD FX-9370,Piledriver,AM3+,220,8
+Intel Xeon E5-2650 V2,Ivy Bridge,LGA1155,95,8
+Intel Xeon E-2236,Coffee Lake Refresh,LGA1151,80,6
+AMD A10-7870K,Steamroller,Unknown,95,4
+Intel Core i7-4790T,Haswell Refresh,LGA1150,45,4
+AMD A12-9800,Excavator,Unknown,65,4
+Intel Core 2 Quad Q8400,Yorkfield,Unknown,95,4
+AMD FX-8120,Bulldozer,AM3+,125,8
+Intel Xeon E3-1270 V2,Ivy Bridge,LGA1155,69,4
+AMD Opteron 6378,Piledriver,AM3+,115,16
+Intel Celeron G3900,Skylake,LGA1151,51,2
+AMD Athlon X4 950,Excavator,Unknown,65,4
+Intel Celeron 430,Core,Unknown,35,1
+Intel Xeon E5-1650 V2,Ivy Bridge,LGA1155,130,6
+Intel Core i7-880,Nehalem,LGA1151,95,4
+Intel Core i5-3340,Ivy Bridge,LGA1155,77,4
+Intel Xeon E5-2690 V3,Haswell,LGA1150,135,12
+AMD FX-8350,Piledriver,AM3+,125,8
+Intel Core i5-7600,Kaby Lake,LGA1151,65,4
+Intel Xeon E5-2650L V4,Broadwell,LGA1150,65,14
+AMD Ryzen 7 2700,Zen+,AM4,65,8
+Intel Core i5-9600K,Coffee Lake Refresh,LGA1151,95,6
+Intel Core i5-4590T,Haswell Refresh,LGA1150,35,4
+Intel Pentium Gold G5400T,Coffee Lake,LGA1151,35,2
+Intel Xeon E5-2698 V3,Haswell,LGA1150,135,16
+AMD A6-9500E,Excavator,Unknown,35,2
+Intel Celeron 420,Core,Unknown,35,1
+Intel Core 2 Duo E4300,Core,Unknown,65,2
+Intel Core 2 Duo E8600,Wolfdale,Unknown,65,2
+AMD Sempron 140,K10,Unknown,45,1
+AMD FX-8150,Bulldozer,AM3+,125,8
+Intel Xeon E3-1220 V2,Ivy Bridge,LGA1155,69,4
+Intel Core i3-4330,Haswell,LGA1150,54,2
+Intel Xeon E3-1245 V3,Haswell,LGA1150,84,4
+Intel Xeon E5-2687W V3,Haswell,LGA1150,160,10
+Intel Core i3-6100T,Skylake,LGA1151,35,2
+Intel Xeon E5-2620 V4,Broadwell,LGA1150,85,8
+Intel Core i9-7940X,Skylake,LGA1151,165,14
+Intel Core i9-9900X,Skylake,LGA1151,165,10
+AMD Athlon 3000G (14nm),Zen,AM4,35,2
+Intel Xeon E3-1220 V3,Haswell,LGA1150,80,4
+AMD Athlon II X4 635,K10,Unknown,95,4
+Intel Core i7-980,Westmere,LGA1151,130,6
+AMD FX-8370,Piledriver,AM3+,125,8
+Intel Core i7-6800K,Broadwell,LGA1150,140,6
+Intel Pentium E2160,Core,Unknown,65,2
+Intel Core i5-3450S,Ivy Bridge,LGA1155,65,4
+Intel Xeon E3-1245 V6,Kaby Lake,LGA1151,73,4
+AMD Phenom II X4 945,K10,Unknown,125,4
+Intel Pentium E5300,Wolfdale,Unknown,65,2
+Intel Core i7-930,Nehalem,LGA1151,130,4
+Intel Core 2 Quad Q9300,Yorkfield,Unknown,95,4
+AMD A8-5500,Piledriver,AM3+,65,4
+AMD Athlon X2 370K,Piledriver,AM3+,65,2
+Intel Core i7-4790K,Haswell Refresh,LGA1150,88,4
+Intel Core i5-4690K,Haswell Refresh,LGA1150,88,4
+Intel Xeon E3-1271 V3,Haswell Refresh,LGA1150,80,4
+Intel Xeon E5-1650,Sandy Bridge,LGA1155,130,6
+Intel Xeon E5-2637 V3,Haswell,LGA1150,135,4
+Intel Core i5-6400T,Skylake,LGA1151,35,4
+Intel Xeon E3-1230 V6,Kaby Lake,LGA1151,72,4
+Intel Core i5-9400,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i5-4690K,Haswell Refresh,LGA1150,88,4
+Intel Core i7-875K,Nehalem,LGA1151,95,4
+AMD Phenom II X4 955,K10,Unknown,125,4
+Intel Celeron G440,Sandy Bridge,LGA1155,35,1
+AMD A8-5600K,Piledriver,AM3+,100,4
+AMD A6-5400K,Piledriver,AM3+,65,2
+Intel Core i3-3210,Ivy Bridge,LGA1155,55,2
+Intel Xeon E5-2670 V2,Ivy Bridge,LGA1155,115,10
+Intel Core i5-4440S,Haswell,LGA1150,65,4
+AMD 3850,Jaguar,AM1,25,4
+Intel Core i3-4160,Haswell Refresh,LGA1150,54,2
+Intel Core i5-7400T,Kaby Lake,LGA1151,35,4
+Intel Core i7-7700T,Kaby Lake,LGA1151,35,4
+Intel Xeon E-2278G,Coffee Lake Refresh,LGA1151,80,8
+AMD Ryzen 3 1200 (12nm),Zen+,AM4,65,4
+AMD A10-5800K,Piledriver,AM3+,100,4
+Intel Core i7-870,Nehalem,LGA1151,95,4
+Intel Core 2 Quad Q9550S,Yorkfield,Unknown,65,4
+Intel Core i3-2100T,Sandy Bridge,LGA1155,35,2
+Intel Xeon E5-2603 V3,Haswell,LGA1150,85,6
+Intel Xeon E5-2609 V4,Broadwell,LGA1150,85,8
+Intel Core 2 Quad Q6600,Core,Unknown,100,4
+Intel Core i3-550,Westmere,Unknown,73,2
+AMD Phenom II X6 1075T,K10,Unknown,95,6
+AMD Phenom II X4 940 Black,K10,Unknown,125,4
+Intel Pentium E5800,Wolfdale,Unknown,65,2
+Intel Core i3-2130,Sandy Bridge,LGA1155,65,2
+Intel Pentium G3240,Haswell Refresh,LGA1150,53,2
+AMD A4-7300,Piledriver,AM3+,65,2
+Intel Xeon E3-1240 V5,Skylake,LGA1151,80,4
+AMD A10-7860k,Steamroller,Unknown,65,4
+Intel Core i3-6098P,Skylake,LGA1151,54,2
+Intel Xeon E3-1285 V6,Kaby Lake,LGA1151,79,4
+AMD Athlon 200GE,Zen,AM4,35,2
+Intel Core i9-9940X,Skylake,LGA1151,165,14
+Intel Celeron G4900,Coffee Lake,LGA1151,65,2
+Intel Xeon E5-4650,Sandy Bridge,LGA1155,130,8
+AMD Athlon II X4 620,K10,Unknown,95,4
+Intel Xeon E3-1245 V2,Ivy Bridge,LGA1155,77,4
+Intel Xeon E5-2687W V2,Ivy Bridge,LGA1155,150,8
+Intel Core i5-5675C,Broadwell,LGA1150,65,4
+Intel Pentium E2140,Core,Unknown,65,2
+Intel Core 2 Duo E8400,Wolfdale,Unknown,65,2
+Intel Core i5-4690S,Haswell Refresh,LGA1150,65,4
+AMD FX-4300,Piledriver,AM3+,95,4
+Intel Pentium G3250,Haswell Refresh,LGA1150,53,2
+Intel Core i5-6600T,Skylake,LGA1151,35,4
+Intel Xeon E3-1245 V5,Skylake,LGA1151,80,4
+Intel Pentium G3260,Haswell Refresh,LGA1150,53,2
+Intel Xeon E-2176G,Coffee Lake,LGA1151,80,6
+Intel Core 2 Duo E6400,Core,Unknown,65,2
+Intel Core i7-940,Nehalem,LGA1151,130,4
+AMD Athlon II X4 630,K10,Unknown,95,4
+Intel Celeron G530,Sandy Bridge,LGA1155,65,2
+Intel Celeron G1610,Ivy Bridge,LGA1155,55,2
+Intel Celeron G4930,Coffee Lake,LGA1151,54,2
+Intel Core 2 Quad Q8200,Yorkfield,Unknown,95,4
+AMD Athlon II X2 270,K10,Unknown,65,2
+AMD FX-8150,Bulldozer,AM3+,125,8
+Intel Pentium G640T,Sandy Bridge,LGA1155,35,2
+AMD A4-5300,Piledriver,AM3+,65,2
+AMD A8-6500,Piledriver,AM3+,65,4
+AMD A10-6700,Piledriver,AM3+,65,4
+Intel Pentium G4560,Kaby Lake,LGA1151,54,2
+Intel Core i5-3570,Ivy Bridge,LGA1155,77,4
+AMD Threadripper 2970WX,Zen+,AM4,250,24
+Intel Core i9-9960X,Skylake,LGA1151,165,16
+AMD A10-5700,Piledriver,AM3+,65,4
+Intel Core i3-6100,Skylake,LGA1151,51,2
+Intel Celeron G4920,Coffee Lake,LGA1151,65,2
+Intel Core 2 Duo E8600,Wolfdale,Unknown,65,2
+Intel Core i5-750,Nehalem,LGA1151,95,4
+Intel Core 2 Quad Q9400,Yorkfield,Unknown,95,4
+AMD Phenom II X4 970 Black,K10,Unknown,125,4
+AMD Phenom II X4 980 Black,K10,Unknown,125,4
+Intel Pentium G620,Sandy Bridge,LGA1155,65,2
+AMD Phenom II X6 1045T,K10,Unknown,95,6
+AMD A4-4000,Piledriver,AM3+,65,2
+AMD Athlon X4 750K,Piledriver,AM3+,100,4
+Intel Pentium G3420,Haswell,LGA1150,54,2
+Intel Core i3-4160T,Haswell Refresh,LGA1150,35,2
+Intel Xeon E5-2660 V3,Haswell,LGA1150,105,10
+AMD FX-8310,Piledriver,AM3+,95,8
+Intel Xeon E3-1230 V5,Skylake,LGA1151,80,4
+Intel Core i7-7820X,Skylake,LGA1151,140,8
+Intel Core i9-7920X,Skylake,LGA1151,140,12
+Intel Core i5-3570S,Ivy Bridge,LGA1155,65,4
+Intel Core i5-8600T,Coffee Lake,LGA1151,35,6
+AMD Threadripper 2950X,Zen+,AM4,180,16
+Intel Xeon E-2136,Coffee Lake,LGA1151,80,6
+Intel Celeron G3920,Skylake,LGA1151,35,2
+Intel Core i5-8600,Coffee Lake,LGA1151,65,6
+Intel Core i3-3245,Ivy Bridge,LGA1155,55,2
+Intel Xeon E5-2630L V3,Haswell,LGA1150,55,8
+Intel Xeon E3-1230 V6,Kaby Lake,LGA1151,72,4
+AMD A10-9700E,Excavator,Unknown,35,4
+Intel Xeon E-2274G,Coffee Lake Refresh,LGA1151,83,4
+Intel Core 2 Duo E4300,Core,Unknown,65,2
+Intel Core 2 Duo E4600,Core,Unknown,65,2
+Intel Core 2 Duo E8400,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8500,Wolfdale,Unknown,65,2
+Intel Core i7-920,Nehalem,LGA1151,130,4
+Intel Core i7-970,Westmere,LGA1151,130,6
+AMD Phenom II X4 965,K10,Unknown,125,4
+Intel Pentium G2120,Ivy Bridge,LGA1155,55,2
+Intel Core i3-3225,Ivy Bridge,LGA1155,55,2
+Intel Core i3-4130T,Haswell,LGA1150,35,2
+Intel Xeon E5-2687W,Sandy Bridge,LGA1155,150,8
+AMD FX-8370E,Piledriver,AM3+,95,8
+Intel Xeon E3-1265L V3,Haswell,LGA1150,45,4
+Intel Xeon E3-1280 V6,Kaby Lake,LGA1151,72,4
+Intel Core i3-8300T,Coffee Lake,LGA1151,35,4
+Intel Pentium Gold G5500,Coffee Lake,LGA1151,54,2
+Intel Core i5-3330S,Ivy Bridge,LGA1155,65,4
+Intel Core i5-9400,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i5-9400T,Coffee Lake Refresh,LGA1151,35,6
+Intel Pentium Gold G6605,Comet Lake,LGA1200,58,2
+Intel Core i9-10900K,Comet Lake,LGA1200,125,10
+Intel Core i3-4340,Haswell,LGA1150,54,2
+Intel Celeron G3930T,Kaby Lake,LGA1151,35,2
+AMD Phenom II X4 925,K10,Unknown,95,4
+Intel Pentium E6600,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6700,Core,Unknown,65,2
+Intel Core 2 Duo E7200,Wolfdale,Unknown,65,2
+Intel Core 2 Quad Q6700,Core,Unknown,100,4
+Intel Core 2 Quad Q8300,Yorkfield,Unknown,95,4
+Intel Core 2 Extreme QX9650,Yorkfield,Unknown,130,4
+AMD FX-8100,Bulldozer,AM3+,95,8
+AMD FX-4100,Bulldozer,AM3+,95,4
+Intel Core i5-2550K,Sandy Bridge,LGA1155,95,4
+AMD FX-6200,Bulldozer,AM3+,125,6
+Intel Celeron G1840,Haswell Refresh,LGA1150,53,2
+Intel Core i3-4370,Haswell Refresh,LGA1150,54,2
+Intel Xeon E3-1276 V3,Haswell Refresh,LGA1150,84,4
+Intel Xeon E3-1246 V3,Haswell Refresh,LGA1150,84,4
+Intel Xeon E5-1620,Sandy Bridge,LGA1155,130,4
+Intel Xeon E5-1650 V3,Haswell,LGA1150,140,6
+Intel Xeon E5-2643 V3,Haswell,LGA1150,135,6
+Intel Core i7-4770T,Haswell,LGA1150,45,4
+Intel Core i3-6100T,Skylake,LGA1151,35,2
+AMD Opteron 6320,Piledriver,AM3+,115,8
+Intel Xeon E5-2603 V4,Broadwell,LGA1150,85,6
+Intel Core i3-7300,Kaby Lake,LGA1151,51,2
+Intel Xeon E5-2643 V4,Broadwell,LGA1150,135,6
+AMD Athlon X4 970,Excavator,Unknown,65,4
+AMD Ryzen 7 1800X,Zen,AM4,95,8
+AMD Threadripper 2920X,Zen+,AM4,180,12
+Intel Core i9-9920X,Skylake,LGA1151,165,12
+Intel Core i3-10325,Comet Lake,LGA1200,65,4
+AMD EPYC 4484PX,Zen 4,AM5,120,12
+Intel Pentium Gold G5600,Coffee Lake,LGA1151,54,2
+Intel Celeron G5920,Comet Lake,LGA1200,58,2
+Intel Xeon E5-1660 V2,Ivy Bridge,LGA1155,130,6
+Intel Core i7-6900K,Broadwell,LGA1150,140,8
+Intel Core i5-7500T,Kaby Lake,LGA1151,35,4
+AMD Phenom II X2 555 Black,K10,Unknown,80,2
+Intel Pentium E2140,Core,Unknown,65,2
+Intel Pentium E5200,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6320,Core,Unknown,65,2
+Intel Core 2 Duo E7400,Wolfdale,Unknown,65,2
+Intel Pentium G6950,Westmere,Unknown,73,2
+Intel Pentium E5500,Wolfdale,Unknown,65,2
+AMD Phenom II X4 840,K10,Unknown,95,4
+AMD A8-3850,Lynx,Unknown,100,4
+Intel Core i5-2405S,Sandy Bridge,LGA1155,65,4
+AMD A8-3870K,Lynx,Unknown,100,4
+AMD A4-3300,Lynx,Unknown,65,2
+AMD Athlon X4 760K,Piledriver,AM3+,100,4
+Intel Xeon E3-1225 V3,Haswell,LGA1150,84,4
+Intel Xeon E3-1275 V3,Haswell,LGA1150,84,4
+Intel Celeron G1820,Haswell,LGA1150,53,2
+Intel Xeon E5-2690,Sandy Bridge,LGA1155,135,8
+Intel Xeon E5-2640 V2,Ivy Bridge,LGA1155,95,8
+Intel Xeon E5-2660 V2,Ivy Bridge,LGA1155,95,10
+Intel Core i3-4360,Haswell Refresh,LGA1150,54,2
+AMD Sempron 150,K10,Unknown,45,1
+Intel Core i7-5960X,Haswell,LGA1150,140,8
+Intel Xeon E5-1630 V3,Haswell,LGA1150,140,4
+Intel Xeon E5-2697 V3,Haswell,LGA1150,145,14
+Intel Xeon E5-2695 V3,Haswell,LGA1150,120,14
+Intel Xeon E5-2670 V3,Haswell,LGA1150,120,12
+Intel Core i7-3770T,Ivy Bridge,LGA1155,45,4
+Intel Core i5-4570S,Haswell,LGA1150,65,4
+Intel Pentium G3470,Haswell Refresh,LGA1150,53,2
+Intel Xeon E3-1270 V5,Skylake,LGA1151,80,4
+Intel Xeon E3-1220 V5,Skylake,LGA1151,80,4
+Intel Xeon E3-1260L V5,Skylake,LGA1151,45,4
+Intel Xeon E3-1225 V5,Skylake,LGA1151,80,4
+Intel Xeon E3-1235L V5,Skylake,LGA1151,25,4
+Intel Xeon E5-1650 V4,Broadwell,LGA1150,140,6
+Intel Xeon E3-1270 V6,Kaby Lake,LGA1151,72,4
+Intel Core i9-7960X,Skylake,LGA1151,165,16
+Intel Core i3-8350K,Coffee Lake,LGA1151,91,4
+Intel Core i9-9920X,Skylake,LGA1151,165,12
+Intel Core i9-9820X,Skylake,LGA1151,165,10
+Intel Core i5-9500F,Coffee Lake Refresh,LGA1151,65,6
+Intel Xeon E-2174G,Coffee Lake,LGA1151,71,4
+Intel Xeon E-2246G,Coffee Lake Refresh,LGA1151,80,6
+AMD Phenom II X4 830,K10,Unknown,95,4
+AMD Phenom II X4 975,K10,Unknown,125,4
+Intel Pentium G870,Sandy Bridge,LGA1155,65,2
+AMD A4-6300B,Piledriver,AM3+,65,2
+Intel Core i3-6300T,Skylake,LGA1151,35,2
+AMD Athlon II X2 250u,K10,Unknown,25,2
+AMD Phenom II X4 905e,K10,Unknown,65,4
+Intel Pentium E2220,Core,Unknown,65,2
+Intel Pentium E5400,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6320,Core,Unknown,65,2
+Intel Core 2 Duo E6550,Core,Unknown,65,2
+Intel Core i5-680,Westmere,LGA1151,73,2
+Intel Core i7-930,Nehalem,LGA1151,130,4
+Intel Core i7-965 Extreme Edition,Nehalem,LGA1151,130,4
+Intel Core i7-975 Extreme Edition,Nehalem,LGA1151,130,4
+Intel Core 2 Extreme QX6700,Core,Unknown,100,4
+Intel Pentium G850,Sandy Bridge,LGA1155,65,2
+AMD Athlon II X4 631,Lynx,Unknown,100,4
+Intel Core i3-3220T,Ivy Bridge,LGA1155,35,2
+AMD FX-8300,Piledriver,AM3+,95,8
+Intel Xeon E3-1225,Sandy Bridge,LGA1155,95,4
+Intel Xeon E3-1275,Sandy Bridge,LGA1155,95,4
+Intel Xeon E3-1225 V2,Ivy Bridge,LGA1155,77,4
+AMD FX-4130,Bulldozer,AM3+,125,4
+AMD FX-9370,Piledriver,AM3+,220,8
+AMD 5150,Jaguar,AM1,25,4
+Intel Core i3-4350,Haswell Refresh,LGA1150,54,2
+Intel Celeron G470,Sandy Bridge,LGA1155,35,1
+AMD E2-3200,Lynx,Unknown,65,2
+Intel Xeon E5-2630L V2,Ivy Bridge,LGA1155,60,6
+Intel Xeon E5-2687W V3,Haswell,LGA1150,160,10
+Intel Xeon E5-2680 V3,Haswell,LGA1150,120,12
+Intel Xeon E5-2609,Sandy Bridge,LGA1155,80,4
+Intel Core i3-6320,Skylake,LGA1151,51,2
+Intel Core i3-6320,Skylake,LGA1151,51,2
+Intel Pentium G4500,Skylake,LGA1151,51,2
+Intel Xeon E3-1275 V5,Skylake,LGA1151,80,4
+AMD Opteron 6320,Piledriver,AM3+,115,8
+Intel Core i7-6850K,Broadwell,LGA1150,140,6
+Intel Core i7-7700T,Kaby Lake,LGA1151,35,4
+Intel Core i9-7900X,Skylake,LGA1151,140,10
+Intel Core i7-7800X,Skylake,LGA1151,140,6
+Intel Celeron G4900T,Coffee Lake,LGA1151,35,2
+Intel Pentium Gold G5400,Coffee Lake,LGA1151,58,2
+Intel Pentium Gold G5600,Coffee Lake,LGA1151,54,2
+Intel Core i5-9600T,Coffee Lake Refresh,LGA1151,35,6
+Intel Xeon E-2244G,Coffee Lake Refresh,LGA1151,71,4
+Intel Xeon E-2276G,Coffee Lake Refresh,LGA1151,80,6
+Intel Xeon E-2124G,Coffee Lake,LGA1151,71,4
+Intel Xeon E5-2623 V3,Haswell,LGA1150,105,4
+Intel Celeron E3400,Wolfdale,Unknown,65,2
+Intel Core i3-560,Westmere,Unknown,73,2
+Intel Xeon E5-2640 V3,Haswell,LGA1150,90,8
+AMD Athlon II X2 220,K10,Unknown,65,2
+AMD Athlon II X3 445,K10,Unknown,95,3
+AMD Phenom II X2 550 Black,K10,Unknown,80,2
+Intel Pentium E6500,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6750,Core,Unknown,65,2
+Intel Core 2 Duo E7600,Wolfdale,Unknown,65,2
+Intel Core 2 Extreme QX6850,Core,Unknown,130,4
+AMD Athlon II X4 645,K10,Unknown,95,4
+Intel Pentium E6700,Wolfdale,Unknown,65,2
+AMD A6-3650,Lynx,Unknown,100,4
+AMD Phenom II X6 1035T,K10,Unknown,95,6
+Intel Celeron G540,Sandy Bridge,LGA1155,65,2
+AMD A6-3500,Lynx,Unknown,65,3
+Intel Core i3-2125,Sandy Bridge,LGA1155,65,2
+AMD Phenom II X4 970,K10,Unknown,125,4
+Intel Xeon E3-1245,Sandy Bridge,LGA1155,95,4
+Intel Xeon E3-1270,Sandy Bridge,LGA1155,80,4
+Intel Xeon E3-1265L V2,Ivy Bridge,LGA1155,45,4
+AMD Athlon X4 740,Piledriver,AM3+,65,4
+AMD FX-9590,Piledriver,AM3+,220,8
+Intel Xeon E5-2670,Sandy Bridge,LGA1155,115,8
+Intel Pentium G3258,Haswell Refresh,LGA1150,53,2
+AMD Sempron 145,K10,Unknown,45,1
+Intel Xeon E3-1226 V3,Haswell Refresh,LGA1150,84,4
+Intel Xeon E5-2630,Sandy Bridge,LGA1155,95,6
+Intel Xeon E5-2643 V2,Ivy Bridge,LGA1155,130,6
+Intel Xeon E5-1620 V3,Haswell,LGA1150,140,4
+AMD Pro A10-7800B,Steamroller,Unknown,65,4
+Intel Xeon E5-2622 V3,Haswell,LGA1150,85,8
+Intel Xeon E5-2685 V3,Haswell,LGA1150,120,12
+AMD Opteron 6344,Piledriver,AM3+,115,12
+AMD Opteron 6378,Piledriver,AM3+,115,16
+AMD Athlon X4 845,Puma+,Unknown,65,4
+AMD Athlon 5370,Jaguar,AM1,25,4
+AMD Athlon X4 870K,Steamroller,Unknown,95,4
+AMD Athlon X4 860K,Steamroller,Unknown,95,4
+Intel Core i3-7300T,Kaby Lake,LGA1151,35,2
+Intel Core i5-7600T,Kaby Lake,LGA1151,35,4
+Intel Core i5-7600T,Kaby Lake,LGA1151,35,4
+Intel Core i5-7640X,Kaby Lake,LGA1151,112,4
+AMD Ryzen 7 1800X,Zen,AM4,95,8
+Intel Xeon E3-1275 V6,Kaby Lake,LGA1151,73,4
+Intel Core i7-9800X,Skylake,LGA1151,165,8
+AMD Athlon 240GE,Zen,AM4,35,2
+Intel Core i3-9320,Coffee Lake Refresh,LGA1151,62,4
+Intel Core i3-9350K,Coffee Lake Refresh,LGA1151,91,4
+Intel Xeon E-2104G,Coffee Lake,LGA1151,65,4
+Intel Celeron G5905T,Comet Lake,LGA1200,35,2
+Intel Core i3-3240T,Ivy Bridge,LGA1155,35,2
+AMD Phenom II X2 B59,K10,Unknown,80,2
+Intel Xeon E5-2620,Sandy Bridge,LGA1155,95,6
+AMD Athlon II X2 215,K10,Unknown,65,2
+AMD Athlon II X2 260,K10,Unknown,65,2
+AMD Phenom II X2 550,K10,Unknown,80,2
+AMD Phenom II X4 945,K10,Unknown,125,4
+AMD Athlon II X2 235e,K10,Unknown,45,2
+AMD Athlon II X2 240e,K10,Unknown,45,2
+AMD Phenom II X3 705e,K10,Unknown,65,3
+Intel Celeron E1200,Core,Unknown,65,2
+Intel Celeron E1400,Core,Unknown,65,2
+Intel Pentium E2160,Core,Unknown,65,2
+Intel Pentium E2180,Core,Unknown,65,2
+Intel Pentium E2180,Core,Unknown,65,2
+Intel Pentium E2200,Core,Unknown,65,2
+Intel Celeron E3300,Wolfdale,Unknown,65,2
+Intel Pentium E6300,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6400,Core,Unknown,65,2
+Intel Core 2 Duo E6420,Core,Unknown,65,2
+Intel Core 2 Duo E6550,Core,Unknown,65,2
+Intel Core i5-655K,Westmere,LGA1151,73,2
+Intel Core i5-660,Westmere,LGA1151,73,2
+Intel Core i5-670,Westmere,LGA1151,73,2
+Intel Core 2 Extreme QX6700,Core,Unknown,100,4
+Intel Core 2 Extreme QX6800,Core,Unknown,100,4
+Intel Core 2 Extreme X6800,Core,Unknown,75,2
+AMD Athlon II X3 450,K10,Unknown,95,3
+AMD Athlon II X3 455,K10,Unknown,95,3
+AMD Sempron 145,K10,Unknown,45,1
+Intel Pentium E6800,Wolfdale,Unknown,65,2
+AMD Phenom II X3 720 Black,K10,Unknown,95,3
+Intel Pentium G840,Sandy Bridge,LGA1155,65,2
+AMD Phenom II X4 960T Black,K10,Unknown,95,4
+AMD A4-3400,Lynx,Unknown,65,2
+AMD A10-5700,Piledriver,AM3+,65,4
+Intel Xeon E3-1240,Sandy Bridge,LGA1155,80,4
+Intel Celeron G1620,Ivy Bridge,LGA1155,55,2
+AMD FX-9370,Piledriver,AM3+,220,8
+Intel Xeon E5-1660,Sandy Bridge,LGA1155,130,6
+Intel Xeon E5-2665,Sandy Bridge,LGA1155,115,8
+Intel Xeon E5-2620 V2,Ivy Bridge,LGA1155,80,6
+AMD FX-4130,Bulldozer,AM3+,125,4
+AMD 5350,Jaguar,AM1,25,4
+Intel Pentium G3450,Haswell Refresh,LGA1150,53,2
+AMD A6-7400K,Steamroller,Unknown,65,2
+AMD Athlon II X4 651,Lynx,Unknown,100,4
+Intel Xeon E3-1230 V3,Haswell,LGA1150,80,4
+Intel Xeon E5-2690,Sandy Bridge,LGA1155,135,8
+Intel Xeon E5-2637 V2,Ivy Bridge,LGA1155,130,4
+AMD Pro A10-7850B,Steamroller,Unknown,95,4
+AMD Athlon X4 840,Steamroller,Unknown,65,4
+Intel Pentium G3250T,Haswell Refresh,LGA1150,35,2
+Intel Xeon E5-2620 V3,Haswell,LGA1150,85,6
+Intel Xeon E5-2650L V3,Haswell,LGA1150,65,12
+Intel Xeon E3-1270 V3,Haswell,LGA1150,80,4
+Intel Core i5-4670S,Haswell,LGA1150,65,4
+Intel Core i5-5675C,Broadwell,LGA1150,65,4
+Intel Pentium G4520,Skylake,LGA1151,51,2
+Intel Pentium G4400T,Skylake,LGA1151,35,2
+AMD Opteron 6328,Piledriver,AM3+,115,8
+AMD Athlon X4 880K,Steamroller,Unknown,95,4
+Intel Core i3-7300,Kaby Lake,LGA1151,51,2
+Intel Core i3-7350K,Kaby Lake,LGA1151,60,2
+Intel Pentium G4620,Kaby Lake,LGA1151,51,2
+Intel Core i3-7300T,Kaby Lake,LGA1151,35,2
+Intel Xeon E5-2450V2,Ivy Bridge,LGA1155,95,8
+Intel Xeon E5-2470V2,Ivy Bridge,LGA1155,95,10
+Intel Xeon E3-1240 V6,Kaby Lake,LGA1151,72,4
+Intel Xeon E3-1220 V6,Kaby Lake,LGA1151,72,4
+Intel Xeon E3-1225 V6,Kaby Lake,LGA1151,73,4
+Intel Xeon E3-1225 V6,Kaby Lake,LGA1151,73,4
+Intel Core i5-3550S,Ivy Bridge,LGA1155,65,4
+Intel Core i3-4360,Haswell Refresh,LGA1150,54,2
+Intel Xeon E5-2665,Sandy Bridge,LGA1155,115,8
+Intel Core i3-9300,Coffee Lake Refresh,LGA1151,62,4
+Intel Core i5-9600,Coffee Lake Refresh,LGA1151,65,6
+AMD A6-7480,Puma+,Unknown,65,2
+Intel Xeon E-2144G,Coffee Lake,LGA1151,71,4
+Intel Xeon E-2126G,Coffee Lake,LGA1151,80,6
+Intel Xeon E-2174G,Coffee Lake,LGA1151,71,4
+Intel Xeon E-2236,Coffee Lake Refresh,LGA1151,80,6
+Intel Xeon E-2124,Coffee Lake,LGA1151,71,4
+Intel Xeon E-2124,Coffee Lake,LGA1151,71,4
+Intel Pentium Gold G6500,Comet Lake,LGA1200,58,2
+Intel Xeon E-2176G,Coffee Lake,LGA1151,80,6
+Intel Xeon E5-2620,Sandy Bridge,LGA1155,95,6
+AMD Athlon II X2 245,K10,Unknown,65,2
+AMD Athlon II X2 250,K10,Unknown,65,2
+AMD Athlon II X4 620,K10,Unknown,95,4
+AMD Phenom II X3 720,K10,Unknown,95,3
+AMD Phenom II X4 945,K10,Unknown,125,4
+AMD Phenom II X6 1055T,K10,Unknown,125,6
+AMD Athlon II X4 605e,K10,Unknown,45,4
+AMD Phenom II X4 910e,K10,Unknown,65,4
+AMD Phenom II X4 955 Black,K10,Unknown,125,4
+Intel Pentium E2140,Core,Unknown,65,2
+Intel Core 2 Duo E4500,Core,Unknown,65,2
+Intel Pentium E5300,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6750,Core,Unknown,65,2
+Intel Core 2 Duo E6850,Core,Unknown,65,2
+Intel Core 2 Duo E7600,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8300,Wolfdale,Unknown,65,2
+Intel Core i5-661,Westmere,LGA1151,87,2
+Intel Core i7-860,Nehalem,LGA1151,95,4
+Intel Core 2 Quad Q8200,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q9400S,Yorkfield,Unknown,65,4
+Intel Core 2 Quad Q9650,Yorkfield,Unknown,95,4
+Intel Core 2 Extreme QX9775,Yorkfield,Unknown,150,4
+AMD Phenom II X2 565 Black,K10,Unknown,80,2
+AMD Phenom II X4 840,K10,Unknown,95,4
+AMD Sempron 130,K10,Unknown,45,1
+Intel Pentium G620T,Sandy Bridge,LGA1155,35,2
+Intel Pentium G860,Sandy Bridge,LGA1155,65,2
+AMD FX-8120,Bulldozer,AM3+,125,8
+AMD Athlon II X4 645,K10,Unknown,95,4
+AMD Phenom II X6 1100T Black,K10,Unknown,125,6
+AMD Athlon II X4 641,Lynx,Unknown,100,4
+Intel Xeon E3-1220,Sandy Bridge,LGA1155,80,4
+Intel Xeon E3-1230,Sandy Bridge,LGA1155,80,4
+Intel Xeon E3-1235,Sandy Bridge,LGA1155,95,4
+Intel Xeon E3-1270,Sandy Bridge,LGA1155,80,4
+Intel Xeon E3-1280,Sandy Bridge,LGA1155,95,4
+Intel Core i5-3340S,Ivy Bridge,LGA1155,65,4
+Intel Xeon E5-2603,Sandy Bridge,LGA1155,80,4
+Intel Xeon E5-2609,Sandy Bridge,LGA1155,80,4
+AMD A6-6420K,Piledriver,AM3+,65,2
+AMD A4-4020,Piledriver,AM3+,65,2
+AMD A10-6800B,Piledriver,AM3+,100,4
+AMD A4-3300,Lynx,Unknown,65,2
+AMD A4-4000,Piledriver,AM3+,65,2
+AMD FX-4200,Bulldozer,AM3+,125,4
+Intel Xeon E5-1660 V2,Ivy Bridge,LGA1155,130,6
+AMD FX-8370,Piledriver,AM3+,125,8
+AMD Pro A4-7300B,Piledriver,AM3+,65,2
+AMD Athlon X2 450,Steamroller,Unknown,65,2
+AMD Phenom II X4 B99,K10,Unknown,95,4
+Intel Xeon E5-2609 V3,Haswell,LGA1150,85,6
+Intel Xeon E5-2603 V3,Haswell,LGA1150,85,6
+Intel Xeon E5-2630 V3,Haswell,LGA1150,85,8
+Intel Xeon E5-2650 V3,Haswell,LGA1150,105,10
+Intel Xeon E3-1230 V2,Ivy Bridge,LGA1155,69,4
+Intel Xeon E3-1275 V2,Ivy Bridge,LGA1155,77,4
+Intel Core i3-3240,Ivy Bridge,LGA1155,55,2
+Intel Xeon E3-1245 V3,Haswell,LGA1150,84,4
+Intel Xeon E5-2630 V2,Ivy Bridge,LGA1155,80,6
+AMD A10-7870K,Steamroller,Unknown,95,4
+Intel Core i3-6300T,Skylake,LGA1151,35,2
+Intel Core i5-6400T,Skylake,LGA1151,35,4
+Intel Core i7-6700T,Skylake,LGA1151,35,4
+Intel Pentium G4500,Skylake,LGA1151,51,2
+Intel Pentium G4500T,Skylake,LGA1151,35,2
+Intel Xeon E3-1240 V5,Skylake,LGA1151,80,4
+Intel Xeon E5-2658 V3,Haswell,LGA1150,105,12
+Intel Core i7-6900K,Broadwell,LGA1150,140,8
+Intel Core i7-6950X,Broadwell,LGA1150,140,10
+Intel Xeon E5-2683 V3,Haswell,LGA1150,120,14
+Intel Pentium G4620,Kaby Lake,LGA1151,51,2
+Intel Core i3-7320,Kaby Lake,LGA1151,51,2
+Intel Pentium G4600,Kaby Lake,LGA1151,51,2
+Intel Pentium G4600T,Kaby Lake,LGA1151,35,2
+Intel Core i3-7300T,Kaby Lake,LGA1151,35,2
+Intel Core i5-7400T,Kaby Lake,LGA1151,35,4
+AMD A8-7650K,Steamroller,Unknown,95,4
+AMD A8-7670K,Steamroller,Unknown,95,4
+Intel Xeon E5-2420V2,Ivy Bridge,LGA1155,80,6
+AMD A6-9550,Excavator,Unknown,65,2
+AMD A6-9550,Excavator,Unknown,65,2
+Intel Core i7-870S,Nehalem,LGA1151,82,4
+Intel Pentium Gold G5500,Coffee Lake,LGA1151,54,2
+Intel Pentium Gold G5500T,Coffee Lake,LGA1151,35,2
+AMD Athlon 220GE,Zen,AM4,35,2
+AMD Athlon 240GE,Zen,AM4,35,2
+Intel Xeon E5-2660,Sandy Bridge,LGA1155,95,8
+Intel Core i5-9500F,Coffee Lake Refresh,LGA1151,65,6
+Intel Core i3-9320,Coffee Lake Refresh,LGA1151,62,4
+Intel Core i3-9350K,Coffee Lake Refresh,LGA1151,91,4
+Intel Xeon E-2146G,Coffee Lake,LGA1151,80,6
+Intel Xeon E-2136,Coffee Lake,LGA1151,80,6
+Intel Xeon E-2134,Coffee Lake,LGA1151,71,4
+Intel Pentium G3240,Haswell Refresh,LGA1150,53,2
+Intel Celeron G5925,Comet Lake,LGA1200,58,2
+Intel Core i3-10305,Comet Lake,LGA1200,65,4
+Intel Core i5-4670T,Haswell,LGA1150,45,4
+Intel Celeron G3950,Kaby Lake,LGA1151,51,2
+AMD Athlon II X2 255,K10,Unknown,65,2
+Intel Celeron 420,Core,Unknown,35,1
+Intel Celeron 430,Core,Unknown,35,1
+AMD Athlon II X3 435,K10,Unknown,95,3
+AMD Phenom II X2 545,K10,Unknown,80,2
+AMD Athlon II X4 635,K10,Unknown,95,4
+AMD Phenom II X4 925,K10,Unknown,95,4
+AMD Athlon II X3 400e,K10,Unknown,45,3
+AMD Athlon II X3 405e,K10,Unknown,45,3
+AMD Athlon II X3 415e,K10,Unknown,45,3
+AMD Athlon II X4 600e,K10,Unknown,45,4
+AMD Phenom II X3 740 Black,K10,Unknown,95,3
+AMD Phenom II X4 940 Black,K10,Unknown,125,4
+AMD Phenom II X4 965 Black (140W),K10,Unknown,140,4
+Intel Celeron E1500,Core,Unknown,65,2
+Intel Celeron E1600,Core,Unknown,65,2
+Intel Celeron E3200,Wolfdale,Unknown,65,2
+Intel Celeron E3300,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E4400,Core,Unknown,65,2
+Intel Core 2 Duo E4500,Core,Unknown,65,2
+Intel Core 2 Duo E4600,Core,Unknown,65,2
+Intel Pentium E5300,Wolfdale,Unknown,65,2
+Intel Pentium E5400,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6550,Core,Unknown,65,2
+Intel Core 2 Duo E7300,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E7300,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E7400,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E7500,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8200,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8500,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8500,Wolfdale,Unknown,65,2
+Intel Core i5-750S,Nehalem,LGA1151,82,4
+Intel Core i7-860S,Nehalem,LGA1151,82,4
+Intel Core 2 Quad Q8200S,Yorkfield,Unknown,65,4
+Intel Core 2 Quad Q8300,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q8400,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q9400,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q9450,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q9505,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q9550,Yorkfield,Unknown,95,4
+Intel Core 2 Extreme X6800,Core,Unknown,75,2
+AMD Phenom II X2 560 Black,K10,Unknown,80,2
+AMD Phenom II X4 975,K10,Unknown,125,4
+AMD Phenom II X4 955,K10,Unknown,125,4
+AMD Phenom II X4 960T Black,K10,Unknown,95,4
+AMD Athlon II X2 245,K10,Unknown,65,2
+AMD Athlon II X2 245,K10,Unknown,65,2
+AMD Athlon II X3 460,K10,Unknown,95,3
+AMD Sempron 130,K10,Unknown,45,1
+AMD Athlon II X3 440,K10,Unknown,95,3
+Intel Core i3-2105,Sandy Bridge,LGA1155,65,2
+AMD FX-8150,Bulldozer,AM3+,125,8
+AMD FX-6100,Bulldozer,AM3+,95,6
+Intel Pentium G630T,Sandy Bridge,LGA1155,35,2
+AMD A6-3650,Lynx,Unknown,100,4
+Intel Core i5-2380P,Sandy Bridge,LGA1155,95,4
+Intel Core i5-2450P,Sandy Bridge,LGA1155,95,4
+AMD Athlon II X2 260,K10,Unknown,65,2
+Intel Pentium G550,Sandy Bridge,LGA1155,65,2
+Intel Celeron G555,Sandy Bridge,LGA1155,65,2
+AMD Athlon II X4 651K,Lynx,Unknown,100,4
+Intel Xeon E3-1280,Sandy Bridge,LGA1155,95,4
+Intel Pentium G2130,Ivy Bridge,LGA1155,55,2
+Intel Pentium G3430,Haswell,LGA1150,54,2
+AMD A10-6790K,Piledriver,AM3+,100,4
+Intel Celeron G1630,Ivy Bridge,LGA1155,55,2
+Intel Pentium G2140,Ivy Bridge,LGA1155,55,2
+Intel Xeon E5-2660,Sandy Bridge,LGA1155,95,8
+Intel Xeon E5-2609 V2,Ivy Bridge,LGA1155,80,4
+AMD 5150,Jaguar,AM1,25,4
+Intel Celeron G1850,Haswell Refresh,LGA1150,53,2
+AMD Sempron X2 190,K10,Unknown,45,2
+AMD A10-7800,Steamroller,Unknown,65,4
+AMD A10-6790K,Piledriver,AM3+,100,4
+AMD A10-6800K,Piledriver,AM3+,100,4
+AMD A10-7700K,Steamroller,Unknown,95,4
+AMD A4-6300,Piledriver,AM3+,65,2
+Intel Celeron G470,Sandy Bridge,LGA1155,35,1
+AMD FX-4320,Piledriver,AM3+,95,4
+AMD FX-6350,Piledriver,AM3+,125,6
+AMD FX-8120,Bulldozer,AM3+,125,8
+AMD E2-3200,Lynx,Unknown,65,2
+AMD Athlon X2 370K,Piledriver,AM3+,65,2
+Intel Core i3-4370,Haswell Refresh,LGA1150,54,2
+AMD A8-7600,Steamroller,Unknown,65,4
+AMD Athlon X4 860K,Steamroller,Unknown,95,4
+AMD FX-8320E,Piledriver,AM3+,95,8
+AMD Athlon X4 530,Jaguar,AM1,25,4
+AMD Athlon X4 550,Jaguar,AM1,25,4
+AMD Pro A8-7600B,Steamroller,Unknown,65,4
+AMD Pro A6-7400B,Steamroller,Unknown,65,2
+AMD Athlon X2 350,Piledriver,AM3+,65,2
+AMD Sempron X2 250,Piledriver,AM3+,65,2
+Intel Pentium G3250,Haswell Refresh,LGA1150,53,2
+Intel Pentium G3250,Haswell Refresh,LGA1150,53,2
+Intel Pentium G3460,Haswell Refresh,LGA1150,53,2
+Intel Pentium G3450,Haswell Refresh,LGA1150,53,2
+Intel Pentium G3460,Haswell Refresh,LGA1150,53,2
+AMD Phenom II X6 1065T,K10,Unknown,95,6
+Intel Xeon E5-2603 V2,Ivy Bridge,LGA1155,80,4
+Intel Core i5-4570S,Haswell,LGA1150,65,4
+Intel Pentium G3470,Haswell Refresh,LGA1150,53,2
+Intel Core i7-5775C,Broadwell,LGA1150,65,4
+AMD A8-7670K,Steamroller,Unknown,95,4
+AMD A8-7670K,Steamroller,Unknown,95,4
+Intel Core i3-6300,Skylake,LGA1151,51,2
+Intel Core i5-6600T,Skylake,LGA1151,35,4
+Intel Pentium G4520,Skylake,LGA1151,51,2
+Intel Xeon E3-1230 V5,Skylake,LGA1151,80,4
+Intel Xeon E3-1220 V5,Skylake,LGA1151,80,4
+Intel Xeon E3-1225 V5,Skylake,LGA1151,80,4
+Intel Xeon E3-1280 V5,Skylake,LGA1151,80,4
+Intel Xeon E3-1275 V5,Skylake,LGA1151,80,4
+AMD Opteron 6344,Piledriver,AM3+,115,12
+Intel Pentium G3260,Haswell Refresh,LGA1150,53,2
+AMD Athlon X4 845,Puma+,Unknown,65,4
+AMD A6-7470K,Steamroller,Unknown,65,2
+AMD A6-7470K,Steamroller,Unknown,65,2
+AMD A10-7890K,Steamroller,Unknown,95,4
+AMD Athlon 5370,Jaguar,AM1,25,4
+Intel Core i7-6800K,Broadwell,LGA1150,140,6
+Intel Core i7-6850K,Broadwell,LGA1150,140,6
+Intel Xeon E5-1620 V4,Broadwell,LGA1150,140,4
+Intel Celeron G3950,Kaby Lake,LGA1151,51,2
+Intel Pentium G4560T,Kaby Lake,LGA1151,35,2
+Intel Core i3-7101TE,Kaby Lake,LGA1151,35,2
+Intel Core i3-7100T,Kaby Lake,LGA1151,35,2
+Intel Core i3-7100T,Kaby Lake,LGA1151,35,2
+Intel Core i5-7500T,Kaby Lake,LGA1151,35,4
+Intel Core i5-7600T,Kaby Lake,LGA1151,35,4
+Intel Core i7-7820X,Skylake,LGA1151,140,8
+Intel Core i7-7740X,Kaby Lake,LGA1151,112,4
+Intel Core i5-7640X,Kaby Lake,LGA1151,112,4
+Intel Xeon E5-2430V2,Ivy Bridge,LGA1155,80,6
+Intel Xeon E5-2440V2,Ivy Bridge,LGA1155,95,8
+Intel Xeon E3-1270 V6,Kaby Lake,LGA1151,72,4
+AMD Athlon X4 970,Excavator,Unknown,65,4
+AMD Athlon X4 940,Excavator,Unknown,65,4
+Intel Core i7-870S,Nehalem,LGA1151,82,4
+Intel Celeron G4920,Coffee Lake,LGA1151,65,2
+Intel Core i3-8300,Coffee Lake,LGA1151,62,4
+Intel Core i9-7940X,Skylake,LGA1151,165,14
+Intel Xeon E5-2660,Sandy Bridge,LGA1155,95,8
+Intel Xeon E-2134,Coffee Lake,LGA1151,71,4
+Intel Xeon E-2146G,Coffee Lake,LGA1151,80,6
+Intel Xeon E-2274G,Coffee Lake Refresh,LGA1151,83,4
+Intel Xeon E-2124G,Coffee Lake,LGA1151,71,4
+Intel Pentium G3420,Haswell,LGA1150,54,2
+Intel Pentium Gold G6600,Comet Lake,LGA1200,58,2
+AMD Athlon II X2 240,K10,Unknown,65,2
+AMD Athlon II X3 425,K10,Unknown,95,3
+Intel Celeron 430,Core,Unknown,35,1
+AMD Athlon II X3 435,K10,Unknown,95,3
+AMD Athlon II X3 440,K10,Unknown,95,3
+AMD Athlon II X3 440,K10,Unknown,95,3
+Intel Celeron 440,Core,Unknown,35,1
+Intel Celeron 450,Core,Unknown,35,1
+AMD Athlon II X4 630,K10,Unknown,95,4
+AMD Athlon II X4 635,K10,Unknown,95,4
+AMD Phenom II X3 710,K10,Unknown,95,3
+AMD Phenom II X4 805,K10,Unknown,95,4
+AMD Phenom II X4 810,K10,Unknown,95,4
+AMD Phenom II X4 910,K10,Unknown,95,4
+AMD Phenom II X4 920,K10,Unknown,125,4
+AMD Athlon II X2 245e,K10,Unknown,45,2
+AMD Athlon II X2 260u,K10,Unknown,25,2
+AMD Athlon II X3 405e,K10,Unknown,45,3
+AMD Athlon II X4 610e,K10,Unknown,45,4
+AMD Phenom II X3 720 Black,K10,Unknown,95,3
+Intel Celeron E1200,Core,Unknown,65,2
+Intel Celeron E1400,Core,Unknown,65,2
+Intel Celeron E1500,Core,Unknown,65,2
+Intel Celeron E1600,Core,Unknown,65,2
+Intel Pentium E2160,Core,Unknown,65,2
+Intel Pentium E2180,Core,Unknown,65,2
+Intel Pentium E2200,Core,Unknown,65,2
+Intel Celeron E3200,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E4400,Core,Unknown,65,2
+Intel Pentium E5400,Wolfdale,Unknown,65,2
+Intel Pentium E5500,Wolfdale,Unknown,65,2
+Intel Pentium E6300,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6400,Core,Unknown,65,2
+Intel Core 2 Duo E6420,Core,Unknown,65,2
+Intel Pentium E6500,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6540,Core,Unknown,65,2
+Intel Pentium E6600,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E6700,Core,Unknown,65,2
+Intel Core 2 Duo E6700,Core,Unknown,65,2
+Intel Core 2 Duo E6850,Core,Unknown,65,2
+Intel Core 2 Duo E7200,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E7400,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E7500,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8190,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8200,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8200,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8400,Wolfdale,Unknown,65,2
+Intel Core 2 Duo E8500,Wolfdale,Unknown,65,2
+Intel Core i5-750S,Nehalem,LGA1151,82,4
+Intel Core i7-860S,Nehalem,LGA1151,82,4
+Intel Core i7-940,Nehalem,LGA1151,130,4
+Intel Core i7-965 Extreme Edition,Nehalem,LGA1151,130,4
+Intel Core 2 Quad Q6700,Core,Unknown,100,4
+Intel Core 2 Quad Q8200,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q8200S,Yorkfield,Unknown,65,4
+Intel Core 2 Quad Q8300,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q8400S,Yorkfield,Unknown,65,4
+Intel Core 2 Quad Q8400S,Yorkfield,Unknown,65,4
+Intel Core 2 Quad Q9400S,Yorkfield,Unknown,65,4
+Intel Core 2 Quad Q9450,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q9505,Yorkfield,Unknown,95,4
+Intel Core 2 Quad Q9505S,Yorkfield,Unknown,65,4
+Intel Core 2 Quad Q9550S,Yorkfield,Unknown,65,4
+Intel Core 2 Extreme QX6800,Core,Unknown,100,4
+Intel Core 2 Extreme QX6800,Core,Unknown,100,4
+Intel Core 2 Extreme QX6800,Core,Unknown,100,4
+Intel Core 2 Extreme QX6850,Core,Unknown,130,4
+Intel Core 2 Extreme QX9650,Yorkfield,Unknown,130,4
+Intel Core 2 Extreme QX9770,Yorkfield,Unknown,136,4
+Intel Core 2 Extreme QX9775,Yorkfield,Unknown,150,4
+Intel Core 2 Extreme QX9775,Yorkfield,Unknown,150,4
+AMD Athlon II X4 630,K10,Unknown,95,4
+AMD Athlon II X2 255,K10,Unknown,65,2
+AMD Athlon II X2 265,K10,Unknown,65,2
+AMD Athlon II X4 610e,K10,Unknown,45,4
+AMD Phenom II X3 715 Black,K10,Unknown,95,3
+AMD Athlon II X3 425,K10,Unknown,95,3
+AMD Phenom II X2 545,K10,Unknown,80,2
+Intel Celeron E3500,Wolfdale,Unknown,65,2
+AMD Phenom II X4 955,K10,Unknown,125,4
+AMD Athlon II X4 630,K10,Unknown,95,4
+AMD Phenom II X4 925,K10,Unknown,95,4
+AMD A4-3400,Lynx,Unknown,65,2
+AMD A8-3850,Lynx,Unknown,100,4
+AMD Phenom II X4 980 Black,K10,Unknown,125,4
+AMD FX-4170,Bulldozer,AM3+,125,4
+AMD Athlon II X2 250,K10,Unknown,65,2
+Intel Celeron G465,Sandy Bridge,LGA1155,35,2
+Intel Pentium G2010,Ivy Bridge,LGA1155,55,2
+Intel Celeron G1830,Haswell,LGA1150,53,2
+Intel Xeon E5-2640,Sandy Bridge,LGA1155,95,6
+Intel Xeon E5-2603 V2,Ivy Bridge,LGA1155,80,4
+AMD A6-6420K,Piledriver,AM3+,65,2
+Intel Pentium G3440,Haswell Refresh,LGA1150,53,2
+AMD Sempron X2 198,Lynx,Unknown,65,2
+AMD Sempron X2 198,Lynx,Unknown,65,2
+AMD A10-6700T,Piledriver,AM3+,45,4
+AMD A10-6790B,Piledriver,AM3+,100,4
+AMD A10-7850K,Steamroller,Unknown,95,4
+AMD A4-6320,Piledriver,AM3+,65,2
+AMD A4-6320,Piledriver,AM3+,65,2
+AMD A4-3300,Lynx,Unknown,65,2
+AMD A4-3400,Lynx,Unknown,65,2
+AMD A4-3400,Lynx,Unknown,65,2
+AMD A4-5300,Piledriver,AM3+,65,2
+AMD A4-4020,Piledriver,AM3+,65,2
+AMD A4-3450,Lynx,Unknown,65,2
+AMD A4-3420,Lynx,Unknown,65,2
+AMD FX-4150,Bulldozer,AM3+,125,4
+AMD FX-4170,Bulldozer,AM3+,125,4
+AMD FX-6130,Bulldozer,AM3+,125,6
+AMD FX-6200,Bulldozer,AM3+,125,6
+AMD FX-8140,Bulldozer,AM3+,95,8
+AMD Athlon II X2 221,Lynx,Unknown,65,2
+AMD Athlon II X2 221,Lynx,Unknown,65,2
+AMD Athlon II X4 651,Lynx,Unknown,100,4
+AMD Athlon II X4 638,Lynx,Unknown,65,4
+AMD Athlon II X4 638,Lynx,Unknown,65,4
+Intel Core i3-4360T,Haswell Refresh,LGA1150,35,2
+Intel Xeon E5-2687W,Sandy Bridge,LGA1155,150,8
+AMD FX-8370E,Piledriver,AM3+,95,8
+Intel Xeon E5-2609 V3,Haswell,LGA1150,85,6
+AMD Phenom II X6 1065T,K10,Unknown,95,6
+AMD FX-8310,Piledriver,AM3+,95,8
+Intel Pentium G4400,Skylake,LGA1151,54,2
+Intel Xeon E3-1245 V5,Skylake,LGA1151,80,4
+AMD Opteron 6328,Piledriver,AM3+,115,8
+AMD A10-7860k,Steamroller,Unknown,65,4
+AMD Athlon X4 880K,Steamroller,Unknown,95,4
+Intel Xeon E3-1240 V6,Kaby Lake,LGA1151,72,4
+Intel Xeon E3-1275 V6,Kaby Lake,LGA1151,73,4
+AMD Athlon X4 940,Excavator,Unknown,65,4
+Intel Xeon E5-2660,Sandy Bridge,LGA1155,95,8

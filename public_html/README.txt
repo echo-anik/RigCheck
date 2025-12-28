@@ -1,0 +1,1 @@
+This folder is the web root for Hostinger. Only place public files here (index.php, .htaccess, assets).
