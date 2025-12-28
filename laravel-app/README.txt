@@ -1,0 +1,1 @@
+This folder contains all Laravel core files. Place it outside public_html for security.
