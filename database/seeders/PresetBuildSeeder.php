@@ -15,13 +15,15 @@ class PresetBuildSeeder extends Seeder
      */
     public function run(): void
     {
-        // Get some sample components (use existing or create dummy data)
-        $components = DB::table('components')->limit(50)->get();
-
-        if ($components->isEmpty()) {
+        // Check if we have components
+        $componentCount = DB::table('components')->count();
+        
+        if ($componentCount === 0) {
             $this->command->warn('⚠️  No components found in database. Skipping preset builds.');
             return;
         }
+
+        $this->command->info("📦 Found {$componentCount} components in database\n");
 
         $presetBuilds = [
             // Gaming Build - High Performance
@@ -108,29 +110,40 @@ class PresetBuildSeeder extends Seeder
                 'comment_count' => 0,
             ]);
 
-            // Attach random components for each category
-            $componentsByCategory = $components->groupBy('category');
+            // Get components by category for this build
             $totalCost = 0;
+            $componentsAttached = 0;
 
             foreach ($categories as $category) {
-                $available = $componentsByCategory->get($category);
-                if ($available && $available->isNotEmpty()) {
-                    $component = $available->random();
+                // Get a random component for this category
+                $component = DB::table('components')
+                    ->where('category', $category)
+                    ->inRandomOrder()
+                    ->first();
+                
+                if ($component) {
                     $price = $component->lowest_price_bdt ?? 0;
                     $totalCost += $price;
 
-                    $build->components()->attach($component->id, [
+                    // Attach to build
+                    DB::table('build_components')->insert([
+                        'build_id' => $build->id,
+                        'component_id' => $component->id,
                         'category' => $category,
-                        'quantity' => 1,
+                        'quantity' => ($category === 'ram' || $category === 'storage') ? 2 : 1, // 2 sticks of RAM, 2 storage drives
                         'price_at_selection_bdt' => $price,
+                        'created_at' => now(),
+                        'updated_at' => now(),
                     ]);
+                    
+                    $componentsAttached++;
                 }
             }
 
             // Update total cost
             $build->update(['total_cost_bdt' => $totalCost]);
 
-            $this->command->info("✅ Created: {$build->build_name} (৳{$totalCost})");
+            $this->command->info("✅ Created: {$build->build_name} (৳{$totalCost}, {$componentsAttached} components)");
         }
 
         $this->command->info("\n✨ All preset builds created successfully!\n");

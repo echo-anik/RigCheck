@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Component;
-use App\Models\Brand;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use App\Models\Brand;
+use App\Models\Component;
 
 class ComponentSeeder extends Seeder
 {
@@ -18,51 +18,48 @@ class ComponentSeeder extends Seeder
         $categories = [
             'cpu' => ['csv' => 'cpu.csv', 'category' => 'cpu'],
             'motherboard' => ['csv' => 'motherboard.csv', 'category' => 'motherboard'],
-            'memory' => ['csv' => 'memory.csv', 'category' => 'ram'],
-            'video-card' => ['csv' => 'video-card.csv', 'category' => 'gpu'],
-            'internal-hard-drive' => ['csv' => 'internal-hard-drive.csv', 'category' => 'storage'],
-            'power-supply' => ['csv' => 'power-supply.csv', 'category' => 'psu'],
+            'ram' => ['csv' => 'ram.csv', 'category' => 'ram'],
+            'gpu' => ['csv' => 'gpu.csv', 'category' => 'gpu'],
+            'ssd' => ['csv' => 'ssd.csv', 'category' => 'storage'],
+            'psu' => ['csv' => 'psu.csv', 'category' => 'psu'],
             'case' => ['csv' => 'case.csv', 'category' => 'case'],
-            'cpu-cooler' => ['csv' => 'cpu-cooler.csv', 'category' => 'cooler'],
+            'cooler' => ['csv' => 'cooler.csv', 'category' => 'cooler'],
         ];
 
         $stats = [];
-        
-        // Track product_ids seen within current run to avoid intra-batch duplicates
         $seenProductIdsGlobal = [];
 
         foreach ($categories as $key => $config) {
-            $csvFile = base_path("data/csv/{$config['csv']}");
-            
+            $csvFile = base_path("data/csv_cleaned/{$config['csv']}");
+
             if (!file_exists($csvFile)) {
                 $this->command->warn("⚠️  Skipping {$key}: File not found at {$csvFile}");
                 continue;
             }
-            
+
             $this->command->info("📦 Importing {$key}...");
-            
+
             $handle = fopen($csvFile, 'r');
             $headers = fgetcsv($handle);
-            
+
             $imported = 0;
             $skipped = 0;
             $errors = 0;
             $batchSize = 500;
             $batch = [];
             $seenProductIds = [];
-            
+
             while (($row = fgetcsv($handle)) !== false) {
                 try {
                     if (empty($row) || !isset($row[0]) || empty($row[0])) {
                         continue;
                     }
-                    
+
                     $data = array_combine($headers, $row);
-                    
-                    // Extract brand from product name (first word)
-                    $nameParts = explode(' ', $data['name']);
-                    $brandName = $nameParts[0];
-                    
+
+                    // Extract brand
+                    $brandName = isset($data['brand']) && !empty($data['brand']) ? $data['brand'] : 'Unknown';
+
                     // Get or create brand
                     $brand = Brand::firstOrCreate(
                         ['brand_name' => $brandName],
@@ -72,35 +69,53 @@ class ComponentSeeder extends Seeder
                             'created_at' => now()
                         ]
                     );
-                    
+
                     // Generate unique product_id
                     $productId = Str::slug($data['name']);
-                    
-                    // Check if already exists in DB or already queued in this batch/run
+
+                    // Check if already exists
                     if (isset($seenProductIdsGlobal[$productId]) || isset($seenProductIds[$productId]) || Component::where('product_id', $productId)->exists()) {
                         $skipped++;
                         continue;
                     }
-                    
+
                     // Parse price
-                    $price = 0;
-                    if (isset($data['price']) && !empty($data['price'])) {
-                        $price = (float)str_replace(',', '', $data['price']);
+                    $priceUsd = 0;
+                    $priceBdt = 0;
+
+                    if (isset($data['price_usd']) && !empty($data['price_usd'])) {
+                        $priceUsd = (float)str_replace(',', '', $data['price_usd']);
+                        $priceBdt = $priceUsd * 120;
+                    } elseif (isset($data['price_bdt']) && !empty($data['price_bdt'])) {
+                        $priceBdt = (float)str_replace(',', '', $data['price_bdt']);
+                        $priceUsd = $priceBdt / 120;
+                    } elseif (isset($data['price']) && !empty($data['price'])) {
+                        $priceUsd = (float)str_replace(',', '', $data['price']);
+                        $priceBdt = $priceUsd * 120;
                     }
-                    
+
+                    // Create full name (especially important for GPUs)
+                    $fullName = $data['name'];
+                    if ($config['category'] === 'gpu' && isset($data['chipset']) && !empty($data['chipset'])) {
+                        // For GPUs, combine chipset with variant name if chipset isn't already in name
+                        if (stripos($data['name'], $data['chipset']) === false) {
+                            $fullName = trim($brandName . ' ' . $data['chipset'] . ' ' . str_replace($brandName, '', $data['name']));
+                        }
+                    }
+
                     // Create component record
                     $record = [
                         'product_id' => $productId,
                         'sku' => $productId,
                         'category' => $config['category'],
-                        'name' => $data['name'],
+                        'name' => $fullName,
                         'brand_id' => $brand->id,
-                        'series' => null,
+                        'series' => isset($data['chipset']) ? $data['chipset'] : null,
                         'model' => $productId,
-                        'primary_image_url' => null,
+                        'primary_image_url' => isset($data['image_url']) ? $data['image_url'] : null,
                         'image_urls' => json_encode([]),
-                        'lowest_price_usd' => $price > 0 ? $price : null,
-                        'lowest_price_bdt' => $price > 0 ? $price * 120 : null,
+                        'lowest_price_usd' => $priceUsd > 0 ? $priceUsd : null,
+                        'lowest_price_bdt' => $priceBdt > 0 ? $priceBdt : null,
                         'price_last_updated' => now(),
                         'availability_status' => 'in_stock',
                         'stock_count' => rand(0, 100),
@@ -114,15 +129,13 @@ class ComponentSeeder extends Seeder
                         'created_at' => now(),
                         'updated_at' => now(),
                     ];
-                    
-                    // Track seen to avoid duplicate enqueue in batch and across categories
+
                     $seenProductIds[$productId] = true;
                     $seenProductIdsGlobal[$productId] = true;
                     $batch[] = $record;
-                    
+
                     // Insert in batches
                     if (count($batch) >= $batchSize) {
-                        // Use upsert to avoid unique constraint failures (product_id, slug)
                         try {
                             DB::table('components')->upsert(
                                 $batch,
@@ -133,6 +146,7 @@ class ComponentSeeder extends Seeder
                                     'featured','slug','data_version','view_count','build_count','popularity_score','is_verified','updated_at'
                                 ]
                             );
+
                             $imported += count($batch);
                             $batch = [];
                             if ($imported % 1000 == 0) {
@@ -141,11 +155,10 @@ class ComponentSeeder extends Seeder
                         } catch (\Exception $e) {
                             $errors++;
                             $this->command->error("  ❌ Batch upsert error: {$e->getMessage()}");
-                            // On error, clear batch to progress and avoid repeated failures
                             $batch = [];
                         }
                     }
-                    
+
                 } catch (\Exception $e) {
                     $errors++;
                     if ($errors <= 3) {
@@ -153,7 +166,7 @@ class ComponentSeeder extends Seeder
                     }
                 }
             }
-            
+
             // Insert remaining batch
             if (!empty($batch)) {
                 try {
@@ -166,34 +179,36 @@ class ComponentSeeder extends Seeder
                             'featured','slug','data_version','view_count','build_count','popularity_score','is_verified','updated_at'
                         ]
                     );
+
                     $imported += count($batch);
                 } catch (\Exception $e) {
                     $errors++;
                     $this->command->error("  ❌ Final batch upsert error: {$e->getMessage()}");
                 }
             }
-            
+
             fclose($handle);
-            
+
             $stats[$key] = [
                 'imported' => $imported,
                 'skipped' => $skipped,
                 'errors' => $errors
             ];
-            
+
             $this->command->info("  ✅ {$key}: {$imported} imported, {$skipped} skipped, {$errors} errors\n");
         }
 
         $this->command->newLine();
         $this->command->info('=== Import Summary ===');
-        
+
         foreach ($stats as $category => $stat) {
-            $this->command->line(sprintf("%-30s: %4d imported, %4d skipped, %4d errors", 
+            $this->command->line(sprintf("%-30s: %4d imported, %4d skipped, %4d errors",
                 $category, $stat['imported'], $stat['skipped'], $stat['errors']));
         }
-        
+
         $total = array_sum(array_column($stats, 'imported'));
         $this->command->newLine();
         $this->command->info("Total components imported: {$total}");
+        $this->command->info("\n💡 Note: Component specs will be populated by the ComponentSpecSeeder");
     }
 }

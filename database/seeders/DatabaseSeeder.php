@@ -13,9 +13,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            ComponentSeeder::class,
+            ComponentSeeder::class,  // Import components first
+            ComponentSpecSeeder::class,  // Then populate specs
             AdminUserSeeder::class,
-            PresetBuildSeeder::class,
+            // PresetBuildSeeder::class,  // Disabled - create builds manually
         ]);
     }
 }
