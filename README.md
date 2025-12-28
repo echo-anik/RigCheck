@@ -14,7 +14,7 @@ RigCheck is a comprehensive PC building platform that helps users:
 - Get expert recommendations based on budget and use case
 - Track wishlist and saved builds
 
-This repository contains the **production-ready website** optimized for deployment on Hostinger.
+This repository contains the Next.js web application for the RigCheck PC building platform.
 
 ## Features
 
@@ -40,17 +40,21 @@ This repository contains the **production-ready website** optimized for deployme
 - **Theme**: next-themes (dark mode support)
 - **Notifications**: Sonner
 
-## Quick Start (30 minutes)
+## Quick Start
 
-Follow [QUICK_START.md](./QUICK_START.md) for a fast deployment guide.
+```bash
+# Install dependencies
+npm install
 
-## Detailed Documentation
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your API URL
 
-| Document | Description |
-|----------|-------------|
-| [HOSTINGER_DEPLOYMENT.md](./HOSTINGER_DEPLOYMENT.md) | Complete Hostinger deployment guide |
-| [API_DEPLOYMENT.md](./API_DEPLOYMENT.md) | Backend API setup instructions |
-| [QUICK_START.md](./QUICK_START.md) | 30-minute quick deployment |
+# Run development server
+npm run dev
+```
+
+Visit `http://localhost:3000`
 
 ## Project Structure
 
@@ -163,29 +167,19 @@ Route (app)               Size      First Load JS
 ...
 ```
 
-## Deployment Checklist
+## Deployment
 
-### Before Deployment
-- [ ] Update `.env.local` with production values
-- [ ] Generate secure `NEXTAUTH_SECRET`
-- [ ] Configure API endpoint URLs
-- [ ] Update contact email addresses
-- [ ] Test build locally: `npm run build`
+### Vercel (Recommended)
+1. Push code to GitHub
+2. Import project in Vercel dashboard
+3. Configure environment variables
+4. Deploy!
 
-### During Deployment
-- [ ] Push to Git repository
-- [ ] Clone on Hostinger server
-- [ ] Install Node.js (v18+)
-- [ ] Run deployment script
-- [ ] Configure Nginx reverse proxy
-- [ ] Set up SSL certificate
-
-### After Deployment
-- [ ] Test all pages and features
-- [ ] Verify API connectivity
-- [ ] Check SSL certificate
-- [ ] Set up monitoring
-- [ ] Configure backups
+### Manual Deployment
+```bash
+npm run build
+# Upload .next folder to your hosting provider
+```
 
 ## API Integration
 
@@ -195,8 +189,6 @@ The website connects to a Laravel API backend for:
 - Build storage
 - Social features
 - Admin operations
-
-**API Repository**: Deploy separately (see [API_DEPLOYMENT.md](./API_DEPLOYMENT.md))
 
 ## Performance
 
@@ -296,57 +288,12 @@ This is a production deployment repository. Development happens in the main repo
 
 ## Support
 
-For deployment issues:
-1. Check [HOSTINGER_DEPLOYMENT.md](./HOSTINGER_DEPLOYMENT.md)
-2. Review PM2 logs: `pm2 logs rigcheck-web`
-3. Contact Hostinger support (24/7 live chat)
+For issues and questions, please open a GitHub issue.
 
 ## License
 
-Proprietary - All rights reserved
-
-## Architecture
-
-```
-┌─────────────┐
-│   Users     │
-└──────┬──────┘
-       │
-       v
-┌─────────────────┐
-│  Cloudflare CDN │ (Optional)
-└────────┬────────┘
-         │
-         v
-┌──────────────────────┐
-│   Hostinger Server   │
-│  ┌────────────────┐  │
-│  │   Nginx :80    │  │
-│  └────────┬───────┘  │
-│           │          │
-│  ┌────────v───────┐  │
-│  │  Next.js :3000 │  │
-│  └────────┬───────┘  │
-│           │          │
-│           v          │
-│  ┌─────────────────┐ │
-│  │   API Server    │ │ (Separate deployment)
-│  │   Laravel API   │ │
-│  └─────────────────┘ │
-└──────────────────────┘
-```
-
-## Next Steps
-
-1. **Deploy Website**: Follow [QUICK_START.md](./QUICK_START.md)
-2. **Deploy API**: Follow [API_DEPLOYMENT.md](./API_DEPLOYMENT.md)
-3. **Configure DNS**: Point domain to Hostinger
-4. **Set Up SSL**: Use Certbot for HTTPS
-5. **Configure Monitoring**: Set up uptime monitoring
-6. **Optimize Performance**: Enable Cloudflare CDN
+This project is for educational purposes.
 
 ---
 
 **Built with ❤️ for the PC building community**
-
-For questions or issues, refer to the documentation or contact support.
