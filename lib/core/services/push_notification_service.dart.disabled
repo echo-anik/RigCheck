@@ -1,0 +1,203 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:logger/logger.dart';
+
+/// Service for handling push notifications
+class PushNotificationService {
+  static final PushNotificationService _instance = PushNotificationService._internal();
+  factory PushNotificationService() => _instance;
+  PushNotificationService._internal();
+
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  final FlutterLocalNotificationsPlugin _localNotifications =
+      FlutterLocalNotificationsPlugin();
+  final Logger _logger = Logger();
+
+  String? _fcmToken;
+  bool _initialized = false;
+
+  /// Initialize push notifications
+  Future<void> initialize() async {
+    if (_initialized) {
+      _logger.w('PushNotificationService already initialized');
+      return;
+    }
+
+    try {
+      // Request permission
+      final settings = await _firebaseMessaging.requestPermission(
+        alert: true,
+        badge: true,
+        sound: true,
+        provisional: false,
+      );
+
+      if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+        _logger.i('User granted permission for notifications');
+      } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+        _logger.i('User granted provisional permission');
+      } else {
+        _logger.w('User declined or has not accepted permission');
+        return;
+      }
+
+      // Initialize local notifications
+      await _initializeLocalNotifications();
+
+      // Get FCM token
+      _fcmToken = await _firebaseMessaging.getToken();
+      _logger.i('FCM Token: $_fcmToken');
+
+      // Listen for token refresh
+      _firebaseMessaging.onTokenRefresh.listen((newToken) {
+        _fcmToken = newToken;
+        _logger.i('FCM Token refreshed: $_fcmToken');
+        // TODO: Send token to backend
+      });
+
+      // Handle foreground messages
+      FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
+
+      // Handle background messages
+      FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+      // Handle notification tap (app opened from notification)
+      FirebaseMessaging.onMessageOpenedApp.listen(_handleMessageOpenedApp);
+
+      _initialized = true;
+      _logger.i('PushNotificationService initialized successfully');
+    } catch (e) {
+      _logger.e('Failed to initialize PushNotificationService: $e');
+    }
+  }
+
+  /// Initialize local notifications
+  Future<void> _initializeLocalNotifications() async {
+    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const iosSettings = DarwinInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+    );
+
+    const initSettings = InitializationSettings(
+      android: androidSettings,
+      iOS: iosSettings,
+    );
+
+    await _localNotifications.initialize(
+      initSettings,
+      onDidReceiveNotificationResponse: _onNotificationTapped,
+    );
+  }
+
+  /// Handle foreground messages
+  void _handleForegroundMessage(RemoteMessage message) {
+    _logger.d('Received foreground message: ${message.messageId}');
+
+    final notification = message.notification;
+    final android = message.notification?.android;
+
+    if (notification != null && android != null) {
+      _showLocalNotification(
+        title: notification.title ?? 'RigCheck',
+        body: notification.body ?? '',
+        payload: message.data.toString(),
+      );
+    }
+  }
+
+  /// Handle message when app is opened from notification
+  void _handleMessageOpenedApp(RemoteMessage message) {
+    _logger.d('App opened from notification: ${message.messageId}');
+    // TODO: Navigate to relevant screen based on message data
+  }
+
+  /// Show local notification
+  Future<void> _showLocalNotification({
+    required String title,
+    required String body,
+    String? payload,
+  }) async {
+    const androidDetails = AndroidNotificationDetails(
+      'rigcheck_channel',
+      'RigCheck Notifications',
+      channelDescription: 'Notifications from RigCheck app',
+      importance: Importance.high,
+      priority: Priority.high,
+    );
+
+    const iosDetails = DarwinNotificationDetails(
+      presentAlert: true,
+      presentBadge: true,
+      presentSound: true,
+    );
+
+    const notificationDetails = NotificationDetails(
+      android: androidDetails,
+      iOS: iosDetails,
+    );
+
+    await _localNotifications.show(
+      DateTime.now().millisecond,
+      title,
+      body,
+      notificationDetails,
+      payload: payload,
+    );
+  }
+
+  /// Handle notification tap
+  void _onNotificationTapped(NotificationResponse response) {
+    _logger.d('Notification tapped: ${response.payload}');
+    // TODO: Navigate based on payload
+  }
+
+  /// Get FCM token
+  String? get fcmToken => _fcmToken;
+
+  /// Subscribe to topic
+  Future<void> subscribeToTopic(String topic) async {
+    try {
+      await _firebaseMessaging.subscribeToTopic(topic);
+      _logger.i('Subscribed to topic: $topic');
+    } catch (e) {
+      _logger.e('Failed to subscribe to topic $topic: $e');
+    }
+  }
+
+  /// Unsubscribe from topic
+  Future<void> unsubscribeFromTopic(String topic) async {
+    try {
+      await _firebaseMessaging.unsubscribeFromTopic(topic);
+      _logger.i('Unsubscribed from topic: $topic');
+    } catch (e) {
+      _logger.e('Failed to unsubscribe from topic $topic: $e');
+    }
+  }
+
+  /// Send token to backend
+  Future<void> sendTokenToBackend() async {
+    if (_fcmToken == null) {
+      _logger.w('No FCM token available to send to backend');
+      return;
+    }
+
+    try {
+      // TODO: Implement API call to send token to backend
+      // await apiClient.post('/user/fcm-token', {'token': _fcmToken});
+      _logger.i('FCM token sent to backend');
+    } catch (e) {
+      _logger.e('Failed to send FCM token to backend: $e');
+    }
+  }
+}
+
+/// Top-level function for handling background messages
+/// Must be top-level function
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  final logger = Logger();
+  logger.d('Handling background message: ${message.messageId}');
+  // Handle the message
+}
