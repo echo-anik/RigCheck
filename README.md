@@ -4,14 +4,14 @@ A comprehensive PC building mobile application built with Flutter.
 
 ## Features
 
-- 🖥️ **PC Builder** - Step-by-step guided build process with real-time compatibility checking
-- 🔍 **Component Browser** - Search and filter through thousands of PC components
-- 💰 **Price Tracking** - Compare prices from multiple retailers
-- 👥 **Community Feed** - Browse and share PC builds with the community
-- ⭐ **Favorites** - Save favorite components and builds
-- 📊 **Build Management** - Create, edit, duplicate, and delete builds
-- 🌙 **Dark Mode** - Full dark/light theme support
-- 📱 **Offline Support** - Browse previously loaded data offline
+- **PC Builder** - Step-by-step guided build process with real-time compatibility checking
+- **Component Browser** - Search and filter through thousands of PC components
+- **Price Tracking** - Compare prices from multiple retailers
+- **Community Feed** - Browse and share PC builds with the community
+- **Favorites** - Save favorite components and builds
+- **Build Management** - Create, edit, duplicate, and delete builds
+- **Dark Mode** - Full dark/light theme support
+- **Offline Support** - Browse previously loaded data offline
 
 ## Screenshots
 
