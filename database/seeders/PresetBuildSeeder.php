@@ -169,8 +169,7 @@ class PresetBuildSeeder extends Seeder
 
             foreach ($categories as $category) {
                 // Get a random component for this category within budget
-                $component = DB::table('components')
-                    ->where('category', $category)
+                $component = Component::where('category', $category)
                     ->whereNotNull('lowest_price_bdt')
                     ->where('lowest_price_bdt', '>', 0)
                     ->inRandomOrder()
@@ -189,10 +188,8 @@ class PresetBuildSeeder extends Seeder
                     
                     $totalCost += ($price * $quantity);
 
-                    // Attach to build
-                    DB::table('build_components')->insert([
-                        'build_id' => $build->id,
-                        'component_id' => $component->id,
+                    // Attach component to build using the relationship
+                    $build->components()->attach($component->id, [
                         'category' => $category,
                         'quantity' => $quantity,
                         'price_at_selection_bdt' => $price,
@@ -201,6 +198,9 @@ class PresetBuildSeeder extends Seeder
                     ]);
                     
                     $componentsAttached++;
+                    $this->command->line("  → Added {$component->name} (ID: {$component->id}) to {$category}");
+                } else {
+                    $this->command->warn("  ⚠ No component found for category: {$category}");
                 }
             }
 
