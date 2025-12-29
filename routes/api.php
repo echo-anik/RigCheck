@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\SocialAuthController;
 use App\Http\Controllers\Api\BuildController;
 use App\Http\Controllers\Api\ComponentController;
 use App\Http\Controllers\Api\CompatibilityController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Api\Admin\AdminDashboardController;
 use App\Http\Controllers\Api\Admin\AdminUserController;
 use App\Http\Controllers\Api\Admin\AdminPostController;
 use App\Http\Controllers\Api\Admin\AdminComponentController;
+use App\Http\Controllers\Api\Admin\AdminBuildController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +41,11 @@ Route::prefix('v1')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
     Route::get('/user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 
+    // Google OAuth endpoints
+    Route::get('/auth/google/redirect', [SocialAuthController::class, 'redirectToGoogle']);
+    Route::get('/auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
+    Route::post('/auth/google/callback', [SocialAuthController::class, 'handleGoogleCallbackWithCode']);
+
     // Components - Public endpoints
     Route::get('/components', [ComponentController::class, 'index']);
     Route::get('/components/stats/counts', [ComponentController::class, 'getCategoryCounts']);
@@ -55,7 +62,17 @@ Route::prefix('v1')->group(function () {
     Route::post('/builds/validate', [CompatibilityController::class, 'check']);
     Route::get('/rules', [CompatibilityController::class, 'getRules']);
 
-    // Builds - Public endpoints
+    // Builds - Protected endpoints (MUST come before {id} routes!)
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/builds/my', [BuildController::class, 'myBuilds']);
+        Route::post('/builds', [BuildController::class, 'store']);
+        Route::put('/builds/{id}', [BuildController::class, 'update']);
+        Route::delete('/builds/{id}', [BuildController::class, 'destroy']);
+        Route::post('/builds/{id}/like', [BuildController::class, 'toggleLike']);
+        Route::post('/builds/{id}/comment', [BuildController::class, 'addComment']);
+    });
+
+    // Builds - Public endpoints (After protected routes to avoid conflicts)
     Route::get('/builds/public', [BuildController::class, 'publicBuilds']);
     Route::get('/builds/{id}', [BuildController::class, 'show']);
     Route::get('/builds/{id}/comments', [BuildController::class, 'getComments']);
@@ -64,17 +81,6 @@ Route::prefix('v1')->group(function () {
     Route::get('/shared-builds', [SharedBuildController::class, 'index']);
     Route::get('/shared-builds/{shareToken}', [SharedBuildController::class, 'show']);
     Route::post('/shared-builds', [SharedBuildController::class, 'store']);
-
-
-    // Builds - Protected endpoints
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::get('/builds/my', [BuildController::class, 'myBuilds']);
-        Route::post('/builds', [BuildController::class, 'store']);
-        Route::put('/builds/{id}', [BuildController::class, 'update']);
-        Route::delete('/builds/{id}', [BuildController::class, 'destroy']);
-        Route::post('/builds/{id}/like', [BuildController::class, 'like']);
-        Route::post('/builds/{id}/comment', [BuildController::class, 'addComment']);
-    });
 
     // Image Upload endpoints - Protected
     Route::middleware('auth:sanctum')->group(function () {
@@ -94,13 +100,6 @@ Route::prefix('v1')->group(function () {
     Route::post('/password/reset', [PasswordResetController::class, 'resetPassword']);
     Route::post('/password/validate-token', [PasswordResetController::class, 'validateToken']);
 
-    // Build Interactions - Protected endpoints (matches DB schema: build_likes, build_comments)
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/builds/{id}/like', [BuildController::class, 'toggleLike']);
-        Route::post('/builds/{id}/comment', [BuildController::class, 'addComment']);
-        Route::get('/builds/{id}/comments', [BuildController::class, 'getComments']);
-    });
-
     // Admin - Protected endpoints (admin only)
     Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
         // Dashboard
@@ -119,5 +118,13 @@ Route::prefix('v1')->group(function () {
         Route::put('/components/{id}', [AdminComponentController::class, 'update']);
         Route::delete('/components/{id}', [AdminComponentController::class, 'destroy']);
         Route::get('/components/stats', [AdminComponentController::class, 'stats']);
+
+        // Builds Management (Admin CRUD)
+        Route::get('/builds', [AdminBuildController::class, 'index']);
+        Route::get('/builds/stats', [AdminBuildController::class, 'stats']);
+        Route::get('/builds/{id}', [AdminBuildController::class, 'show']);
+        Route::put('/builds/{id}', [AdminBuildController::class, 'update']);
+        Route::patch('/builds/{id}/visibility', [AdminBuildController::class, 'toggleVisibility']);
+        Route::delete('/builds/{id}', [AdminBuildController::class, 'destroy']);
     });
 });

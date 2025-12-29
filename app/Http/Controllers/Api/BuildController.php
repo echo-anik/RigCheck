@@ -16,7 +16,7 @@ class BuildController extends Controller
      */
     public function publicBuilds(Request $request)
     {
-        $query = Build::with(['user', 'components.brand'])
+        $query = Build::with(['user', 'components.brand', 'components.specs'])
             ->where('visibility', 'public');
 
         // Search by name
@@ -56,12 +56,14 @@ class BuildController extends Controller
         foreach ($builds->items() as $build) {
             $transformedData[] = [
                 'id' => $build->id,
-                'share_id' => $build->share_id,
+                'share_id' => $build->share_id ?? $build->share_token,
+                'share_token' => $build->share_token,
+                'share_url' => $build->share_url,
                 'name' => $build->build_name,
                 'description' => $build->description,
                 'use_case' => $build->use_case,
                 'total_cost_bdt' => $build->total_cost_bdt,
-                'total_price' => $build->total_price, // Legacy
+                'total_price' => $build->total_cost_bdt,
                 'total_tdp_w' => $build->total_tdp_w,
                 'compatibility_status' => $build->compatibility_status,
                 'view_count' => $build->view_count,
@@ -80,12 +82,15 @@ class BuildController extends Controller
                     return [
                         'id' => $component->id,
                         'product_id' => $component->product_id,
-                        'category' => $component->pivot->category,
+                        'category' => $component->pivot->category ?? $component->category,
                         'name' => $component->name,
                         'brand' => $component->brand ? $component->brand->brand_name : null,
                         'price_at_selection_bdt' => $component->pivot->price_at_selection_bdt,
-                        'quantity' => $component->pivot->quantity,
+                        'lowest_price_bdt' => $component->lowest_price_bdt,
+                        'quantity' => $component->pivot->quantity ?? 1,
                         'primary_image_url' => $component->primary_image_url,
+                        'image_urls' => $component->image_urls ?? [],
+                        'specs' => $component->specs_object ?? [],
                     ];
                 })->values()->all() : [],
             ];
@@ -108,7 +113,7 @@ class BuildController extends Controller
      */
     public function myBuilds(Request $request)
     {
-        $query = Build::with(['components.brand'])
+        $query = Build::with(['components.brand', 'components.specs'])
             ->where('user_id', $request->user()->id)
             ->orderBy('created_at', 'desc');
 
@@ -120,11 +125,14 @@ class BuildController extends Controller
         foreach ($builds->items() as $build) {
             $transformedData[] = [
                 'id' => $build->id,
-                'share_id' => $build->share_id,
+                'share_id' => $build->share_id ?? $build->share_token,
+                'share_token' => $build->share_token,
+                'share_url' => $build->share_url,
                 'name' => $build->build_name,
                 'description' => $build->description,
                 'use_case' => $build->use_case,
                 'total_cost_bdt' => $build->total_cost_bdt,
+                'total_price' => $build->total_cost_bdt,
                 'total_tdp_w' => $build->total_tdp_w,
                 'compatibility_status' => $build->compatibility_status,
                 'view_count' => $build->view_count,
@@ -137,11 +145,15 @@ class BuildController extends Controller
                     return [
                         'id' => $component->id,
                         'product_id' => $component->product_id,
-                        'category' => $component->pivot->category,
+                        'category' => $component->pivot->category ?? $component->category,
                         'name' => $component->name,
                         'brand' => $component->brand ? $component->brand->brand_name : null,
                         'price_at_selection_bdt' => $component->pivot->price_at_selection_bdt,
-                        'quantity' => $component->pivot->quantity,
+                        'lowest_price_bdt' => $component->lowest_price_bdt,
+                        'primary_image_url' => $component->primary_image_url,
+                        'image_urls' => $component->image_urls ?? [],
+                        'quantity' => $component->pivot->quantity ?? 1,
+                        'specs' => $component->specs_object ?? [],
                     ];
                 })->values()->all() : [],
             ];
@@ -274,10 +286,11 @@ class BuildController extends Controller
                         'brand' => $component->brand ? $component->brand->brand_name : null,
                         'slug' => $component->slug,
                         'primary_image_url' => $component->primary_image_url,
+                        'image_urls' => $component->image_urls ?? [],
                         'lowest_price_bdt' => $component->lowest_price_bdt,
                         'price_at_selection_bdt' => $component->pivot->price_at_selection_bdt,
                         'quantity' => $component->pivot->quantity,
-                        'specs' => $component->specs,
+                        'specs' => $component->specs_object,
                         'prices' => $component->prices,
                     ];
                 })->values()->all() : [],
