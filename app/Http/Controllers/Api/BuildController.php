@@ -213,12 +213,12 @@ class BuildController extends Controller
             'is_complete' => true,
         ]);
 
-        // Attach components using product_id (the relationship uses product_id as the related key)
+        // Attach components - use component's id (not product_id) since that's what the FK references
         foreach ($validated['components'] as $comp) {
             $component = Component::where('product_id', $comp['component_id'])->first();
             if ($component) {
-                // Use product_id for attachment since build_components.component_id stores product_id values
-                $build->components()->attach($component->product_id, [
+                // Use the component's actual id for the pivot table
+                $build->components()->attach($component->id, [
                     'category' => $comp['category'],
                     'quantity' => $comp['quantity'] ?? 1,
                     'price_at_selection_bdt' => $comp['price_at_selection_bdt'] ?? null,
@@ -347,13 +347,13 @@ class BuildController extends Controller
             $build->total_cost_bdt = $totalCost;
             $build->total_price = $totalCost; // Legacy
 
-            // Sync components using product_id (the relationship uses product_id as the related key)
+            // Sync components - use component's id (not product_id) since that's what the FK references
             $syncData = [];
             foreach ($validated['components'] as $comp) {
                 $component = Component::where('product_id', $comp['component_id'])->first();
                 if ($component) {
-                    // Use product_id as key since build_components.component_id stores product_id values
-                    $syncData[$component->product_id] = [
+                    // Use the component's actual id for the pivot table
+                    $syncData[$component->id] = [
                         'category' => $comp['category'],
                         'quantity' => $comp['quantity'] ?? 1,
                         'price_at_selection_bdt' => $comp['price_at_selection_bdt'] ?? null,
