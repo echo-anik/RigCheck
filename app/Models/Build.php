@@ -23,7 +23,6 @@ class Build extends Model
         'compatibility_issues', // JSON field
         'visibility', // ENUM: private, public
         'share_token', // Unique share code
-        'share_id', // Alternative share identifier
         'share_url', // Full share URL
         'view_count', // Denormalized
         'like_count', // Denormalized

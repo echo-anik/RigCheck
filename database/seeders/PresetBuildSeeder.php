@@ -156,7 +156,6 @@ class PresetBuildSeeder extends Seeder
                 ...$buildData,
                 'user_id' => $admin->id,  // Assign to admin user
                 'share_token' => Str::random(16),
-                'share_id' => Str::random(10),
                 'total_cost_bdt' => 0, // Will be calculated
                 'compatibility_status' => 'valid',
                 'view_count' => rand(50, 500),  // Add some realistic view counts
