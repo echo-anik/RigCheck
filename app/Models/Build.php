@@ -74,10 +74,11 @@ class Build extends Model
 
     /**
      * Components attached to this build
+     * The build_components.component_id references components.id (not product_id)
      */
     public function components()
     {
-        return $this->belongsToMany(Component::class, 'build_components', 'build_id', 'component_id', 'id', 'product_id')
+        return $this->belongsToMany(Component::class, 'build_components', 'build_id', 'component_id')
             ->withPivot('category', 'quantity', 'price_at_selection_bdt')
             ->withTimestamps();
     }
