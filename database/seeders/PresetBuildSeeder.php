@@ -37,7 +37,7 @@ class PresetBuildSeeder extends Seeder
         $presetBuilds = [
             // 1. Ultimate Gaming Build
             [
-                'build_name' => '🎮 Ultimate Gaming Rig 2025',
+                'build_name' => 'Ultimate Gaming Rig 2025',
                 'description' => 'Top-tier gaming build with latest RTX 40-series GPU and high-end CPU for 4K gaming at ultra settings. Perfect for AAA titles and competitive gaming.',
                 'use_case' => 'gaming',
                 'budget_min_bdt' => 400000,
@@ -48,7 +48,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 2. High-End Content Creation
             [
-                'build_name' => '🎥 Content Creator Studio',
+                'build_name' => 'Professional Content Creator Studio',
                 'description' => 'Professional workstation optimized for video editing, 3D rendering, and content creation. High core count CPU with ample RAM for multitasking.',
                 'use_case' => 'content_creation',
                 'budget_min_bdt' => 300000,
@@ -59,7 +59,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 3. Professional Workstation
             [
-                'build_name' => '💼 Engineering Workstation Pro',
+                'build_name' => 'Engineering Workstation Pro',
                 'description' => 'High-performance workstation for CAD, engineering simulations, and professional applications. Rock-solid stability with ECC support.',
                 'use_case' => 'workstation',
                 'budget_min_bdt' => 250000,
@@ -70,7 +70,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 4. Budget Gaming Build
             [
-                'build_name' => '💰 Budget Gaming Champion',
+                'build_name' => 'Budget Gaming Champion',
                 'description' => 'Affordable 1080p gaming build that delivers excellent performance without breaking the bank. Perfect for esports and modern titles at high settings.',
                 'use_case' => 'budget',
                 'budget_min_bdt' => 80000,
@@ -81,7 +81,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 5. Office Productivity
             [
-                'build_name' => '🖥️ Office Productivity Hub',
+                'build_name' => 'Office Productivity Hub',
                 'description' => 'Reliable and efficient build for office work, web browsing, and productivity software. Energy-efficient with integrated graphics.',
                 'use_case' => 'other',
                 'budget_min_bdt' => 40000,
@@ -92,7 +92,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 6. Streaming Build
             [
-                'build_name' => '🎬 Streamer Special',
+                'build_name' => 'Live Streaming Workstation',
                 'description' => 'Balanced build for gaming and live streaming with excellent multi-threaded performance. Stream in 1080p60fps while gaming smoothly.',
                 'use_case' => 'gaming',
                 'budget_min_bdt' => 200000,
@@ -103,7 +103,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 7. Mid-Range All-Rounder
             [
-                'build_name' => '⚡ Mid-Range Master',
+                'build_name' => 'Mid-Range Gaming Master',
                 'description' => 'Versatile mid-range build perfect for 1440p gaming, light content creation, and everyday tasks. Best value for money.',
                 'use_case' => 'gaming',
                 'budget_min_bdt' => 150000,
@@ -114,7 +114,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 8. Compact Mini-ITX Build
             [
-                'build_name' => '📦 Compact Gaming Beast',
+                'build_name' => 'Compact Mini-ITX Gaming Build',
                 'description' => 'Small form factor build that packs serious gaming power in a tiny package. Perfect for limited desk space or LAN parties.',
                 'use_case' => 'gaming',
                 'budget_min_bdt' => 180000,
@@ -125,7 +125,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 9. RGB Gaming Showcase
             [
-                'build_name' => '🌈 RGB Dream Machine',
+                'build_name' => 'RGB Premium Gaming Build',
                 'description' => 'Eye-catching gaming build with synchronized RGB lighting and tempered glass showcase. Performance meets aesthetics.',
                 'use_case' => 'gaming',
                 'budget_min_bdt' => 220000,
@@ -136,7 +136,7 @@ class PresetBuildSeeder extends Seeder
             ],
             // 10. Silent Workstation
             [
-                'build_name' => '🔇 Silent Productivity Beast',
+                'build_name' => 'Silent Productivity Workstation',
                 'description' => 'Whisper-quiet build optimized for noise-sensitive environments. Perfect for home office or content recording with minimal fan noise.',
                 'use_case' => 'workstation',
                 'budget_min_bdt' => 160000,
