@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use App\Models\Component;
 
 class ComponentSpecSeeder extends Seeder
@@ -58,8 +59,8 @@ class ComponentSpecSeeder extends Seeder
 
                     $data = array_combine($headers, $row);
 
-                    // Find the component by name
-                    $component = Component::where('name', $data['name'])
+                    // Find the component by product_id (slug of original name)
+                    $component = Component::where('product_id', Str::slug($data['name']))
                         ->where('category', $config['category'])
                         ->first();
 

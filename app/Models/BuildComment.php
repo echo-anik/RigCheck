@@ -16,7 +16,7 @@ class BuildComment extends Model
     protected $fillable = [
         'build_id',
         'user_id',
-        'comment_text',
+        'comment',
     ];
 
     protected $casts = [

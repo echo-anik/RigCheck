@@ -20,7 +20,7 @@ class AdminDashboardController extends Controller
             'total_users' => User::count(),
             'total_components' => Component::count(),
             'total_builds' => Build::count(),
-            'public_builds' => Build::where('is_public', true)->count(),
+            'public_builds' => Build::where('visibility', 'public')->count(),
             'featured_components' => Component::where('featured', true)->count(),
             'banned_users' => User::where('is_banned', true)->count(),
             'new_users_this_month' => User::whereMonth('created_at', now()->month)->count(),
